@@ -1,0 +1,7 @@
+parameters:
+#    sil12_vitrine.example.class: sil12\VitrineBundle\Example
+
+services:
+#    sil12_vitrine.example:
+#        class: %sil12_vitrine.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

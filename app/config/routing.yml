@@ -1,0 +1,4 @@
+sil12_vitrine:
+    resource: "@sil12VitrineBundle/Resources/config/routing.yml"
+    prefix:   /
+
