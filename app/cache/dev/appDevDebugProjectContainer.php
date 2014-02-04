@@ -39,9 +39,18 @@ class appDevDebugProjectContainer extends Container
             'assetic.cache' => 'getAssetic_CacheService',
             'assetic.controller' => 'getAssetic_ControllerService',
             'assetic.filter.cssrewrite' => 'getAssetic_Filter_CssrewriteService',
+            'assetic.filter.lessphp' => 'getAssetic_Filter_LessphpService',
             'assetic.filter_manager' => 'getAssetic_FilterManagerService',
             'assetic.request_listener' => 'getAssetic_RequestListenerService',
             'assetic.value_supplier.default' => 'getAssetic_ValueSupplier_DefaultService',
+            'braincrafted_bootstrap.flash' => 'getBraincraftedBootstrap_FlashService',
+            'braincrafted_bootstrap.form.extension.typesetter_extension' => 'getBraincraftedBootstrap_Form_Extension_TypesetterExtensionService',
+            'braincrafted_bootstrap.form.type.collection' => 'getBraincraftedBootstrap_Form_Type_CollectionService',
+            'braincrafted_bootstrap.form.type.money' => 'getBraincraftedBootstrap_Form_Type_MoneyService',
+            'braincrafted_bootstrap.twig.badge_extension' => 'getBraincraftedBootstrap_Twig_BadgeExtensionService',
+            'braincrafted_bootstrap.twig.form_extension' => 'getBraincraftedBootstrap_Twig_FormExtensionService',
+            'braincrafted_bootstrap.twig.icon_extension' => 'getBraincraftedBootstrap_Twig_IconExtensionService',
+            'braincrafted_bootstrap.twig.label_extension' => 'getBraincraftedBootstrap_Twig_LabelExtensionService',
             'cache_clearer' => 'getCacheClearerService',
             'cache_warmer' => 'getCacheWarmerService',
             'controller_name_converter' => 'getControllerNameConverterService',
@@ -230,6 +239,7 @@ class appDevDebugProjectContainer extends Container
             'twig.controller.exception' => 'getTwig_Controller_ExceptionService',
             'twig.exception_listener' => 'getTwig_ExceptionListenerService',
             'twig.extension.acme.demo' => 'getTwig_Extension_Acme_DemoService',
+            'twig.extension.text' => 'getTwig_Extension_TextService',
             'twig.loader' => 'getTwig_LoaderService',
             'twig.translation.extractor' => 'getTwig_Translation_ExtractorService',
             'uri_signer' => 'getUriSignerService',
@@ -280,7 +290,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getAnnotationReaderService()
     {
-        return $this->services['annotation_reader'] = new \Doctrine\Common\Annotations\FileCacheReader(new \Doctrine\Common\Annotations\AnnotationReader(), '/home/matthieu/DEV/PHP/Cours/Symfony/app/cache/dev/annotations', true);
+        return $this->services['annotation_reader'] = new \Doctrine\Common\Annotations\FileCacheReader(new \Doctrine\Common\Annotations\AnnotationReader(), '/home/matthieu/DEV/PHP/Cours/projet-sil5-cours/app/cache/dev/annotations', true);
     }
 
     /**
@@ -293,9 +303,10 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getAssetic_AssetManagerService()
     {
-        $this->services['assetic.asset_manager'] = $instance = new \Assetic\Factory\LazyAssetManager($this->get('assetic.asset_factory'), array('twig' => new \Assetic\Factory\Loader\CachedFormulaLoader(new \Assetic\Extension\Twig\TwigFormulaLoader($this->get('twig')), new \Assetic\Cache\ConfigCache('/home/matthieu/DEV/PHP/Cours/Symfony/app/cache/dev/assetic/config'), true)));
+        $this->services['assetic.asset_manager'] = $instance = new \Assetic\Factory\LazyAssetManager($this->get('assetic.asset_factory'), array('config' => new \Symfony\Bundle\AsseticBundle\Factory\Loader\ConfigurationLoader(), 'twig' => new \Assetic\Factory\Loader\CachedFormulaLoader(new \Assetic\Extension\Twig\TwigFormulaLoader($this->get('twig')), new \Assetic\Cache\ConfigCache('/home/matthieu/DEV/PHP/Cours/projet-sil5-cours/app/cache/dev/assetic/config'), true)));
 
-        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($this->get('templating.loader'), '', '/home/matthieu/DEV/PHP/Cours/Symfony/app/Resources/views', '/\\.[^.]+\\.twig$/'), 'twig');
+        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\ConfigurationResource(array('bootstrap_css' => array(0 => array(0 => '/home/matthieu/DEV/PHP/Cours/projet-sil5-cours/app/../vendor/twbs/bootstrap/less/bootstrap.less', 1 => '/home/matthieu/DEV/PHP/Cours/projet-sil5-cours/vendor/braincrafted/bootstrap-bundle/Braincrafted/Bundle/BootstrapBundle/DependencyInjection/../Resources/less/form.less'), 1 => array(0 => 'lessphp'), 2 => array('output' => 'css/bootstrap.css')), 'bootstrap_js' => array(0 => array(0 => '/home/matthieu/DEV/PHP/Cours/projet-sil5-cours/app/../vendor/twbs/bootstrap/js/transition.js', 1 => '/home/matthieu/DEV/PHP/Cours/projet-sil5-cours/app/../vendor/twbs/bootstrap/js/alert.js', 2 => '/home/matthieu/DEV/PHP/Cours/projet-sil5-cours/app/../vendor/twbs/bootstrap/js/button.js', 3 => '/home/matthieu/DEV/PHP/Cours/projet-sil5-cours/app/../vendor/twbs/bootstrap/js/carousel.js', 4 => '/home/matthieu/DEV/PHP/Cours/projet-sil5-cours/app/../vendor/twbs/bootstrap/js/collapse.js', 5 => '/home/matthieu/DEV/PHP/Cours/projet-sil5-cours/app/../vendor/twbs/bootstrap/js/dropdown.js', 6 => '/home/matthieu/DEV/PHP/Cours/projet-sil5-cours/app/../vendor/twbs/bootstrap/js/modal.js', 7 => '/home/matthieu/DEV/PHP/Cours/projet-sil5-cours/app/../vendor/twbs/bootstrap/js/tooltip.js', 8 => '/home/matthieu/DEV/PHP/Cours/projet-sil5-cours/app/../vendor/twbs/bootstrap/js/popover.js', 9 => '/home/matthieu/DEV/PHP/Cours/projet-sil5-cours/app/../vendor/twbs/bootstrap/js/scrollspy.js', 10 => '/home/matthieu/DEV/PHP/Cours/projet-sil5-cours/app/../vendor/twbs/bootstrap/js/tab.js', 11 => '/home/matthieu/DEV/PHP/Cours/projet-sil5-cours/app/../vendor/twbs/bootstrap/js/affix.js', 12 => '/home/matthieu/DEV/PHP/Cours/projet-sil5-cours/vendor/braincrafted/bootstrap-bundle/Braincrafted/Bundle/BootstrapBundle/DependencyInjection/../Resources/js/bc-bootstrap-collection.js'), 1 => array(), 2 => array('output' => 'js/bootstrap.js')), 'jquery' => array(0 => array(0 => '/home/matthieu/DEV/PHP/Cours/projet-sil5-cours/app/../vendor/jquery/jquery/jquery-1.10.2.js'), 1 => array(), 2 => array('output' => 'js/jquery.js')))), 'config');
+        $instance->addResource(new \Symfony\Bundle\AsseticBundle\Factory\Resource\DirectoryResource($this->get('templating.loader'), '', '/home/matthieu/DEV/PHP/Cours/projet-sil5-cours/app/Resources/views', '/\\.[^.]+\\.twig$/'), 'twig');
 
         return $instance;
     }
@@ -330,6 +341,28 @@ class appDevDebugProjectContainer extends Container
     }
 
     /**
+     * Gets the 'assetic.filter.lessphp' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return Assetic\Filter\LessphpFilter A Assetic\Filter\LessphpFilter instance.
+     */
+    protected function getAssetic_Filter_LessphpService()
+    {
+        require_once '/home/matthieu/DEV/PHP/Cours/projet-sil5-cours/app/../vendor/leafo/lessphp/lessc.inc.php';
+
+        $this->services['assetic.filter.lessphp'] = $instance = new \Assetic\Filter\LessphpFilter();
+
+        $instance->setPresets(array());
+        $instance->setLoadPaths(array());
+        $instance->setFormatter(NULL);
+        $instance->setPreserveComments(NULL);
+
+        return $instance;
+    }
+
+    /**
      * Gets the 'assetic.filter_manager' service.
      *
      * This service is shared.
@@ -339,7 +372,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getAssetic_FilterManagerService()
     {
-        return $this->services['assetic.filter_manager'] = new \Symfony\Bundle\AsseticBundle\FilterManager($this, array('cssrewrite' => 'assetic.filter.cssrewrite'));
+        return $this->services['assetic.filter_manager'] = new \Symfony\Bundle\AsseticBundle\FilterManager($this, array('lessphp' => 'assetic.filter.lessphp', 'cssrewrite' => 'assetic.filter.cssrewrite'));
     }
 
     /**
@@ -353,6 +386,110 @@ class appDevDebugProjectContainer extends Container
     protected function getAssetic_RequestListenerService()
     {
         return $this->services['assetic.request_listener'] = new \Symfony\Bundle\AsseticBundle\EventListener\RequestListener();
+    }
+
+    /**
+     * Gets the 'braincrafted_bootstrap.flash' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return Braincrafted\Bundle\BootstrapBundle\Session\FlashMessage A Braincrafted\Bundle\BootstrapBundle\Session\FlashMessage instance.
+     */
+    protected function getBraincraftedBootstrap_FlashService()
+    {
+        return $this->services['braincrafted_bootstrap.flash'] = new \Braincrafted\Bundle\BootstrapBundle\Session\FlashMessage($this->get('session'));
+    }
+
+    /**
+     * Gets the 'braincrafted_bootstrap.form.extension.typesetter_extension' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return Braincrafted\Bundle\BootstrapBundle\Form\Extension\TypeSetterExtension A Braincrafted\Bundle\BootstrapBundle\Form\Extension\TypeSetterExtension instance.
+     */
+    protected function getBraincraftedBootstrap_Form_Extension_TypesetterExtensionService()
+    {
+        return $this->services['braincrafted_bootstrap.form.extension.typesetter_extension'] = new \Braincrafted\Bundle\BootstrapBundle\Form\Extension\TypeSetterExtension();
+    }
+
+    /**
+     * Gets the 'braincrafted_bootstrap.form.type.collection' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return Braincrafted\Bundle\BootstrapBundle\Form\Type\BootstrapCollectionType A Braincrafted\Bundle\BootstrapBundle\Form\Type\BootstrapCollectionType instance.
+     */
+    protected function getBraincraftedBootstrap_Form_Type_CollectionService()
+    {
+        return $this->services['braincrafted_bootstrap.form.type.collection'] = new \Braincrafted\Bundle\BootstrapBundle\Form\Type\BootstrapCollectionType();
+    }
+
+    /**
+     * Gets the 'braincrafted_bootstrap.form.type.money' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return Braincrafted\Bundle\BootstrapBundle\Form\Type\MoneyType A Braincrafted\Bundle\BootstrapBundle\Form\Type\MoneyType instance.
+     */
+    protected function getBraincraftedBootstrap_Form_Type_MoneyService()
+    {
+        return $this->services['braincrafted_bootstrap.form.type.money'] = new \Braincrafted\Bundle\BootstrapBundle\Form\Type\MoneyType();
+    }
+
+    /**
+     * Gets the 'braincrafted_bootstrap.twig.badge_extension' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapBadgeExtension A Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapBadgeExtension instance.
+     */
+    protected function getBraincraftedBootstrap_Twig_BadgeExtensionService()
+    {
+        return $this->services['braincrafted_bootstrap.twig.badge_extension'] = new \Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapBadgeExtension();
+    }
+
+    /**
+     * Gets the 'braincrafted_bootstrap.twig.form_extension' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapFormExtension A Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapFormExtension instance.
+     */
+    protected function getBraincraftedBootstrap_Twig_FormExtensionService()
+    {
+        return $this->services['braincrafted_bootstrap.twig.form_extension'] = new \Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapFormExtension();
+    }
+
+    /**
+     * Gets the 'braincrafted_bootstrap.twig.icon_extension' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapIconExtension A Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapIconExtension instance.
+     */
+    protected function getBraincraftedBootstrap_Twig_IconExtensionService()
+    {
+        return $this->services['braincrafted_bootstrap.twig.icon_extension'] = new \Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapIconExtension();
+    }
+
+    /**
+     * Gets the 'braincrafted_bootstrap.twig.label_extension' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapLabelExtension A Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapLabelExtension instance.
+     */
+    protected function getBraincraftedBootstrap_Twig_LabelExtensionService()
+    {
+        return $this->services['braincrafted_bootstrap.twig.label_extension'] = new \Braincrafted\Bundle\BootstrapBundle\Twig\BootstrapLabelExtension();
     }
 
     /**
@@ -381,7 +518,7 @@ class appDevDebugProjectContainer extends Container
         $a = $this->get('kernel');
         $b = $this->get('templating.filename_parser');
 
-        $c = new \Symfony\Bundle\FrameworkBundle\CacheWarmer\TemplateFinder($a, $b, '/home/matthieu/DEV/PHP/Cours/Symfony/app/Resources');
+        $c = new \Symfony\Bundle\FrameworkBundle\CacheWarmer\TemplateFinder($a, $b, '/home/matthieu/DEV/PHP/Cours/projet-sil5-cours/app/Resources');
 
         return $this->services['cache_warmer'] = new \Symfony\Component\HttpKernel\CacheWarmer\CacheWarmerAggregate(array(0 => new \Symfony\Bundle\FrameworkBundle\CacheWarmer\TemplatePathsCacheWarmer($c, $this->get('templating.locator')), 1 => new \Symfony\Bundle\AsseticBundle\CacheWarmer\AssetManagerCacheWarmer($this), 2 => new \Symfony\Bundle\FrameworkBundle\CacheWarmer\RouterCacheWarmer($this->get('router')), 3 => new \Symfony\Bundle\TwigBundle\CacheWarmer\TemplateCacheCacheWarmer($this, $c), 4 => new \Symfony\Bridge\Doctrine\CacheWarmer\ProxyCacheWarmer($this->get('doctrine'))));
     }
@@ -604,28 +741,34 @@ class appDevDebugProjectContainer extends Container
     protected function getDoctrine_Orm_DefaultEntityManagerService()
     {
         $a = new \Doctrine\Common\Cache\ArrayCache();
-        $a->setNamespace('sf2orm_default_d067f4554c325a911925204eeb4394b05a526595d62bf9c3f89c35da9b3a8c60');
+        $a->setNamespace('sf2orm_default_c527a22b5fd7e517cd0598e8840de350a142215b65d9b3e6d90716f8c7d4802e');
 
         $b = new \Doctrine\Common\Cache\ArrayCache();
-        $b->setNamespace('sf2orm_default_d067f4554c325a911925204eeb4394b05a526595d62bf9c3f89c35da9b3a8c60');
+        $b->setNamespace('sf2orm_default_c527a22b5fd7e517cd0598e8840de350a142215b65d9b3e6d90716f8c7d4802e');
 
         $c = new \Doctrine\Common\Cache\ArrayCache();
-        $c->setNamespace('sf2orm_default_d067f4554c325a911925204eeb4394b05a526595d62bf9c3f89c35da9b3a8c60');
+        $c->setNamespace('sf2orm_default_c527a22b5fd7e517cd0598e8840de350a142215b65d9b3e6d90716f8c7d4802e');
 
-        $d = new \Doctrine\ORM\Configuration();
-        $d->setEntityNamespaces(array());
-        $d->setMetadataCacheImpl($a);
-        $d->setQueryCacheImpl($b);
-        $d->setResultCacheImpl($c);
-        $d->setMetadataDriverImpl(new \Doctrine\ORM\Mapping\Driver\DriverChain());
-        $d->setProxyDir('/home/matthieu/DEV/PHP/Cours/Symfony/app/cache/dev/doctrine/orm/Proxies');
-        $d->setProxyNamespace('Proxies');
-        $d->setAutoGenerateProxyClasses(true);
-        $d->setClassMetadataFactoryName('Doctrine\\ORM\\Mapping\\ClassMetadataFactory');
-        $d->setDefaultRepositoryClassName('Doctrine\\ORM\\EntityRepository');
-        $d->setNamingStrategy(new \Doctrine\ORM\Mapping\DefaultNamingStrategy());
+        $d = new \Doctrine\ORM\Mapping\Driver\SimplifiedYamlDriver(array('/home/matthieu/DEV/PHP/Cours/projet-sil5-cours/src/sil12/VitrineBundle/Resources/config/doctrine' => 'sil12\\VitrineBundle\\Entity'));
+        $d->setGlobalBasename('mapping');
 
-        $this->services['doctrine.orm.default_entity_manager'] = $instance = call_user_func(array('Doctrine\\ORM\\EntityManager', 'create'), $this->get('doctrine.dbal.default_connection'), $d);
+        $e = new \Doctrine\ORM\Mapping\Driver\DriverChain();
+        $e->addDriver($d, 'sil12\\VitrineBundle\\Entity');
+
+        $f = new \Doctrine\ORM\Configuration();
+        $f->setEntityNamespaces(array('sil12VitrineBundle' => 'sil12\\VitrineBundle\\Entity'));
+        $f->setMetadataCacheImpl($a);
+        $f->setQueryCacheImpl($b);
+        $f->setResultCacheImpl($c);
+        $f->setMetadataDriverImpl($e);
+        $f->setProxyDir('/home/matthieu/DEV/PHP/Cours/projet-sil5-cours/app/cache/dev/doctrine/orm/Proxies');
+        $f->setProxyNamespace('Proxies');
+        $f->setAutoGenerateProxyClasses(true);
+        $f->setClassMetadataFactoryName('Doctrine\\ORM\\Mapping\\ClassMetadataFactory');
+        $f->setDefaultRepositoryClassName('Doctrine\\ORM\\EntityRepository');
+        $f->setNamingStrategy(new \Doctrine\ORM\Mapping\DefaultNamingStrategy());
+
+        $this->services['doctrine.orm.default_entity_manager'] = $instance = call_user_func(array('Doctrine\\ORM\\EntityManager', 'create'), $this->get('doctrine.dbal.default_connection'), $f);
 
         $this->get('doctrine.orm.default_manager_configurator')->configure($instance);
 
@@ -681,7 +824,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getFileLocatorService()
     {
-        return $this->services['file_locator'] = new \Symfony\Component\HttpKernel\Config\FileLocator($this->get('kernel'), '/home/matthieu/DEV/PHP/Cours/Symfony/app/Resources');
+        return $this->services['file_locator'] = new \Symfony\Component\HttpKernel\Config\FileLocator($this->get('kernel'), '/home/matthieu/DEV/PHP/Cours/projet-sil5-cours/app/Resources');
     }
 
     /**
@@ -733,7 +876,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getForm_RegistryService()
     {
-        return $this->services['form.registry'] = new \Symfony\Component\Form\FormRegistry(array(0 => new \Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension($this, array('form' => 'form.type.form', 'birthday' => 'form.type.birthday', 'checkbox' => 'form.type.checkbox', 'choice' => 'form.type.choice', 'collection' => 'form.type.collection', 'country' => 'form.type.country', 'date' => 'form.type.date', 'datetime' => 'form.type.datetime', 'email' => 'form.type.email', 'file' => 'form.type.file', 'hidden' => 'form.type.hidden', 'integer' => 'form.type.integer', 'language' => 'form.type.language', 'locale' => 'form.type.locale', 'money' => 'form.type.money', 'number' => 'form.type.number', 'password' => 'form.type.password', 'percent' => 'form.type.percent', 'radio' => 'form.type.radio', 'repeated' => 'form.type.repeated', 'search' => 'form.type.search', 'textarea' => 'form.type.textarea', 'text' => 'form.type.text', 'time' => 'form.type.time', 'timezone' => 'form.type.timezone', 'url' => 'form.type.url', 'button' => 'form.type.button', 'submit' => 'form.type.submit', 'reset' => 'form.type.reset', 'currency' => 'form.type.currency', 'entity' => 'form.type.entity'), array('form' => array(0 => 'form.type_extension.form.http_foundation', 1 => 'form.type_extension.form.validator', 2 => 'form.type_extension.csrf', 3 => 'form.type_extension.form.data_collector'), 'repeated' => array(0 => 'form.type_extension.repeated.validator'), 'submit' => array(0 => 'form.type_extension.submit.validator')), array(0 => 'form.type_guesser.validator', 1 => 'form.type_guesser.doctrine'))), $this->get('form.resolved_type_factory'));
+        return $this->services['form.registry'] = new \Symfony\Component\Form\FormRegistry(array(0 => new \Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension($this, array('form' => 'form.type.form', 'birthday' => 'form.type.birthday', 'checkbox' => 'form.type.checkbox', 'choice' => 'form.type.choice', 'collection' => 'form.type.collection', 'country' => 'form.type.country', 'date' => 'form.type.date', 'datetime' => 'form.type.datetime', 'email' => 'form.type.email', 'file' => 'form.type.file', 'hidden' => 'form.type.hidden', 'integer' => 'form.type.integer', 'language' => 'form.type.language', 'locale' => 'form.type.locale', 'money' => 'braincrafted_bootstrap.form.type.money', 'number' => 'form.type.number', 'password' => 'form.type.password', 'percent' => 'form.type.percent', 'radio' => 'form.type.radio', 'repeated' => 'form.type.repeated', 'search' => 'form.type.search', 'textarea' => 'form.type.textarea', 'text' => 'form.type.text', 'time' => 'form.type.time', 'timezone' => 'form.type.timezone', 'url' => 'form.type.url', 'button' => 'form.type.button', 'submit' => 'form.type.submit', 'reset' => 'form.type.reset', 'currency' => 'form.type.currency', 'entity' => 'form.type.entity', 'bootstrap_collection' => 'braincrafted_bootstrap.form.type.collection'), array('form' => array(0 => 'form.type_extension.form.http_foundation', 1 => 'form.type_extension.form.validator', 2 => 'form.type_extension.csrf', 3 => 'form.type_extension.form.data_collector', 4 => 'braincrafted_bootstrap.form.extension.typesetter_extension'), 'repeated' => array(0 => 'form.type_extension.repeated.validator'), 'submit' => array(0 => 'form.type_extension.submit.validator')), array(0 => 'form.type_guesser.validator', 1 => 'form.type_guesser.doctrine'))), $this->get('form.resolved_type_factory'));
     }
 
     /**
@@ -1433,7 +1576,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getMonolog_Handler_MainService()
     {
-        return $this->services['monolog.handler.main'] = new \Monolog\Handler\StreamHandler('/home/matthieu/DEV/PHP/Cours/Symfony/app/logs/dev.log', 100, true);
+        return $this->services['monolog.handler.main'] = new \Monolog\Handler\StreamHandler('/home/matthieu/DEV/PHP/Cours/projet-sil5-cours/app/logs/dev.log', 100, true);
     }
 
     /**
@@ -1628,7 +1771,7 @@ class appDevDebugProjectContainer extends Container
         $d = new \Doctrine\Bundle\DoctrineBundle\DataCollector\DoctrineDataCollector($this->get('doctrine'));
         $d->addLogger('default', $this->get('doctrine.dbal.logger.profiling.default'));
 
-        $this->services['profiler'] = $instance = new \Symfony\Component\HttpKernel\Profiler\Profiler(new \Symfony\Component\HttpKernel\Profiler\FileProfilerStorage('file:/home/matthieu/DEV/PHP/Cours/Symfony/app/cache/dev/profiler', '', '', 86400), $a);
+        $this->services['profiler'] = $instance = new \Symfony\Component\HttpKernel\Profiler\Profiler(new \Symfony\Component\HttpKernel\Profiler\FileProfilerStorage('file:/home/matthieu/DEV/PHP/Cours/projet-sil5-cours/app/cache/dev/profiler', '', '', 86400), $a);
 
         $instance->add($c);
         $instance->add($this->get('data_collector.request'));
@@ -1726,7 +1869,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getRouterService()
     {
-        return $this->services['router'] = new \Symfony\Bundle\FrameworkBundle\Routing\Router($this, '/home/matthieu/DEV/PHP/Cours/Symfony/app/cache/dev/assetic/routing.yml', array('cache_dir' => '/home/matthieu/DEV/PHP/Cours/Symfony/app/cache/dev', 'debug' => true, 'generator_class' => 'Symfony\\Component\\Routing\\Generator\\UrlGenerator', 'generator_base_class' => 'Symfony\\Component\\Routing\\Generator\\UrlGenerator', 'generator_dumper_class' => 'Symfony\\Component\\Routing\\Generator\\Dumper\\PhpGeneratorDumper', 'generator_cache_class' => 'appDevUrlGenerator', 'matcher_class' => 'Symfony\\Bundle\\FrameworkBundle\\Routing\\RedirectableUrlMatcher', 'matcher_base_class' => 'Symfony\\Bundle\\FrameworkBundle\\Routing\\RedirectableUrlMatcher', 'matcher_dumper_class' => 'Symfony\\Component\\Routing\\Matcher\\Dumper\\PhpMatcherDumper', 'matcher_cache_class' => 'appDevUrlMatcher', 'strict_requirements' => true), $this->get('router.request_context', ContainerInterface::NULL_ON_INVALID_REFERENCE), $this->get('monolog.logger.router', ContainerInterface::NULL_ON_INVALID_REFERENCE));
+        return $this->services['router'] = new \Symfony\Bundle\FrameworkBundle\Routing\Router($this, '/home/matthieu/DEV/PHP/Cours/projet-sil5-cours/app/cache/dev/assetic/routing.yml', array('cache_dir' => '/home/matthieu/DEV/PHP/Cours/projet-sil5-cours/app/cache/dev', 'debug' => true, 'generator_class' => 'Symfony\\Component\\Routing\\Generator\\UrlGenerator', 'generator_base_class' => 'Symfony\\Component\\Routing\\Generator\\UrlGenerator', 'generator_dumper_class' => 'Symfony\\Component\\Routing\\Generator\\Dumper\\PhpGeneratorDumper', 'generator_cache_class' => 'appDevUrlGenerator', 'matcher_class' => 'Symfony\\Bundle\\FrameworkBundle\\Routing\\RedirectableUrlMatcher', 'matcher_base_class' => 'Symfony\\Bundle\\FrameworkBundle\\Routing\\RedirectableUrlMatcher', 'matcher_dumper_class' => 'Symfony\\Component\\Routing\\Matcher\\Dumper\\PhpMatcherDumper', 'matcher_cache_class' => 'appDevUrlMatcher', 'strict_requirements' => true), $this->get('router.request_context', ContainerInterface::NULL_ON_INVALID_REFERENCE), $this->get('monolog.logger.router', ContainerInterface::NULL_ON_INVALID_REFERENCE));
     }
 
     /**
@@ -1900,7 +2043,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getSecurity_SecureRandomService()
     {
-        return $this->services['security.secure_random'] = new \Symfony\Component\Security\Core\Util\SecureRandom('/home/matthieu/DEV/PHP/Cours/Symfony/app/cache/dev/secure_random.seed', $this->get('monolog.logger.security', ContainerInterface::NULL_ON_INVALID_REFERENCE));
+        return $this->services['security.secure_random'] = new \Symfony\Component\Security\Core\Util\SecureRandom('/home/matthieu/DEV/PHP/Cours/projet-sil5-cours/app/cache/dev/secure_random.seed', $this->get('monolog.logger.security', ContainerInterface::NULL_ON_INVALID_REFERENCE));
     }
 
     /**
@@ -1926,7 +2069,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getSensioDistribution_WebconfiguratorService()
     {
-        return $this->services['sensio_distribution.webconfigurator'] = new \Sensio\Bundle\DistributionBundle\Configurator\Configurator('/home/matthieu/DEV/PHP/Cours/Symfony/app');
+        return $this->services['sensio_distribution.webconfigurator'] = new \Sensio\Bundle\DistributionBundle\Configurator\Configurator('/home/matthieu/DEV/PHP/Cours/projet-sil5-cours/app');
     }
 
     /**
@@ -2087,7 +2230,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getSession_Storage_FilesystemService()
     {
-        return $this->services['session.storage.filesystem'] = new \Symfony\Component\HttpFoundation\Session\Storage\MockFileSessionStorage('/home/matthieu/DEV/PHP/Cours/Symfony/app/cache/dev/sessions', 'MOCKSESSID', $this->get('session.storage.metadata_bag'));
+        return $this->services['session.storage.filesystem'] = new \Symfony\Component\HttpFoundation\Session\Storage\MockFileSessionStorage('/home/matthieu/DEV/PHP/Cours/projet-sil5-cours/app/cache/dev/sessions', 'MOCKSESSID', $this->get('session.storage.metadata_bag'));
     }
 
     /**
@@ -2333,7 +2476,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getTemplating_Helper_CodeService()
     {
-        return $this->services['templating.helper.code'] = new \Symfony\Bundle\FrameworkBundle\Templating\Helper\CodeHelper(NULL, '/home/matthieu/DEV/PHP/Cours/Symfony/app', 'UTF-8');
+        return $this->services['templating.helper.code'] = new \Symfony\Bundle\FrameworkBundle\Templating\Helper\CodeHelper(NULL, '/home/matthieu/DEV/PHP/Cours/projet-sil5-cours/app', 'UTF-8');
     }
 
     /**
@@ -2866,7 +3009,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getTranslator_DefaultService()
     {
-        return $this->services['translator.default'] = new \Symfony\Bundle\FrameworkBundle\Translation\Translator($this, $this->get('translator.selector'), array('translation.loader.php' => array(0 => 'php'), 'translation.loader.yml' => array(0 => 'yml'), 'translation.loader.xliff' => array(0 => 'xlf', 1 => 'xliff'), 'translation.loader.po' => array(0 => 'po'), 'translation.loader.mo' => array(0 => 'mo'), 'translation.loader.qt' => array(0 => 'ts'), 'translation.loader.csv' => array(0 => 'csv'), 'translation.loader.res' => array(0 => 'res'), 'translation.loader.dat' => array(0 => 'dat'), 'translation.loader.ini' => array(0 => 'ini'), 'translation.loader.json' => array(0 => 'json')), array('cache_dir' => '/home/matthieu/DEV/PHP/Cours/Symfony/app/cache/dev/translations', 'debug' => true));
+        return $this->services['translator.default'] = new \Symfony\Bundle\FrameworkBundle\Translation\Translator($this, $this->get('translator.selector'), array('translation.loader.php' => array(0 => 'php'), 'translation.loader.yml' => array(0 => 'yml'), 'translation.loader.xliff' => array(0 => 'xlf', 1 => 'xliff'), 'translation.loader.po' => array(0 => 'po'), 'translation.loader.mo' => array(0 => 'mo'), 'translation.loader.qt' => array(0 => 'ts'), 'translation.loader.csv' => array(0 => 'csv'), 'translation.loader.res' => array(0 => 'res'), 'translation.loader.dat' => array(0 => 'dat'), 'translation.loader.ini' => array(0 => 'ini'), 'translation.loader.json' => array(0 => 'json')), array('cache_dir' => '/home/matthieu/DEV/PHP/Cours/projet-sil5-cours/app/cache/dev/translations', 'debug' => true));
     }
 
     /**
@@ -2879,23 +3022,28 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getTwigService()
     {
-        $this->services['twig'] = $instance = new \Twig_Environment($this->get('twig.loader'), array('debug' => true, 'strict_variables' => true, 'exception_controller' => 'twig.controller.exception:showAction', 'autoescape_service' => NULL, 'autoescape_service_method' => NULL, 'cache' => '/home/matthieu/DEV/PHP/Cours/Symfony/app/cache/dev/twig', 'charset' => 'UTF-8', 'paths' => array()));
+        $this->services['twig'] = $instance = new \Twig_Environment($this->get('twig.loader'), array('debug' => true, 'strict_variables' => true, 'exception_controller' => 'twig.controller.exception:showAction', 'autoescape_service' => NULL, 'autoescape_service_method' => NULL, 'cache' => '/home/matthieu/DEV/PHP/Cours/projet-sil5-cours/app/cache/dev/twig', 'charset' => 'UTF-8', 'paths' => array()));
 
+        $instance->addExtension($this->get('twig.extension.text'));
         $instance->addExtension(new \Symfony\Bundle\SecurityBundle\Twig\Extension\LogoutUrlExtension($this->get('templating.helper.logout_url')));
         $instance->addExtension(new \Symfony\Bridge\Twig\Extension\SecurityExtension($this->get('security.context', ContainerInterface::NULL_ON_INVALID_REFERENCE)));
         $instance->addExtension(new \Symfony\Bridge\Twig\Extension\TranslationExtension($this->get('translator')));
         $instance->addExtension(new \Symfony\Bundle\TwigBundle\Extension\AssetsExtension($this));
         $instance->addExtension(new \Symfony\Bundle\TwigBundle\Extension\ActionsExtension($this));
-        $instance->addExtension(new \Symfony\Bridge\Twig\Extension\CodeExtension(NULL, '/home/matthieu/DEV/PHP/Cours/Symfony/app', 'UTF-8'));
+        $instance->addExtension(new \Symfony\Bridge\Twig\Extension\CodeExtension(NULL, '/home/matthieu/DEV/PHP/Cours/projet-sil5-cours/app', 'UTF-8'));
         $instance->addExtension(new \Symfony\Bridge\Twig\Extension\RoutingExtension($this->get('router')));
         $instance->addExtension(new \Symfony\Bridge\Twig\Extension\YamlExtension());
         $instance->addExtension(new \Symfony\Bridge\Twig\Extension\StopwatchExtension($this->get('debug.stopwatch', ContainerInterface::NULL_ON_INVALID_REFERENCE)));
         $instance->addExtension(new \Symfony\Bridge\Twig\Extension\ExpressionExtension());
         $instance->addExtension(new \Symfony\Bridge\Twig\Extension\HttpKernelExtension($this->get('fragment.handler')));
-        $instance->addExtension(new \Symfony\Bridge\Twig\Extension\FormExtension(new \Symfony\Bridge\Twig\Form\TwigRenderer(new \Symfony\Bridge\Twig\Form\TwigRendererEngine(array(0 => 'form_div_layout.html.twig')), $this->get('form.csrf_provider', ContainerInterface::NULL_ON_INVALID_REFERENCE))));
+        $instance->addExtension(new \Symfony\Bridge\Twig\Extension\FormExtension(new \Symfony\Bridge\Twig\Form\TwigRenderer(new \Symfony\Bridge\Twig\Form\TwigRendererEngine(array(0 => 'form_div_layout.html.twig', 1 => 'BraincraftedBootstrapBundle:Form:bootstrap.html.twig')), $this->get('form.csrf_provider', ContainerInterface::NULL_ON_INVALID_REFERENCE))));
         $instance->addExtension(new \Twig_Extension_Debug());
         $instance->addExtension(new \Symfony\Bundle\AsseticBundle\Twig\AsseticExtension($this->get('assetic.asset_factory'), $this->get('templating.name_parser'), true, array(), array(), $this->get('assetic.value_supplier.default', ContainerInterface::NULL_ON_INVALID_REFERENCE)));
         $instance->addExtension(new \Doctrine\Bundle\DoctrineBundle\Twig\DoctrineExtension());
+        $instance->addExtension($this->get('braincrafted_bootstrap.twig.icon_extension'));
+        $instance->addExtension($this->get('braincrafted_bootstrap.twig.label_extension'));
+        $instance->addExtension($this->get('braincrafted_bootstrap.twig.badge_extension'));
+        $instance->addExtension($this->get('braincrafted_bootstrap.twig.form_extension'));
         $instance->addExtension($this->get('twig.extension.acme.demo'));
         $instance->addGlobal('app', $this->get('templating.globals'));
 
@@ -2929,6 +3077,19 @@ class appDevDebugProjectContainer extends Container
     }
 
     /**
+     * Gets the 'twig.extension.text' service.
+     *
+     * This service is shared.
+     * This method always returns the same instance of the service.
+     *
+     * @return Twig_Extensions_Extension_Text A Twig_Extensions_Extension_Text instance.
+     */
+    protected function getTwig_Extension_TextService()
+    {
+        return $this->services['twig.extension.text'] = new \Twig_Extensions_Extension_Text();
+    }
+
+    /**
      * Gets the 'twig.loader' service.
      *
      * This service is shared.
@@ -2940,17 +3101,18 @@ class appDevDebugProjectContainer extends Container
     {
         $this->services['twig.loader'] = $instance = new \Symfony\Bundle\TwigBundle\Loader\FilesystemLoader($this->get('templating.locator'), $this->get('templating.name_parser'));
 
-        $instance->addPath('/home/matthieu/DEV/PHP/Cours/Symfony/vendor/symfony/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/views', 'Framework');
-        $instance->addPath('/home/matthieu/DEV/PHP/Cours/Symfony/vendor/symfony/symfony/src/Symfony/Bundle/SecurityBundle/Resources/views', 'Security');
-        $instance->addPath('/home/matthieu/DEV/PHP/Cours/Symfony/vendor/symfony/symfony/src/Symfony/Bundle/TwigBundle/Resources/views', 'Twig');
-        $instance->addPath('/home/matthieu/DEV/PHP/Cours/Symfony/vendor/symfony/swiftmailer-bundle/Symfony/Bundle/SwiftmailerBundle/Resources/views', 'Swiftmailer');
-        $instance->addPath('/home/matthieu/DEV/PHP/Cours/Symfony/vendor/doctrine/doctrine-bundle/Doctrine/Bundle/DoctrineBundle/Resources/views', 'Doctrine');
-        $instance->addPath('/home/matthieu/DEV/PHP/Cours/Symfony/src/sil12/VitrineBundle/Resources/views', 'sil12Vitrine');
-        $instance->addPath('/home/matthieu/DEV/PHP/Cours/Symfony/src/Acme/DemoBundle/Resources/views', 'AcmeDemo');
-        $instance->addPath('/home/matthieu/DEV/PHP/Cours/Symfony/vendor/symfony/symfony/src/Symfony/Bundle/WebProfilerBundle/Resources/views', 'WebProfiler');
-        $instance->addPath('/home/matthieu/DEV/PHP/Cours/Symfony/vendor/sensio/distribution-bundle/Sensio/Bundle/DistributionBundle/Resources/views', 'SensioDistribution');
-        $instance->addPath('/home/matthieu/DEV/PHP/Cours/Symfony/app/Resources/views');
-        $instance->addPath('/home/matthieu/DEV/PHP/Cours/Symfony/vendor/symfony/symfony/src/Symfony/Bridge/Twig/Resources/views/Form');
+        $instance->addPath('/home/matthieu/DEV/PHP/Cours/projet-sil5-cours/vendor/symfony/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/views', 'Framework');
+        $instance->addPath('/home/matthieu/DEV/PHP/Cours/projet-sil5-cours/vendor/symfony/symfony/src/Symfony/Bundle/SecurityBundle/Resources/views', 'Security');
+        $instance->addPath('/home/matthieu/DEV/PHP/Cours/projet-sil5-cours/vendor/symfony/symfony/src/Symfony/Bundle/TwigBundle/Resources/views', 'Twig');
+        $instance->addPath('/home/matthieu/DEV/PHP/Cours/projet-sil5-cours/vendor/symfony/swiftmailer-bundle/Symfony/Bundle/SwiftmailerBundle/Resources/views', 'Swiftmailer');
+        $instance->addPath('/home/matthieu/DEV/PHP/Cours/projet-sil5-cours/vendor/doctrine/doctrine-bundle/Doctrine/Bundle/DoctrineBundle/Resources/views', 'Doctrine');
+        $instance->addPath('/home/matthieu/DEV/PHP/Cours/projet-sil5-cours/src/sil12/VitrineBundle/Resources/views', 'sil12Vitrine');
+        $instance->addPath('/home/matthieu/DEV/PHP/Cours/projet-sil5-cours/vendor/braincrafted/bootstrap-bundle/Braincrafted/Bundle/BootstrapBundle/Resources/views', 'BraincraftedBootstrap');
+        $instance->addPath('/home/matthieu/DEV/PHP/Cours/projet-sil5-cours/src/Acme/DemoBundle/Resources/views', 'AcmeDemo');
+        $instance->addPath('/home/matthieu/DEV/PHP/Cours/projet-sil5-cours/vendor/symfony/symfony/src/Symfony/Bundle/WebProfilerBundle/Resources/views', 'WebProfiler');
+        $instance->addPath('/home/matthieu/DEV/PHP/Cours/projet-sil5-cours/vendor/sensio/distribution-bundle/Sensio/Bundle/DistributionBundle/Resources/views', 'SensioDistribution');
+        $instance->addPath('/home/matthieu/DEV/PHP/Cours/projet-sil5-cours/app/Resources/views');
+        $instance->addPath('/home/matthieu/DEV/PHP/Cours/projet-sil5-cours/vendor/symfony/symfony/src/Symfony/Bridge/Twig/Resources/views/Form');
 
         return $instance;
     }
@@ -3073,8 +3235,9 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getAssetic_AssetFactoryService()
     {
-        $this->services['assetic.asset_factory'] = $instance = new \Symfony\Bundle\AsseticBundle\Factory\AssetFactory($this->get('kernel'), $this, $this->getParameterBag(), '/home/matthieu/DEV/PHP/Cours/Symfony/app/../web', true);
+        $this->services['assetic.asset_factory'] = $instance = new \Symfony\Bundle\AsseticBundle\Factory\AssetFactory($this->get('kernel'), $this, $this->getParameterBag(), '/home/matthieu/DEV/PHP/Cours/projet-sil5-cours/app/../web', true);
 
+        $instance->addWorker(new \Assetic\Factory\Worker\EnsureFilterWorker('/\\.less$/', $this->get('assetic.filter.lessphp')));
         $instance->addWorker(new \Symfony\Bundle\AsseticBundle\Factory\Worker\UseControllerWorker());
 
         return $instance;
@@ -3094,7 +3257,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getAssetic_CacheService()
     {
-        return $this->services['assetic.cache'] = new \Assetic\Cache\FilesystemCache('/home/matthieu/DEV/PHP/Cours/Symfony/app/cache/dev/assetic/assets');
+        return $this->services['assetic.cache'] = new \Assetic\Cache\FilesystemCache('/home/matthieu/DEV/PHP/Cours/projet-sil5-cours/app/cache/dev/assetic/assets');
     }
 
     /**
@@ -3310,7 +3473,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getTemplating_LocatorService()
     {
-        return $this->services['templating.locator'] = new \Symfony\Bundle\FrameworkBundle\Templating\Loader\TemplateLocator($this->get('file_locator'), '/home/matthieu/DEV/PHP/Cours/Symfony/app/cache/dev');
+        return $this->services['templating.locator'] = new \Symfony\Bundle\FrameworkBundle\Templating\Loader\TemplateLocator($this->get('file_locator'), '/home/matthieu/DEV/PHP/Cours/projet-sil5-cours/app/cache/dev');
     }
 
     /**
@@ -3361,7 +3524,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getValidator_Mapping_ClassMetadataFactoryService()
     {
-        return $this->services['validator.mapping.class_metadata_factory'] = new \Symfony\Component\Validator\Mapping\ClassMetadataFactory(new \Symfony\Component\Validator\Mapping\Loader\LoaderChain(array(0 => new \Symfony\Component\Validator\Mapping\Loader\AnnotationLoader($this->get('annotation_reader')), 1 => new \Symfony\Component\Validator\Mapping\Loader\StaticMethodLoader(), 2 => new \Symfony\Component\Validator\Mapping\Loader\XmlFilesLoader(array(0 => '/home/matthieu/DEV/PHP/Cours/Symfony/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/config/validation.xml')), 3 => new \Symfony\Component\Validator\Mapping\Loader\YamlFilesLoader(array()))), NULL);
+        return $this->services['validator.mapping.class_metadata_factory'] = new \Symfony\Component\Validator\Mapping\ClassMetadataFactory(new \Symfony\Component\Validator\Mapping\Loader\LoaderChain(array(0 => new \Symfony\Component\Validator\Mapping\Loader\AnnotationLoader($this->get('annotation_reader')), 1 => new \Symfony\Component\Validator\Mapping\Loader\StaticMethodLoader(), 2 => new \Symfony\Component\Validator\Mapping\Loader\XmlFilesLoader(array(0 => '/home/matthieu/DEV/PHP/Cours/projet-sil5-cours/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/config/validation.xml')), 3 => new \Symfony\Component\Validator\Mapping\Loader\YamlFilesLoader(array(0 => '/home/matthieu/DEV/PHP/Cours/projet-sil5-cours/src/sil12/VitrineBundle/Resources/config/validation.yml')))), NULL);
     }
 
     /**
@@ -3415,12 +3578,12 @@ class appDevDebugProjectContainer extends Container
     protected function getDefaultParameters()
     {
         return array(
-            'kernel.root_dir' => '/home/matthieu/DEV/PHP/Cours/Symfony/app',
+            'kernel.root_dir' => '/home/matthieu/DEV/PHP/Cours/projet-sil5-cours/app',
             'kernel.environment' => 'dev',
             'kernel.debug' => true,
             'kernel.name' => 'app',
-            'kernel.cache_dir' => '/home/matthieu/DEV/PHP/Cours/Symfony/app/cache/dev',
-            'kernel.logs_dir' => '/home/matthieu/DEV/PHP/Cours/Symfony/app/logs',
+            'kernel.cache_dir' => '/home/matthieu/DEV/PHP/Cours/projet-sil5-cours/app/cache/dev',
+            'kernel.logs_dir' => '/home/matthieu/DEV/PHP/Cours/projet-sil5-cours/app/logs',
             'kernel.bundles' => array(
                 'FrameworkBundle' => 'Symfony\\Bundle\\FrameworkBundle\\FrameworkBundle',
                 'SecurityBundle' => 'Symfony\\Bundle\\SecurityBundle\\SecurityBundle',
@@ -3431,6 +3594,7 @@ class appDevDebugProjectContainer extends Container
                 'DoctrineBundle' => 'Doctrine\\Bundle\\DoctrineBundle\\DoctrineBundle',
                 'SensioFrameworkExtraBundle' => 'Sensio\\Bundle\\FrameworkExtraBundle\\SensioFrameworkExtraBundle',
                 'sil12VitrineBundle' => 'sil12\\VitrineBundle\\sil12VitrineBundle',
+                'BraincraftedBootstrapBundle' => 'Braincrafted\\Bundle\\BootstrapBundle\\BraincraftedBootstrapBundle',
                 'AcmeDemoBundle' => 'Acme\\DemoBundle\\AcmeDemoBundle',
                 'WebProfilerBundle' => 'Symfony\\Bundle\\WebProfilerBundle\\WebProfilerBundle',
                 'SensioDistributionBundle' => 'Sensio\\Bundle\\DistributionBundle\\SensioDistributionBundle',
@@ -3450,7 +3614,6 @@ class appDevDebugProjectContainer extends Container
             'mailer_password' => NULL,
             'locale' => 'en',
             'secret' => '2065fa317f3305ffa5bac7e647578fbafa16da5e',
-            'database_path' => NULL,
             'controller_resolver.class' => 'Symfony\\Bundle\\FrameworkBundle\\Controller\\ControllerResolver',
             'controller_name_converter.class' => 'Symfony\\Bundle\\FrameworkBundle\\Controller\\ControllerNameParser',
             'response_listener.class' => 'Symfony\\Component\\HttpKernel\\EventListener\\ResponseListener',
@@ -3502,7 +3665,7 @@ class appDevDebugProjectContainer extends Container
             'debug.errors_logger_listener.class' => 'Symfony\\Component\\HttpKernel\\EventListener\\ErrorsLoggerListener',
             'debug.event_dispatcher.class' => 'Symfony\\Component\\HttpKernel\\Debug\\TraceableEventDispatcher',
             'debug.stopwatch.class' => 'Symfony\\Component\\Stopwatch\\Stopwatch',
-            'debug.container.dump' => '/home/matthieu/DEV/PHP/Cours/Symfony/app/cache/dev/appDevDebugProjectContainer.xml',
+            'debug.container.dump' => '/home/matthieu/DEV/PHP/Cours/projet-sil5-cours/app/cache/dev/appDevDebugProjectContainer.xml',
             'debug.controller_resolver.class' => 'Symfony\\Component\\HttpKernel\\Controller\\TraceableControllerResolver',
             'kernel.secret' => '2065fa317f3305ffa5bac7e647578fbafa16da5e',
             'kernel.http_method_override' => true,
@@ -3527,7 +3690,7 @@ class appDevDebugProjectContainer extends Container
             'session.storage.options' => array(
 
             ),
-            'session.save_path' => '/home/matthieu/DEV/PHP/Cours/Symfony/app/cache/dev/sessions',
+            'session.save_path' => '/home/matthieu/DEV/PHP/Cours/projet-sil5-cours/app/cache/dev/sessions',
             'session.metadata.update_threshold' => '0',
             'security.secure_random.class' => 'Symfony\\Component\\Security\\Core\\Util\\SecureRandom',
             'form.resolved_type_factory.class' => 'Symfony\\Component\\Form\\ResolvedFormTypeFactory',
@@ -3586,10 +3749,10 @@ class appDevDebugProjectContainer extends Container
             'validator.mapping.loader.yaml_files_loader.class' => 'Symfony\\Component\\Validator\\Mapping\\Loader\\YamlFilesLoader',
             'validator.validator_factory.class' => 'Symfony\\Bundle\\FrameworkBundle\\Validator\\ConstraintValidatorFactory',
             'validator.mapping.loader.xml_files_loader.mapping_files' => array(
-                0 => '/home/matthieu/DEV/PHP/Cours/Symfony/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/config/validation.xml',
+                0 => '/home/matthieu/DEV/PHP/Cours/projet-sil5-cours/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/config/validation.xml',
             ),
             'validator.mapping.loader.yaml_files_loader.mapping_files' => array(
-
+                0 => '/home/matthieu/DEV/PHP/Cours/projet-sil5-cours/src/sil12/VitrineBundle/Resources/config/validation.yml',
             ),
             'validator.expression.class' => 'Symfony\\Component\\Validator\\Constraints\\ExpressionValidator',
             'validator.translation_domain' => 'validators',
@@ -3610,7 +3773,7 @@ class appDevDebugProjectContainer extends Container
             'data_collector.form.extractor.class' => 'Symfony\\Component\\Form\\Extension\\DataCollector\\FormDataExtractor',
             'profiler_listener.only_exceptions' => false,
             'profiler_listener.only_master_requests' => false,
-            'profiler.storage.dsn' => 'file:/home/matthieu/DEV/PHP/Cours/Symfony/app/cache/dev/profiler',
+            'profiler.storage.dsn' => 'file:/home/matthieu/DEV/PHP/Cours/projet-sil5-cours/app/cache/dev/profiler',
             'profiler.storage.username' => '',
             'profiler.storage.password' => '',
             'profiler.storage.lifetime' => 86400,
@@ -3634,7 +3797,7 @@ class appDevDebugProjectContainer extends Container
             'router.request_context.host' => 'localhost',
             'router.request_context.scheme' => 'http',
             'router.request_context.base_url' => '',
-            'router.resource' => '/home/matthieu/DEV/PHP/Cours/Symfony/app/cache/dev/assetic/routing.yml',
+            'router.resource' => '/home/matthieu/DEV/PHP/Cours/projet-sil5-cours/app/cache/dev/assetic/routing.yml',
             'router.cache_class_prefix' => 'appDev',
             'request_listener.http_port' => 80,
             'request_listener.https_port' => 443,
@@ -3747,6 +3910,7 @@ class appDevDebugProjectContainer extends Container
             'twig.exception_listener.controller' => 'twig.controller.exception:showAction',
             'twig.form.resources' => array(
                 0 => 'form_div_layout.html.twig',
+                1 => 'BraincraftedBootstrapBundle:Form:bootstrap.html.twig',
             ),
             'debug.templating.engine.twig.class' => 'Symfony\\Bundle\\TwigBundle\\Debug\\TimedTwigEngine',
             'twig.options' => array(
@@ -3755,7 +3919,7 @@ class appDevDebugProjectContainer extends Container
                 'exception_controller' => 'twig.controller.exception:showAction',
                 'autoescape_service' => NULL,
                 'autoescape_service_method' => NULL,
-                'cache' => '/home/matthieu/DEV/PHP/Cours/Symfony/app/cache/dev/twig',
+                'cache' => '/home/matthieu/DEV/PHP/Cours/projet-sil5-cours/app/cache/dev/twig',
                 'charset' => 'UTF-8',
                 'paths' => array(
 
@@ -3816,7 +3980,7 @@ class appDevDebugProjectContainer extends Container
             'swiftmailer.mailer.default.transport.smtp.auth_mode' => NULL,
             'swiftmailer.mailer.default.transport.smtp.timeout' => 30,
             'swiftmailer.mailer.default.transport.smtp.source_ip' => NULL,
-            'swiftmailer.spool.default.memory.path' => '/home/matthieu/DEV/PHP/Cours/Symfony/app/cache/dev/swiftmailer/spool/default',
+            'swiftmailer.spool.default.memory.path' => '/home/matthieu/DEV/PHP/Cours/projet-sil5-cours/app/cache/dev/swiftmailer/spool/default',
             'swiftmailer.mailer.default.spool.enabled' => true,
             'swiftmailer.mailer.default.single_address' => NULL,
             'swiftmailer.spool.enabled' => true,
@@ -3841,7 +4005,7 @@ class appDevDebugProjectContainer extends Container
             'assetic.node.paths' => array(
 
             ),
-            'assetic.cache_dir' => '/home/matthieu/DEV/PHP/Cours/Symfony/app/cache/dev/assetic',
+            'assetic.cache_dir' => '/home/matthieu/DEV/PHP/Cours/projet-sil5-cours/app/cache/dev/assetic',
             'assetic.bundles' => array(
 
             ),
@@ -3853,15 +4017,24 @@ class appDevDebugProjectContainer extends Container
             'assetic.debug' => true,
             'assetic.use_controller' => true,
             'assetic.enable_profiler' => false,
-            'assetic.read_from' => '/home/matthieu/DEV/PHP/Cours/Symfony/app/../web',
-            'assetic.write_to' => '/home/matthieu/DEV/PHP/Cours/Symfony/app/../web',
+            'assetic.read_from' => '/home/matthieu/DEV/PHP/Cours/projet-sil5-cours/app/../web',
+            'assetic.write_to' => '/home/matthieu/DEV/PHP/Cours/projet-sil5-cours/app/../web',
             'assetic.variables' => array(
 
             ),
             'assetic.java.bin' => '/usr/bin/java',
             'assetic.node.bin' => '/usr/bin/node',
             'assetic.ruby.bin' => '/usr/bin/ruby',
-            'assetic.sass.bin' => '/usr/bin/sass',
+            'assetic.sass.bin' => '/usr/local/bin/sass',
+            'assetic.filter.lessphp.class' => 'Assetic\\Filter\\LessphpFilter',
+            'assetic.filter.lessphp.presets' => array(
+
+            ),
+            'assetic.filter.lessphp.paths' => array(
+
+            ),
+            'assetic.filter.lessphp.formatter' => NULL,
+            'assetic.filter.lessphp.preserve_comments' => NULL,
             'assetic.filter.cssrewrite.class' => 'Assetic\\Filter\\CssRewriteFilter',
             'assetic.twig_extension.functions' => array(
 
@@ -3927,7 +4100,7 @@ class appDevDebugProjectContainer extends Container
             'doctrine.orm.naming_strategy.default.class' => 'Doctrine\\ORM\\Mapping\\DefaultNamingStrategy',
             'doctrine.orm.naming_strategy.underscore.class' => 'Doctrine\\ORM\\Mapping\\UnderscoreNamingStrategy',
             'doctrine.orm.auto_generate_proxy_classes' => true,
-            'doctrine.orm.proxy_dir' => '/home/matthieu/DEV/PHP/Cours/Symfony/app/cache/dev/doctrine/orm/Proxies',
+            'doctrine.orm.proxy_dir' => '/home/matthieu/DEV/PHP/Cours/projet-sil5-cours/app/cache/dev/doctrine/orm/Proxies',
             'doctrine.orm.proxy_namespace' => 'Proxies',
             'sensio_framework_extra.view.guesser.class' => 'Sensio\\Bundle\\FrameworkExtraBundle\\Templating\\TemplateGuesser',
             'sensio_framework_extra.controller.listener.class' => 'Sensio\\Bundle\\FrameworkExtraBundle\\EventListener\\ControllerListener',
@@ -3939,6 +4112,21 @@ class appDevDebugProjectContainer extends Container
             'sensio_framework_extra.converter.doctrine.class' => 'Sensio\\Bundle\\FrameworkExtraBundle\\Request\\ParamConverter\\DoctrineParamConverter',
             'sensio_framework_extra.converter.datetime.class' => 'Sensio\\Bundle\\FrameworkExtraBundle\\Request\\ParamConverter\\DateTimeParamConverter',
             'sensio_framework_extra.view.listener.class' => 'Sensio\\Bundle\\FrameworkExtraBundle\\EventListener\\TemplateListener',
+            'braincrafted_bootstrap.form.type.collection.class' => 'Braincrafted\\Bundle\\BootstrapBundle\\Form\\Type\\BootstrapCollectionType',
+            'braincrafted_bootstrap.form.type.money.class' => 'Braincrafted\\Bundle\\BootstrapBundle\\Form\\Type\\MoneyType',
+            'braincrafted_bootstrap.form.extension.typesetter_extension.class' => 'Braincrafted\\Bundle\\BootstrapBundle\\Form\\Extension\\TypeSetterExtension',
+            'braincrafted_bootstrap.twig.icon_extension.class' => 'Braincrafted\\Bundle\\BootstrapBundle\\Twig\\BootstrapIconExtension',
+            'braincrafted_bootstrap.twig.label_extension.class' => 'Braincrafted\\Bundle\\BootstrapBundle\\Twig\\BootstrapLabelExtension',
+            'braincrafted_bootstrap.twig.badge_extension.class' => 'Braincrafted\\Bundle\\BootstrapBundle\\Twig\\BootstrapBadgeExtension',
+            'braincrafted_bootstrap.twig.form_extension.class' => 'Braincrafted\\Bundle\\BootstrapBundle\\Twig\\BootstrapFormExtension',
+            'braincrafted_bootstrap.flash.class' => 'Braincrafted\\Bundle\\BootstrapBundle\\Session\\FlashMessage',
+            'braincrafted_bootstrap.customize' => array(
+                'bootstrap_output' => '/home/matthieu/DEV/PHP/Cours/projet-sil5-cours/app/Resources/less/bootstrap.less',
+                'bootstrap_template' => 'BraincraftedBootstrapBundle:Bootstrap:bootstrap.less.twig',
+            ),
+            'braincrafted_bootstrap.assets_dir' => '/home/matthieu/DEV/PHP/Cours/projet-sil5-cours/app/../vendor/twbs/bootstrap',
+            'braincrafted_bootstrap.output_dir' => '',
+            'braincrafted_bootstrap.less_filter' => 'lessphp',
             'web_profiler.controller.profiler.class' => 'Symfony\\Bundle\\WebProfilerBundle\\Controller\\ProfilerController',
             'web_profiler.controller.router.class' => 'Symfony\\Bundle\\WebProfilerBundle\\Controller\\RouterController',
             'web_profiler.controller.exception.class' => 'Symfony\\Bundle\\WebProfilerBundle\\Controller\\ExceptionController',

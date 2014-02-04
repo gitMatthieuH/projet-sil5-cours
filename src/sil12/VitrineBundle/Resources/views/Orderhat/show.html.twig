@@ -1,0 +1,36 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Orderhat</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Référence</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Order_date</th>
+                <td>{{ entity.orderdate|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Validated</th>
+                <td>{{ entity.validated }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('orderhat') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('orderhat_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

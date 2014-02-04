@@ -1,0 +1,23 @@
+{% extends "sil12VitrineBundle::layout.html.twig" %}
+
+{% block content %}
+{{ products | length }}
+	<section id="grid" class="grid clearfix">		
+	
+		{% for product in products %}
+
+		    	<a href="{{ path('sil12_vitrine_chapeau', { 'id': product.id }) }}" data-path-hover="m 180,34.57627 -180,0 L 0,0 180,0 z">
+			    	<figure>
+			    		<img src="{{ asset('bundles/sil12vitrine/images/') }}{{ product.id }}.jpg" width="250px">
+			    		<svg viewBox="0 0 180 320" preserveAspectRatio="none"><path d="M 180,160 0,218 0,0 180,0 z"/></svg>
+						<figcaption>
+							<h2>{{ product.name | truncate(15) }}</h2>
+							<p>{{ product.description | truncate(30) }}</p>
+							<p><b>Prix : </b>{{ product.price }}</p>
+							<button href="" type="button" class="btn btn-primary btn-lg btn-block">Détails</button>
+						</figcaption>
+					</figure>
+				</a>
+		{% endfor %}
+	</section>
+{% endblock %}

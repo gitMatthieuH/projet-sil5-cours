@@ -1,0 +1,161 @@
+<?php
+
+namespace sil12\VitrineBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Client
+ */
+class Client
+{
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var string
+     */
+    private $name;
+
+    /**
+     * @var string
+     */
+    private $mail;
+
+    /**
+     * @var string
+     */
+    private $password;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $orderline;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->orderline = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return Client
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set mail
+     *
+     * @param string $mail
+     * @return Client
+     */
+    public function setMail($mail)
+    {
+        $this->mail = $mail;
+
+        return $this;
+    }
+
+    /**
+     * Get mail
+     *
+     * @return string 
+     */
+    public function getMail()
+    {
+        return $this->mail;
+    }
+
+    /**
+     * Set password
+     *
+     * @param string $password
+     * @return Client
+     */
+    public function setPassword($password)
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * Get password
+     *
+     * @return string 
+     */
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    /**
+     * Add orderline
+     *
+     * @param \sil12\VitrineBundle\Entity\Orderhat $orderline
+     * @return Client
+     */
+    public function addOrderline(\sil12\VitrineBundle\Entity\Orderhat $orderline)
+    {
+        $this->orderline[] = $orderline;
+
+        return $this;
+    }
+
+    /**
+     * Remove orderline
+     *
+     * @param \sil12\VitrineBundle\Entity\Orderhat $orderline
+     */
+    public function removeOrderline(\sil12\VitrineBundle\Entity\Orderhat $orderline)
+    {
+        $this->orderline->removeElement($orderline);
+    }
+
+    /**
+     * Get orderline
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getOrderline()
+    {
+        return $this->orderline;
+    }
+
+    public function __toString()
+    {
+        return (string)$this->getId();
+    }
+}

@@ -1,0 +1,30 @@
+orderhat:
+    pattern:  /
+    defaults: { _controller: "sil12VitrineBundle:Orderhat:index" }
+
+orderhat_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "sil12VitrineBundle:Orderhat:show" }
+
+orderhat_new:
+    pattern:  /new
+    defaults: { _controller: "sil12VitrineBundle:Orderhat:new" }
+
+orderhat_create:
+    pattern:  /create
+    defaults: { _controller: "sil12VitrineBundle:Orderhat:create" }
+    requirements: { _method: post }
+
+orderhat_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "sil12VitrineBundle:Orderhat:edit" }
+
+orderhat_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "sil12VitrineBundle:Orderhat:update" }
+    requirements: { _method: post|put }
+
+orderhat_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "sil12VitrineBundle:Orderhat:delete" }
+    requirements: { _method: post|delete }

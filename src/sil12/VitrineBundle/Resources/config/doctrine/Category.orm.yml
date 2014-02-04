@@ -1,0 +1,15 @@
+sil12\VitrineBundle\Entity\Category:
+  type: entity
+  fields:
+    id:
+      id: true
+      type: integer
+      nullable: false
+      generator: { strategy: AUTO }
+    name:
+        type: string
+        length: 100
+  oneToMany:
+    product:
+      targetEntity: sil12\VitrineBundle\Entity\Product
+      mappedBy: category

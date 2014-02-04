@@ -1,0 +1,18 @@
+{% extends "sil12VitrineBundle::layout.html.twig" %}
+
+{% block content %}
+<div class="col-md-6 col-md-offset-3">
+	<div class="row">		
+		{% for category in categories %}
+			<div class="col-sm-6 col-md-4">
+			    <div class="thumbnail">
+			    	<a href="{{ path('sil12_vitrine_articlesParCategorie', { 'id': category.id }) }}">
+						<h3>{{ category.name }}</h3>
+						<img src="{{ asset('bundles/sil12vitrine/images/categories/') }}{{ category.id }}.jpg" height="127">
+					</a>
+			    </div>
+			</div>  
+		{% endfor %}
+	</div>
+</div>
+{% endblock %}

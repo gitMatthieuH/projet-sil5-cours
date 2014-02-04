@@ -27,6 +27,122 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         $context = $this->context;
         $request = $this->request;
 
+        if (0 === strpos($pathinfo, '/css/bootstrap')) {
+            // _assetic_bootstrap_css
+            if ($pathinfo === '/css/bootstrap.css') {
+                return array (  '_controller' => 'assetic.controller:render',  'name' => 'bootstrap_css',  'pos' => NULL,  '_format' => 'css',  '_route' => '_assetic_bootstrap_css',);
+            }
+
+            if (0 === strpos($pathinfo, '/css/bootstrap_')) {
+                // _assetic_bootstrap_css_0
+                if ($pathinfo === '/css/bootstrap_bootstrap_1.css') {
+                    return array (  '_controller' => 'assetic.controller:render',  'name' => 'bootstrap_css',  'pos' => 0,  '_format' => 'css',  '_route' => '_assetic_bootstrap_css_0',);
+                }
+
+                // _assetic_bootstrap_css_1
+                if ($pathinfo === '/css/bootstrap_form_2.css') {
+                    return array (  '_controller' => 'assetic.controller:render',  'name' => 'bootstrap_css',  'pos' => 1,  '_format' => 'css',  '_route' => '_assetic_bootstrap_css_1',);
+                }
+
+            }
+
+        }
+
+        if (0 === strpos($pathinfo, '/js')) {
+            if (0 === strpos($pathinfo, '/js/bootstrap')) {
+                // _assetic_bootstrap_js
+                if ($pathinfo === '/js/bootstrap.js') {
+                    return array (  '_controller' => 'assetic.controller:render',  'name' => 'bootstrap_js',  'pos' => NULL,  '_format' => 'js',  '_route' => '_assetic_bootstrap_js',);
+                }
+
+                if (0 === strpos($pathinfo, '/js/bootstrap_')) {
+                    // _assetic_bootstrap_js_0
+                    if ($pathinfo === '/js/bootstrap_transition_1.js') {
+                        return array (  '_controller' => 'assetic.controller:render',  'name' => 'bootstrap_js',  'pos' => 0,  '_format' => 'js',  '_route' => '_assetic_bootstrap_js_0',);
+                    }
+
+                    // _assetic_bootstrap_js_1
+                    if ($pathinfo === '/js/bootstrap_alert_2.js') {
+                        return array (  '_controller' => 'assetic.controller:render',  'name' => 'bootstrap_js',  'pos' => 1,  '_format' => 'js',  '_route' => '_assetic_bootstrap_js_1',);
+                    }
+
+                    // _assetic_bootstrap_js_2
+                    if ($pathinfo === '/js/bootstrap_button_3.js') {
+                        return array (  '_controller' => 'assetic.controller:render',  'name' => 'bootstrap_js',  'pos' => 2,  '_format' => 'js',  '_route' => '_assetic_bootstrap_js_2',);
+                    }
+
+                    if (0 === strpos($pathinfo, '/js/bootstrap_c')) {
+                        // _assetic_bootstrap_js_3
+                        if ($pathinfo === '/js/bootstrap_carousel_4.js') {
+                            return array (  '_controller' => 'assetic.controller:render',  'name' => 'bootstrap_js',  'pos' => 3,  '_format' => 'js',  '_route' => '_assetic_bootstrap_js_3',);
+                        }
+
+                        // _assetic_bootstrap_js_4
+                        if ($pathinfo === '/js/bootstrap_collapse_5.js') {
+                            return array (  '_controller' => 'assetic.controller:render',  'name' => 'bootstrap_js',  'pos' => 4,  '_format' => 'js',  '_route' => '_assetic_bootstrap_js_4',);
+                        }
+
+                    }
+
+                    // _assetic_bootstrap_js_5
+                    if ($pathinfo === '/js/bootstrap_dropdown_6.js') {
+                        return array (  '_controller' => 'assetic.controller:render',  'name' => 'bootstrap_js',  'pos' => 5,  '_format' => 'js',  '_route' => '_assetic_bootstrap_js_5',);
+                    }
+
+                    // _assetic_bootstrap_js_6
+                    if ($pathinfo === '/js/bootstrap_modal_7.js') {
+                        return array (  '_controller' => 'assetic.controller:render',  'name' => 'bootstrap_js',  'pos' => 6,  '_format' => 'js',  '_route' => '_assetic_bootstrap_js_6',);
+                    }
+
+                    // _assetic_bootstrap_js_7
+                    if ($pathinfo === '/js/bootstrap_tooltip_8.js') {
+                        return array (  '_controller' => 'assetic.controller:render',  'name' => 'bootstrap_js',  'pos' => 7,  '_format' => 'js',  '_route' => '_assetic_bootstrap_js_7',);
+                    }
+
+                    // _assetic_bootstrap_js_8
+                    if ($pathinfo === '/js/bootstrap_popover_9.js') {
+                        return array (  '_controller' => 'assetic.controller:render',  'name' => 'bootstrap_js',  'pos' => 8,  '_format' => 'js',  '_route' => '_assetic_bootstrap_js_8',);
+                    }
+
+                    // _assetic_bootstrap_js_9
+                    if ($pathinfo === '/js/bootstrap_scrollspy_10.js') {
+                        return array (  '_controller' => 'assetic.controller:render',  'name' => 'bootstrap_js',  'pos' => 9,  '_format' => 'js',  '_route' => '_assetic_bootstrap_js_9',);
+                    }
+
+                    // _assetic_bootstrap_js_10
+                    if ($pathinfo === '/js/bootstrap_tab_11.js') {
+                        return array (  '_controller' => 'assetic.controller:render',  'name' => 'bootstrap_js',  'pos' => 10,  '_format' => 'js',  '_route' => '_assetic_bootstrap_js_10',);
+                    }
+
+                    // _assetic_bootstrap_js_11
+                    if ($pathinfo === '/js/bootstrap_affix_12.js') {
+                        return array (  '_controller' => 'assetic.controller:render',  'name' => 'bootstrap_js',  'pos' => 11,  '_format' => 'js',  '_route' => '_assetic_bootstrap_js_11',);
+                    }
+
+                    // _assetic_bootstrap_js_12
+                    if ($pathinfo === '/js/bootstrap_bc-bootstrap-collection_13.js') {
+                        return array (  '_controller' => 'assetic.controller:render',  'name' => 'bootstrap_js',  'pos' => 12,  '_format' => 'js',  '_route' => '_assetic_bootstrap_js_12',);
+                    }
+
+                }
+
+            }
+
+            if (0 === strpos($pathinfo, '/js/jquery')) {
+                // _assetic_jquery
+                if ($pathinfo === '/js/jquery.js') {
+                    return array (  '_controller' => 'assetic.controller:render',  'name' => 'jquery',  'pos' => NULL,  '_format' => 'js',  '_route' => '_assetic_jquery',);
+                }
+
+                // _assetic_jquery_0
+                if ($pathinfo === '/js/jquery_jquery-1.10.2_1.js') {
+                    return array (  '_controller' => 'assetic.controller:render',  'name' => 'jquery',  'pos' => 0,  '_format' => 'js',  '_route' => '_assetic_jquery_0',);
+                }
+
+            }
+
+        }
+
         if (0 === strpos($pathinfo, '/_')) {
             // _wdt
             if (0 === strpos($pathinfo, '/_wdt') && preg_match('#^/_wdt/(?P<token>[^/]++)$#s', $pathinfo, $matches)) {
@@ -135,9 +251,175 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        // sil12_vitrine_homepage
-        if (0 === strpos($pathinfo, '/yo') && preg_match('#^/yo/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'sil12_vitrine_homepage')), array (  '_controller' => 'sil12\\VitrineBundle\\Controller\\DefaultController::indexAction',));
+        // sil12_vitrine_accueil
+        if (0 === strpos($pathinfo, '/accueil') && preg_match('#^/accueil(?:/(?P<name>[^/]++))?$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'sil12_vitrine_accueil')), array (  '_controller' => 'sil12\\VitrineBundle\\Controller\\DefaultController::indexAction',  'name' => 'visiteur',));
+        }
+
+        // sil12_vitrine_mentions
+        if ($pathinfo === '/mentions') {
+            return array (  '_controller' => 'sil12\\VitrineBundle\\Controller\\DefaultController::mentionsAction',  '_route' => 'sil12_vitrine_mentions',);
+        }
+
+        if (0 === strpos($pathinfo, '/c')) {
+            if (0 === strpos($pathinfo, '/cat')) {
+                // sil12_vitrine_catalogue
+                if ($pathinfo === '/catalogue') {
+                    return array (  '_controller' => 'sil12\\VitrineBundle\\Controller\\DefaultController::catalogueAction',  '_route' => 'sil12_vitrine_catalogue',);
+                }
+
+                // sil12_vitrine_articlesParCategorie
+                if (0 === strpos($pathinfo, '/category') && preg_match('#^/category/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'sil12_vitrine_articlesParCategorie')), array (  '_controller' => 'sil12\\VitrineBundle\\Controller\\DefaultController::articlesParCategorieAction',));
+                }
+
+            }
+
+            // sil12_vitrine_chapeau
+            if (0 === strpos($pathinfo, '/chapeau') && preg_match('#^/chapeau/(?P<id>[^/]++)(?:/(?P<nb>[^/]++))?$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'sil12_vitrine_chapeau')), array (  '_controller' => 'sil12\\VitrineBundle\\Controller\\DefaultController::chapeauAction',  'nb' => 1,));
+            }
+
+        }
+
+        // sil12_vitrine_contenuPanier
+        if (0 === strpos($pathinfo, '/panier') && preg_match('#^/panier(?:/(?P<id>[^/]++)(?:/(?P<type>[^/]++)(?:/(?P<nb>[^/]++))?)?)?$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'sil12_vitrine_contenuPanier')), array (  '_controller' => 'sil12\\VitrineBundle\\Controller\\PanierController::contenuPanierAction',  'id' => NULL,  'type' => NULL,  'nb' => 1,));
+        }
+
+        if (0 === strpos($pathinfo, '/client')) {
+            // client
+            if (rtrim($pathinfo, '/') === '/client') {
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($pathinfo.'/', 'client');
+                }
+
+                return array (  '_controller' => 'sil12\\VitrineBundle\\Controller\\ClientController::indexAction',  '_route' => 'client',);
+            }
+
+            // client_show
+            if (preg_match('#^/client/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'client_show')), array (  '_controller' => 'sil12\\VitrineBundle\\Controller\\ClientController::showAction',));
+            }
+
+            // client_new
+            if ($pathinfo === '/client/new') {
+                return array (  '_controller' => 'sil12\\VitrineBundle\\Controller\\ClientController::newAction',  '_route' => 'client_new',);
+            }
+
+            // client_create
+            if ($pathinfo === '/client/create') {
+                if ($this->context->getMethod() != 'POST') {
+                    $allow[] = 'POST';
+                    goto not_client_create;
+                }
+
+                return array (  '_controller' => 'sil12\\VitrineBundle\\Controller\\ClientController::createAction',  '_route' => 'client_create',);
+            }
+            not_client_create:
+
+            // client_edit
+            if (preg_match('#^/client/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'client_edit')), array (  '_controller' => 'sil12\\VitrineBundle\\Controller\\ClientController::editAction',));
+            }
+
+            // client_update
+            if (preg_match('#^/client/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
+                    $allow = array_merge($allow, array('POST', 'PUT'));
+                    goto not_client_update;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'client_update')), array (  '_controller' => 'sil12\\VitrineBundle\\Controller\\ClientController::updateAction',));
+            }
+            not_client_update:
+
+            // client_delete
+            if (preg_match('#^/client/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
+                    $allow = array_merge($allow, array('POST', 'DELETE'));
+                    goto not_client_delete;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'client_delete')), array (  '_controller' => 'sil12\\VitrineBundle\\Controller\\ClientController::deleteAction',));
+            }
+            not_client_delete:
+
+        }
+
+        if (0 === strpos($pathinfo, '/orderhat')) {
+            // orderhat
+            if (rtrim($pathinfo, '/') === '/orderhat') {
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($pathinfo.'/', 'orderhat');
+                }
+
+                return array (  '_controller' => 'sil12\\VitrineBundle\\Controller\\OrderhatController::indexAction',  '_route' => 'orderhat',);
+            }
+
+            // orderhat_show
+            if (preg_match('#^/orderhat/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'orderhat_show')), array (  '_controller' => 'sil12\\VitrineBundle\\Controller\\OrderhatController::showAction',));
+            }
+
+            // orderhat_new
+            if ($pathinfo === '/orderhat/new') {
+                return array (  '_controller' => 'sil12\\VitrineBundle\\Controller\\OrderhatController::newAction',  '_route' => 'orderhat_new',);
+            }
+
+            // orderhat_create
+            if ($pathinfo === '/orderhat/create') {
+                if ($this->context->getMethod() != 'POST') {
+                    $allow[] = 'POST';
+                    goto not_orderhat_create;
+                }
+
+                return array (  '_controller' => 'sil12\\VitrineBundle\\Controller\\OrderhatController::createAction',  '_route' => 'orderhat_create',);
+            }
+            not_orderhat_create:
+
+            // orderhat_edit
+            if (preg_match('#^/orderhat/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'orderhat_edit')), array (  '_controller' => 'sil12\\VitrineBundle\\Controller\\OrderhatController::editAction',));
+            }
+
+            // orderhat_update
+            if (preg_match('#^/orderhat/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
+                    $allow = array_merge($allow, array('POST', 'PUT'));
+                    goto not_orderhat_update;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'orderhat_update')), array (  '_controller' => 'sil12\\VitrineBundle\\Controller\\OrderhatController::updateAction',));
+            }
+            not_orderhat_update:
+
+            // orderhat_delete
+            if (preg_match('#^/orderhat/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('POST', 'DELETE'))) {
+                    $allow = array_merge($allow, array('POST', 'DELETE'));
+                    goto not_orderhat_delete;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'orderhat_delete')), array (  '_controller' => 'sil12\\VitrineBundle\\Controller\\OrderhatController::deleteAction',));
+            }
+            not_orderhat_delete:
+
+        }
+
+        // sil12_vitrine_validationPanier
+        if ($pathinfo === '/validationPanier') {
+            return array (  '_controller' => 'sil12\\VitrineBundle\\Controller\\PanierController::validationPanierAction',  '_route' => 'sil12_vitrine_validationPanier',);
+        }
+
+        // sil12_vitrine_auth
+        if ($pathinfo === '/auth') {
+            return array (  '_controller' => 'sil12\\VitrineBundle\\Controller\\ClientController::authAction',  '_route' => 'sil12_vitrine_auth',);
+        }
+
+        // client_login
+        if ($pathinfo === '/login') {
+            return array (  '_controller' => 'sil12\\VitrineBundle\\Controller\\ClientController::authAction',  '_route' => 'client_login',);
         }
 
         // _welcome

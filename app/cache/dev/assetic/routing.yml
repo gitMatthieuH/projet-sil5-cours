@@ -2,4 +2,4 @@ _assetic:
     resource: .
     type: assetic
 _app:
-    resource: /home/matthieu/DEV/PHP/Cours/Symfony/app/config/routing_dev.yml
+    resource: /home/matthieu/DEV/PHP/Cours/projet-sil5-cours/app/config/routing_dev.yml

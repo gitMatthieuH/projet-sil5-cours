@@ -1,0 +1,18 @@
+<a href="{{ path('client') }}">
+    Back to the list
+</a>
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Inscription</h3>
+    </div>
+    <div class="panel-body">
+      	{{ form_start(form) }}
+			{{ form_errors(form, { 'global_errors': true }) }}
+      	{{ form_end(form) }}
+    </div>
+</div>
+
+
+

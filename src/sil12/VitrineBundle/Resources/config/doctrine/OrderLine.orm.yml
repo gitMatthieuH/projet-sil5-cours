@@ -1,0 +1,28 @@
+sil12\VitrineBundle\Entity\OrderLine:
+  type: entity
+  fields:
+    id:
+      id: true
+      type: integer
+      nullable: false
+      generator:
+        strategy: AUTO
+    quantity:
+        type: integer
+    price:
+        type: decimal
+        precision: 10
+        scale: 2
+  manyToOne:
+    orderhat:
+      targetEntity: sil12\VitrineBundle\Entity\Orderhat
+      inversedBy: orderline
+      joinColumn:
+        orderhat_id:
+          referencedColumnName: id
+    product:
+      targetEntity: sil12\VitrineBundle\Entity\Product
+      inversedBy: orderline
+      joinColumn:
+        product_id:
+          referencedColumnName: id

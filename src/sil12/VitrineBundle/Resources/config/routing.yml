@@ -1,3 +1,45 @@
-sil12_vitrine_homepage:
-    pattern:  /yo/{name}
-    defaults: { _controller: sil12VitrineBundle:Default:index }
+sil12_vitrine_accueil:
+    pattern:  /accueil/{name}
+    defaults: { _controller: sil12VitrineBundle:Default:index, name: visiteur }
+
+sil12_vitrine_mentions:
+    pattern: /mentions
+    defaults: { _controller: sil12VitrineBundle:Default:mentions }
+
+sil12_vitrine_catalogue:
+    pattern: /catalogue
+    defaults: { _controller: sil12VitrineBundle:Default:catalogue }
+
+sil12_vitrine_articlesParCategorie:
+    pattern: /category/{id}
+    defaults: { _controller: sil12VitrineBundle:Default:articlesParCategorie }
+
+sil12_vitrine_chapeau:
+    pattern: /chapeau/{id}/{nb}
+    defaults: { _controller: sil12VitrineBundle:Default:chapeau, nb: 1 }
+
+sil12_vitrine_contenuPanier:
+    pattern: /panier/{id}/{type}/{nb}
+    defaults: { _controller: sil12VitrineBundle:Panier:contenuPanier, id: null, type: null, nb: 1 }
+
+sil12VitrineBundle_client:
+        resource: "@sil12VitrineBundle/Resources/config/routing/client.yml"
+        prefix:   /client
+
+sil12VitrineBundle_orderhat:
+        resource: "@sil12VitrineBundle/Resources/config/routing/orderhat.yml"
+        prefix:   /orderhat
+
+sil12_vitrine_validationPanier:
+    pattern: /validationPanier
+    defaults: { _controller: sil12VitrineBundle:Panier:validationPanier }
+
+
+sil12_vitrine_auth:
+    pattern:  /auth
+    defaults: { _controller: sil12VitrineBundle:Client:auth }
+
+
+client_login:
+    pattern:  /login
+    defaults: { _controller: sil12VitrineBundle:Client:auth }
