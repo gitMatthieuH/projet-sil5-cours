@@ -1,29 +1,54 @@
 <nav class="navbar navbar-default row" role="navigation">
     <div class="col-md-6 col-md-offset-3">
-		<!-- Brand and toggle get grouped for better mobile display -->
 		<div class="navbar-header">
-			<a class="navbar-brand" href="{{ path('sil12_vitrine_accueil') }}">HATme</a>
+			<img src="{{ asset('bundles/sil12vitrine/images/') }}logo.png" height="45px"/ style="float:left;">
+			<a class="navbar-brand" href="{{ path('sil12_vitrine_accueil') }}">	
+				HATme
+			</a>
 		</div>
 
-		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-left">
 				<li><a href="{{ path('sil12_vitrine_catalogue') }}">Catalogue</a></li>
 				<li><a href="{{ path('sil12_vitrine_mentions') }}">Mentions</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="{{ path('orderhat') }}">
-					<span class="glyphicon glyphicon-list"></span>
+				{% if is_granted('ROLE_USER') %}
+				<li>
+					<a href="{{ path('orderhat') }}">
+						<span class="glyphicon glyphicon-list"></span>
 						Mes commandes
 					</a>
 				</li>
+				{% endif %}
 				<li>
 					<a href="{{ path('sil12_vitrine_contenuPanier') }}">
-					<span class="glyphicon glyphicon-shopping-cart"></span>
+						<span class="glyphicon glyphicon-shopping-cart"></span>
 						Panier
 					</a>
 				</li>
+				{% if (is_granted('ROLE_USER')) %}
+				
+				<li>
+					<a href="{{ path('logout') }}">
+						<span class="glyphicon glyphicon-log-out"></span>
+					</a>
+				</li>
+				{% else %}
+				<li>
+					<a href="{{ path('sil12_vitrine_auth') }}">
+						<span class="glyphicon glyphicon-log-in"></span>
+					</a>
+				</li>
+				{% endif %}
+				{% if is_granted('ROLE_ADMIN') %}
+				<li>
+					<a href="{{ path('sil12_vitrine_backoffice') }}">
+						Back Office
+					</a>
+				</li>
+				{% endif %}
 			</ul>
-		</div><!-- /.navbar-collapse -->
+		</div>
 	</div>
 </nav>

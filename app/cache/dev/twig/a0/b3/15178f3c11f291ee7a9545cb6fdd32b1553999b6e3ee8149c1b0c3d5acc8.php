@@ -32,7 +32,7 @@ class __TwigTemplate_a0b315178f3c11f291ee7a9545cb6fdd32b1553999b6e3ee8149c1b0c3d
 \t
 \t<div class=\"panel panel-default\">
 \t\t<div class=\"panel-heading\">
-\t\t\t<h3 class=\"panel-title\">Panier :</h3>
+\t\t\t<h3 class=\"panel-title\">Panier</h3>
 \t\t</div>
 \t\t<div class=\"panel-body\">
 \t\t\t<table class=\"table table-striped\">

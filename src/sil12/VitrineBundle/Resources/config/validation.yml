@@ -1,9 +1,2 @@
 sil12\VitrineBundle\Entity\Client:
     properties:
-        name:
-            - NotBlank: ~
-        password:
-            - NotBlank: ~
-            - Length:
-                min: 6
-                minMessage: "Votre mot de passe doit faire au moins {{ limit }} caractères"

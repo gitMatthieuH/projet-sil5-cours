@@ -32,7 +32,7 @@ class __TwigTemplate_93a9b6e9ce51e04196edb077a275e926fb9f26241993585e34cf49e254d
 \tBienvenue sur mon site qui vend plein de chapeaux ";
         // line 5
         echo twig_escape_filter($this->env, (isset($context["name"]) ? $context["name"] : $this->getContext($context, "name")), "html", null, true);
-        echo "!
+        echo " !
 </div>
 ";
     }

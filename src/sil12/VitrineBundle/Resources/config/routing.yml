@@ -18,28 +18,49 @@ sil12_vitrine_chapeau:
     pattern: /chapeau/{id}/{nb}
     defaults: { _controller: sil12VitrineBundle:Default:chapeau, nb: 1 }
 
+
+
+
+
 sil12_vitrine_contenuPanier:
     pattern: /panier/{id}/{type}/{nb}
     defaults: { _controller: sil12VitrineBundle:Panier:contenuPanier, id: null, type: null, nb: 1 }
 
-sil12VitrineBundle_client:
-        resource: "@sil12VitrineBundle/Resources/config/routing/client.yml"
-        prefix:   /client
-
-sil12VitrineBundle_orderhat:
-        resource: "@sil12VitrineBundle/Resources/config/routing/orderhat.yml"
-        prefix:   /orderhat
-
 sil12_vitrine_validationPanier:
     pattern: /validationPanier
     defaults: { _controller: sil12VitrineBundle:Panier:validationPanier }
+
+sil12_vitrine_backoffice:
+    pattern: /backoffice
+    defaults: { _controller: sil12VitrineBundle:BackOffice:index, id: null, type: null, nb: 1 }
+
+
+
+
+
+sil12VitrineBundle_product:
+    resource: "@sil12VitrineBundle/Resources/config/routing/product.yml"
+    prefix:   /product
+
+sil12VitrineBundle_category:
+    resource: "@sil12VitrineBundle/Resources/config/routing/category.yml"
+    prefix:   /category
+
+sil12VitrineBundle_client:
+    resource: "@sil12VitrineBundle/Resources/config/routing/client.yml"
+    prefix:   /client
+
+sil12VitrineBundle_orderhat:
+    resource: "@sil12VitrineBundle/Resources/config/routing/orderhat.yml"
+    prefix:   /orderhat
 
 
 sil12_vitrine_auth:
     pattern:  /auth
     defaults: { _controller: sil12VitrineBundle:Client:auth }
 
+auth_check:
+    pattern: /auth_check
 
-client_login:
-    pattern:  /login
-    defaults: { _controller: sil12VitrineBundle:Client:auth }
+logout:
+    pattern: /logout

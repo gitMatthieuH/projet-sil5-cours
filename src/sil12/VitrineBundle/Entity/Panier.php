@@ -2,6 +2,8 @@
 
 namespace sil12\VitrineBundle\Entity;
 
+use sil12\VitrineBundle\Entity\Product;
+
 class Panier {
 	private $contenu;
 	//Tableau - contenu[i] = quantite d'article d’id=i dans le panier)

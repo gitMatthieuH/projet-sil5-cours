@@ -18,46 +18,99 @@ class __TwigTemplate_9f37f61bf0c0bac7ef28820062b803bb951f488060351895d5c1deafa36
         // line 1
         echo "<nav class=\"navbar navbar-default row\" role=\"navigation\">
     <div class=\"col-md-6 col-md-offset-3\">
-\t\t<!-- Brand and toggle get grouped for better mobile display -->
 \t\t<div class=\"navbar-header\">
+\t\t\t<img src=\"";
+        // line 4
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/sil12vitrine/images/"), "html", null, true);
+        echo "logo.png\" height=\"45px\"/ style=\"float:left;\">
 \t\t\t<a class=\"navbar-brand\" href=\"";
         // line 5
         echo $this->env->getExtension('routing')->getPath("sil12_vitrine_accueil");
-        echo "\">HATme</a>
+        echo "\">\t
+\t\t\t\tHATme
+\t\t\t</a>
 \t\t</div>
 
-\t\t<!-- Collect the nav links, forms, and other content for toggling -->
 \t\t<div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">
 \t\t\t<ul class=\"nav navbar-nav navbar-left\">
 \t\t\t\t<li><a href=\"";
-        // line 11
+        // line 12
         echo $this->env->getExtension('routing')->getPath("sil12_vitrine_catalogue");
         echo "\">Catalogue</a></li>
 \t\t\t\t<li><a href=\"";
-        // line 12
+        // line 13
         echo $this->env->getExtension('routing')->getPath("sil12_vitrine_mentions");
         echo "\">Mentions</a></li>
 \t\t\t</ul>
 \t\t\t<ul class=\"nav navbar-nav navbar-right\">
-\t\t\t\t<li><a href=\"";
-        // line 15
-        echo $this->env->getExtension('routing')->getPath("orderhat");
-        echo "\">
-\t\t\t\t\t<span class=\"glyphicon glyphicon-list\"></span>
+\t\t\t\t";
+        // line 16
+        if ($this->env->getExtension('security')->isGranted("ROLE_USER")) {
+            // line 17
+            echo "\t\t\t\t<li>
+\t\t\t\t\t<a href=\"";
+            // line 18
+            echo $this->env->getExtension('routing')->getPath("orderhat");
+            echo "\">
+\t\t\t\t\t\t<span class=\"glyphicon glyphicon-list\"></span>
 \t\t\t\t\t\tMes commandes
 \t\t\t\t\t</a>
 \t\t\t\t</li>
-\t\t\t\t<li>
+\t\t\t\t";
+        }
+        // line 24
+        echo "\t\t\t\t<li>
 \t\t\t\t\t<a href=\"";
-        // line 21
+        // line 25
         echo $this->env->getExtension('routing')->getPath("sil12_vitrine_contenuPanier");
         echo "\">
-\t\t\t\t\t<span class=\"glyphicon glyphicon-shopping-cart\"></span>
+\t\t\t\t\t\t<span class=\"glyphicon glyphicon-shopping-cart\"></span>
 \t\t\t\t\t\tPanier
 \t\t\t\t\t</a>
 \t\t\t\t</li>
-\t\t\t</ul>
-\t\t</div><!-- /.navbar-collapse -->
+\t\t\t\t";
+        // line 30
+        if ($this->env->getExtension('security')->isGranted("ROLE_USER")) {
+            // line 31
+            echo "\t\t\t\t
+\t\t\t\t<li>
+\t\t\t\t\t<a href=\"";
+            // line 33
+            echo $this->env->getExtension('routing')->getPath("logout");
+            echo "\">
+\t\t\t\t\t\t<span class=\"glyphicon glyphicon-log-out\"></span>
+\t\t\t\t\t</a>
+\t\t\t\t</li>
+\t\t\t\t";
+        } else {
+            // line 38
+            echo "\t\t\t\t<li>
+\t\t\t\t\t<a href=\"";
+            // line 39
+            echo $this->env->getExtension('routing')->getPath("sil12_vitrine_auth");
+            echo "\">
+\t\t\t\t\t\t<span class=\"glyphicon glyphicon-log-in\"></span>
+\t\t\t\t\t</a>
+\t\t\t\t</li>
+\t\t\t\t";
+        }
+        // line 44
+        echo "\t\t\t\t";
+        if ($this->env->getExtension('security')->isGranted("ROLE_ADMIN")) {
+            // line 45
+            echo "\t\t\t\t<li>
+\t\t\t\t\t<a href=\"";
+            // line 46
+            echo $this->env->getExtension('routing')->getPath("sil12_vitrine_backoffice");
+            echo "\">
+\t\t\t\t\t\tBack Office
+\t\t\t\t\t</a>
+\t\t\t\t</li>
+\t\t\t\t";
+        }
+        // line 51
+        echo "\t\t\t</ul>
+\t\t</div>
 \t</div>
 </nav>
 ";
@@ -75,6 +128,6 @@ class __TwigTemplate_9f37f61bf0c0bac7ef28820062b803bb951f488060351895d5c1deafa36
 
     public function getDebugInfo()
     {
-        return array (  44 => 15,  38 => 12,  25 => 5,  19 => 1,  126 => 16,  123 => 15,  118 => 6,  112 => 5,  77 => 25,  73 => 24,  68 => 22,  64 => 20,  60 => 17,  58 => 15,  55 => 14,  53 => 21,  47 => 10,  43 => 9,  39 => 8,  34 => 11,  32 => 6,  22 => 1,  48 => 16,  40 => 11,  31 => 4,  28 => 5,);
+        return array (  112 => 51,  104 => 46,  101 => 45,  98 => 44,  90 => 39,  87 => 38,  79 => 33,  75 => 31,  73 => 30,  65 => 25,  62 => 24,  53 => 18,  50 => 17,  48 => 16,  42 => 13,  38 => 12,  28 => 5,  24 => 4,  19 => 1,);
     }
 }

@@ -4,6 +4,7 @@ namespace sil12\VitrineBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Security\Core\SecurityContext;
 
 use sil12\VitrineBundle\Entity\Client;
 use sil12\VitrineBundle\Form\ClientType;
@@ -45,10 +46,7 @@ class ClientController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            $session = $this->getRequest()->getSession();
-            $session->set('id_client', $entity->getId());
-
-            return $this->redirect($this->generateUrl('client_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('sil12_vitrine_accueil'));
         }
 
         return $this->render('sil12VitrineBundle:Client:new.html.twig', array(
@@ -71,7 +69,7 @@ class ClientController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+        $form->add('submit', 'submit', array('label' => 'S\'enregister'));
 
         return $form;
     }
@@ -232,43 +230,28 @@ class ClientController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'login'));
+        $form->add('submit', 'submit', array('label' => 'Se connecter'));
 
         return $form;
     }
 
-    public function authAction(Request $request)
-    {
-        $em = $this->getDoctrine()->getManager();
 
-        /*$session = $this->getRequest()->getSession();
-        $session->clear();*/
+    public function authAction() {
+        $request = $this->getRequest();
+        $session = $request->getSession();
 
-        $entity = new Client();
-        $loginForm = $this->createLoginForm($entity);
-        $loginForm->handleRequest($request);
-
-        
-
-        /*if (!$client) {
-            throw $this->createNotFoundException('Unable to find Client entity.');
+        // récupérer les erreurs de login s'il y en a
+        if ($request->attributes->has(SecurityContext::AUTHENTICATION_ERROR)) {
+            $error = $request->attributes->get(SecurityContext::AUTHENTICATION_ERROR);
+        } else {
+            $error = $session->get(SecurityContext::AUTHENTICATION_ERROR);
+            $session->remove(SecurityContext::AUTHENTICATION_ERROR);
         }
-*/
-
-       // && $client->getPassword() == $entity->getPassword()
-
-        if ($loginForm->isValid() ) {
-            $client = $em->getRepository('sil12VitrineBundle:Client')->findOneByName($entity->getName());
-
-
-            if ($client->getPassword() == $entity->getPassword())
-                return $this->redirect($this->generateUrl('sil12_vitrine_accueil'));
-        }
-
 
         return $this->render('sil12VitrineBundle:Default:auth.html.twig', array(
-            'entity' => $entity,
-            'login' => $loginForm->createView(),
+            'last_username' => $session->get(SecurityContext::LAST_USERNAME),
+            'error' => $error,
         ));
     }
+
 }

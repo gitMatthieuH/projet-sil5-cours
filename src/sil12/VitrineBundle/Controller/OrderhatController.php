@@ -24,10 +24,7 @@ class OrderhatController extends Controller
         $em = $this->getDoctrine()->getManager();
         $session = $this->getRequest()->getSession();
 
-        $client = $this->getDoctrine()->getManager()
-                        ->getRepository('sil12VitrineBundle:Client')
-                        ->find($session->get('id_client'));
-
+        $client = $this->getUser();
 
         $entities = $em->getRepository('sil12VitrineBundle:Orderhat')->findByClient($client);
 

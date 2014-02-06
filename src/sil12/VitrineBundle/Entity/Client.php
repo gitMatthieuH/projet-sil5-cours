@@ -3,11 +3,12 @@
 namespace sil12\VitrineBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Client
  */
-class Client
+class Client implements UserInterface, \Serializable
 {
     /**
      * @var integer
@@ -28,6 +29,11 @@ class Client
      * @var string
      */
     private $password;
+
+    /**
+     * @var boolean
+     */
+    private $isAdministrateur = false;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -157,5 +163,55 @@ class Client
     public function __toString()
     {
         return (string)$this->getId();
+    }
+
+    /**
+     * Set isAdministrateur
+     *
+     * @param boolean $isAdministrateur
+     * @return Client
+     */
+    public function setIsAdministrateur($isAdministrateur)
+    {
+        $this->isAdministrateur = $isAdministrateur;
+
+        return $this;
+    }
+
+    /**
+     * Get isAdministrateur
+     *
+     * @return boolean 
+     */
+    public function getIsAdministrateur()
+    {
+        return $this->isAdministrateur;
+    }
+
+
+     public function getUsername() {
+        return $this->mail;
+    }
+
+    public function getSalt() {
+        return null;
+    }
+    
+    public function getRoles() {
+        if ($this->getIsAdministrateur())
+            return array('ROLE_ADMIN');
+        else
+            return array('ROLE_USER');
+    }
+
+    public function eraseCredentials() {
+
+    }
+    public function serialize() {
+        // pour pouvoir sérialiser le Client en session
+        return serialize(array($this->id));
+    }
+    public function unserialize($serialized) {
+        list ($this->id) = unserialize($serialized);
     }
 }

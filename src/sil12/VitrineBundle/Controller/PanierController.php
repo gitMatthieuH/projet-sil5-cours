@@ -19,7 +19,11 @@ class PanierController extends Controller
         switch ($type)
         {
             case "add":
-                $panier->addArticle($id,$nb);
+                $em = $this->getDoctrine()->getManager();
+                $product = $em->getRepository('sil12VitrineBundle:Product')
+                        ->find($id);
+                if ($product->getStock() - $nb >= 0)   
+                    $panier->addArticle($id,$nb);
                 break;
             case "del":
                 $panier->removeArticle($id,$nb);
