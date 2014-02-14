@@ -46,18 +46,24 @@ class __TwigTemplate_5cf4c43bd8f0b83628dab16e22565b4753b0a58d5fb124629ac1847e65f
 \t\t";
         }
         // line 15
-        echo "\t\t<form action=\"";
+        echo "\t\t<form class=\"form-inline\" action=\"";
         echo $this->env->getExtension('routing')->getPath("auth_check");
         echo "\" method=\"post\">
-\t\t\t<label for=\"username\">Login :</label>
-\t\t\t<input type=\"text\" id=\"username\" name=\"_username\" value=\"";
-        // line 17
+\t\t\t<div class=\"form-group\">
+\t\t\t\t<label class=\"sr-only\" for=\"username\">Login :</label>
+\t\t\t\t<input type=\"text\" class=\"form-control\" id=\"username\" name=\"_username\" value=\"";
+        // line 18
         echo twig_escape_filter($this->env, (isset($context["last_username"]) ? $context["last_username"] : $this->getContext($context, "last_username")), "html", null, true);
         echo "\" />
-\t\t\t<label for=\"password\">Mot de passe :</label>
-\t\t\t<input type=\"password\" id=\"password\" name=\"_password\" />
-\t\t\t<input type=\"hidden\" name=\"_target_path\" value=\"/accueil\" />
-\t\t\t<button type=\"submit\">login</button>
+\t\t\t</div>
+\t\t\t<div class=\"form-group\">
+\t\t\t\t<label class=\"sr-only\" for=\"password\">Mot de passe :</label>
+\t\t\t\t<input type=\"password\" class=\"form-control\" id=\"password\" name=\"_password\" />
+\t\t\t</div>
+\t\t\t<div class=\"form-group\">
+\t\t\t\t<input type=\"hidden\" name=\"_target_path\" value=\"/accueil\" />
+\t\t\t</div>
+\t\t\t<button type=\"submit\" class=\"btn btn-default\">Se connecter</button>
 \t\t</form>
 
 
@@ -66,7 +72,7 @@ class __TwigTemplate_5cf4c43bd8f0b83628dab16e22565b4753b0a58d5fb124629ac1847e65f
 
 
 ";
-        // line 29
+        // line 35
         echo $this->env->getExtension('http_kernel')->renderFragment($this->env->getExtension('http_kernel')->controller("sil12VitrineBundle:Client:new"));
         echo "
   
@@ -87,6 +93,6 @@ class __TwigTemplate_5cf4c43bd8f0b83628dab16e22565b4753b0a58d5fb124629ac1847e65f
 
     public function getDebugInfo()
     {
-        return array (  70 => 29,  55 => 17,  49 => 15,  43 => 13,  41 => 12,  31 => 4,  28 => 3,);
+        return array (  76 => 35,  56 => 18,  49 => 15,  43 => 13,  41 => 12,  31 => 4,  28 => 3,);
     }
 }

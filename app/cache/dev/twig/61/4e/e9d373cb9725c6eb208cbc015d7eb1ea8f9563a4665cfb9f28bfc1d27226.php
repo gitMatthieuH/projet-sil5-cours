@@ -85,9 +85,38 @@ class __TwigTemplate_614ee9d373cb9725c6eb208cbc015d7eb1ea8f9563a4665cfb9f28bfc1d
         }
         echo ">Ajouter au panier</a>
 \t\t\t\t</div>
+
+\t\t\t\t
+
+\t\t\t\t
+
+
+
+
+
 \t\t\t</div>
 \t\t</div>
 \t</div>
+\ttaille : ";
+        // line 40
+        echo twig_escape_filter($this->env, twig_length_filter($this->env, (isset($context["boughtWith"]) ? $context["boughtWith"] : $this->getContext($context, "boughtWith"))), "html", null, true);
+        echo "
+\t";
+        // line 41
+        $context['_parent'] = (array) $context;
+        $context['_seq'] = twig_ensure_traversable((isset($context["boughtWith"]) ? $context["boughtWith"] : $this->getContext($context, "boughtWith")));
+        foreach ($context['_seq'] as $context["_key"] => $context[" product"]) {
+            // line 42
+            echo "\t\tid :";
+            echo twig_escape_filter($this->env, $this->getAttribute((isset($context[" product"]) ? $context[" product"] : $this->getContext($context, " product")), "id"), "html", null, true);
+            echo "
+\t";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context[' product'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 44
+        echo "\t
 </div>
 
 
@@ -115,6 +144,6 @@ class __TwigTemplate_614ee9d373cb9725c6eb208cbc015d7eb1ea8f9563a4665cfb9f28bfc1d
 
     public function getDebugInfo()
     {
-        return array (  81 => 26,  77 => 25,  73 => 24,  69 => 23,  62 => 19,  58 => 18,  54 => 17,  47 => 15,  43 => 13,  41 => 12,  31 => 4,  28 => 3,);
+        return array (  119 => 44,  110 => 42,  106 => 41,  102 => 40,  81 => 26,  77 => 25,  73 => 24,  69 => 23,  62 => 19,  58 => 18,  54 => 17,  47 => 15,  43 => 13,  41 => 12,  31 => 4,  28 => 3,);
     }
 }

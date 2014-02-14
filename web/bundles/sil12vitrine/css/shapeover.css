@@ -117,10 +117,6 @@
 }
 
 /* Individual styles */
-.demo-1 body {
-	background: #3498db;
-}
-
 .demo-1 .grid figure button{
 	bottom: 1%;
 	left: 50%;

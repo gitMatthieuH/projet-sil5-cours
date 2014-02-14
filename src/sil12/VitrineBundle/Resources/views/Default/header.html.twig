@@ -1,4 +1,60 @@
-<nav class="navbar navbar-default row" role="navigation">
+<div class="container-hero" id="container_hero">
+	<div class="container">
+		<div class="hero">
+			<div class="clearfix">
+				<h1 class="pull-left" style="margin:0;">
+					{% if is_granted('ROLE_ADMIN') %}
+					<small>
+						<a href="{{ path('sil12_vitrine_backoffice') }}">
+							Back Office
+						</a>
+					</small>
+					{% endif %}
+					<small>
+						<a href="{{ path('sil12_vitrine_catalogue') }}">
+							Catalogue
+						</a>
+					</small>
+				</h1>
+				<div class="pull-right">
+					{% if is_granted('ROLE_USER') %}
+					<small>
+						<a href="{{ path('orderhat') }}">
+							<span class="glyphicon glyphicon-list"></span>
+							Mes commandes
+						</a>
+					</small>
+					{% endif %}
+					<small>
+						<a href="{{ path('sil12_vitrine_contenuPanier') }}">
+							<span class="glyphicon glyphicon-shopping-cart"></span>
+							Panier
+						</a>
+					</small>
+					{% if (is_granted('ROLE_USER')) %}
+					<a href="{{ path('logout') }}" class="btn btn-default" role="button">
+						Se déconnecter <span class="glyphicon glyphicon-log-out"></span>
+					</a>
+					{% else %}
+					<a href="{{ path('sil12_vitrine_auth') }}" class="btn btn-default" role="button">
+						Se connecter <span class="glyphicon glyphicon-log-out"></span>
+					</a>
+					{% endif %}
+					
+				</div>
+			</div>
+			<div class="hero-lead">
+				<a href="{{ path('sil12_vitrine_accueil') }}"><img src="{{ asset('bundles/sil12vitrine/img/') }}logo.png" height="45px">
+				<h2>HATme.com</h2></a>
+				<p class="lead">
+					Bienvenue sur le site qui vend plein de chapeaux 
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+{#<nav class="navbar navbar-default row" role="navigation">
     <div class="col-md-6 col-md-offset-3">
 		<div class="navbar-header">
 			<img src="{{ asset('bundles/sil12vitrine/images/') }}logo.png" height="45px"/ style="float:left;">
@@ -51,4 +107,4 @@
 			</ul>
 		</div>
 	</div>
-</nav>
+</nav>#}

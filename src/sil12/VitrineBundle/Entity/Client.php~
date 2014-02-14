@@ -8,7 +8,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 /**
  * Client
  */
-class Client implements UserInterface
+class Client implements UserInterface, \Serializable
 {
     /**
      * @var integer
@@ -29,6 +29,11 @@ class Client implements UserInterface
      * @var string
      */
     private $password;
+
+    /**
+     * @var boolean
+     */
+    private $isAdministrateur = false;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -160,8 +165,32 @@ class Client implements UserInterface
         return (string)$this->getId();
     }
 
-    public function getUsername() {
-        return $this->email;
+    /**
+     * Set isAdministrateur
+     *
+     * @param boolean $isAdministrateur
+     * @return Client
+     */
+    public function setIsAdministrateur($isAdministrateur)
+    {
+        $this->isAdministrateur = $isAdministrateur;
+
+        return $this;
+    }
+
+    /**
+     * Get isAdministrateur
+     *
+     * @return boolean 
+     */
+    public function getIsAdministrateur()
+    {
+        return $this->isAdministrateur;
+    }
+
+
+     public function getUsername() {
+        return $this->mail;
     }
 
     public function getSalt() {
@@ -169,7 +198,7 @@ class Client implements UserInterface
     }
     
     public function getRoles() {
-        if ($this->isAdministrateur())
+        if ($this->getIsAdministrateur())
             return array('ROLE_ADMIN');
         else
             return array('ROLE_USER');
@@ -177,5 +206,12 @@ class Client implements UserInterface
 
     public function eraseCredentials() {
 
+    }
+    public function serialize() {
+        // pour pouvoir sérialiser le Client en session
+        return serialize(array($this->id));
+    }
+    public function unserialize($serialized) {
+        list ($this->id) = unserialize($serialized);
     }
 }

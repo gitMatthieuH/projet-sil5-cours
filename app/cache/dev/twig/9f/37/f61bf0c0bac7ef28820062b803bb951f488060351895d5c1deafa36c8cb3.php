@@ -16,103 +16,100 @@ class __TwigTemplate_9f37f61bf0c0bac7ef28820062b803bb951f488060351895d5c1deafa36
     protected function doDisplay(array $context, array $blocks = array())
     {
         // line 1
-        echo "<nav class=\"navbar navbar-default row\" role=\"navigation\">
-    <div class=\"col-md-6 col-md-offset-3\">
-\t\t<div class=\"navbar-header\">
-\t\t\t<img src=\"";
-        // line 4
-        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/sil12vitrine/images/"), "html", null, true);
-        echo "logo.png\" height=\"45px\"/ style=\"float:left;\">
-\t\t\t<a class=\"navbar-brand\" href=\"";
-        // line 5
-        echo $this->env->getExtension('routing')->getPath("sil12_vitrine_accueil");
-        echo "\">\t
-\t\t\t\tHATme
-\t\t\t</a>
-\t\t</div>
-
-\t\t<div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">
-\t\t\t<ul class=\"nav navbar-nav navbar-left\">
-\t\t\t\t<li><a href=\"";
-        // line 12
-        echo $this->env->getExtension('routing')->getPath("sil12_vitrine_catalogue");
-        echo "\">Catalogue</a></li>
-\t\t\t\t<li><a href=\"";
-        // line 13
-        echo $this->env->getExtension('routing')->getPath("sil12_vitrine_mentions");
-        echo "\">Mentions</a></li>
-\t\t\t</ul>
-\t\t\t<ul class=\"nav navbar-nav navbar-right\">
-\t\t\t\t";
-        // line 16
-        if ($this->env->getExtension('security')->isGranted("ROLE_USER")) {
-            // line 17
-            echo "\t\t\t\t<li>
-\t\t\t\t\t<a href=\"";
-            // line 18
-            echo $this->env->getExtension('routing')->getPath("orderhat");
-            echo "\">
-\t\t\t\t\t\t<span class=\"glyphicon glyphicon-list\"></span>
-\t\t\t\t\t\tMes commandes
-\t\t\t\t\t</a>
-\t\t\t\t</li>
-\t\t\t\t";
-        }
-        // line 24
-        echo "\t\t\t\t<li>
-\t\t\t\t\t<a href=\"";
-        // line 25
-        echo $this->env->getExtension('routing')->getPath("sil12_vitrine_contenuPanier");
-        echo "\">
-\t\t\t\t\t\t<span class=\"glyphicon glyphicon-shopping-cart\"></span>
-\t\t\t\t\t\tPanier
-\t\t\t\t\t</a>
-\t\t\t\t</li>
-\t\t\t\t";
-        // line 30
-        if ($this->env->getExtension('security')->isGranted("ROLE_USER")) {
-            // line 31
-            echo "\t\t\t\t
-\t\t\t\t<li>
-\t\t\t\t\t<a href=\"";
-            // line 33
-            echo $this->env->getExtension('routing')->getPath("logout");
-            echo "\">
-\t\t\t\t\t\t<span class=\"glyphicon glyphicon-log-out\"></span>
-\t\t\t\t\t</a>
-\t\t\t\t</li>
-\t\t\t\t";
-        } else {
-            // line 38
-            echo "\t\t\t\t<li>
-\t\t\t\t\t<a href=\"";
-            // line 39
-            echo $this->env->getExtension('routing')->getPath("sil12_vitrine_auth");
-            echo "\">
-\t\t\t\t\t\t<span class=\"glyphicon glyphicon-log-in\"></span>
-\t\t\t\t\t</a>
-\t\t\t\t</li>
-\t\t\t\t";
-        }
-        // line 44
-        echo "\t\t\t\t";
+        echo "<div class=\"container-hero\" id=\"container_hero\">
+\t<div class=\"container\">
+\t\t<div class=\"hero\">
+\t\t\t<div class=\"clearfix\">
+\t\t\t\t<h1 class=\"pull-left\" style=\"margin:0;\">
+\t\t\t\t\t";
+        // line 6
         if ($this->env->getExtension('security')->isGranted("ROLE_ADMIN")) {
-            // line 45
-            echo "\t\t\t\t<li>
-\t\t\t\t\t<a href=\"";
-            // line 46
+            // line 7
+            echo "\t\t\t\t\t<small>
+\t\t\t\t\t\t<a href=\"";
+            // line 8
             echo $this->env->getExtension('routing')->getPath("sil12_vitrine_backoffice");
             echo "\">
-\t\t\t\t\t\tBack Office
-\t\t\t\t\t</a>
-\t\t\t\t</li>
-\t\t\t\t";
+\t\t\t\t\t\t\tBack Office
+\t\t\t\t\t\t</a>
+\t\t\t\t\t</small>
+\t\t\t\t\t";
         }
-        // line 51
-        echo "\t\t\t</ul>
+        // line 13
+        echo "\t\t\t\t\t<small>
+\t\t\t\t\t\t<a href=\"";
+        // line 14
+        echo $this->env->getExtension('routing')->getPath("sil12_vitrine_catalogue");
+        echo "\">
+\t\t\t\t\t\t\tCatalogue
+\t\t\t\t\t\t</a>
+\t\t\t\t\t</small>
+\t\t\t\t</h1>
+\t\t\t\t<div class=\"pull-right\">
+\t\t\t\t\t";
+        // line 20
+        if ($this->env->getExtension('security')->isGranted("ROLE_USER")) {
+            // line 21
+            echo "\t\t\t\t\t<small>
+\t\t\t\t\t\t<a href=\"";
+            // line 22
+            echo $this->env->getExtension('routing')->getPath("orderhat");
+            echo "\">
+\t\t\t\t\t\t\t<span class=\"glyphicon glyphicon-list\"></span>
+\t\t\t\t\t\t\tMes commandes
+\t\t\t\t\t\t</a>
+\t\t\t\t\t</small>
+\t\t\t\t\t";
+        }
+        // line 28
+        echo "\t\t\t\t\t<small>
+\t\t\t\t\t\t<a href=\"";
+        // line 29
+        echo $this->env->getExtension('routing')->getPath("sil12_vitrine_contenuPanier");
+        echo "\">
+\t\t\t\t\t\t\t<span class=\"glyphicon glyphicon-shopping-cart\"></span>
+\t\t\t\t\t\t\tPanier
+\t\t\t\t\t\t</a>
+\t\t\t\t\t</small>
+\t\t\t\t\t";
+        // line 34
+        if ($this->env->getExtension('security')->isGranted("ROLE_USER")) {
+            // line 35
+            echo "\t\t\t\t\t<a href=\"";
+            echo $this->env->getExtension('routing')->getPath("logout");
+            echo "\" class=\"btn btn-default\" role=\"button\">
+\t\t\t\t\t\tSe déconnecter <span class=\"glyphicon glyphicon-log-out\"></span>
+\t\t\t\t\t</a>
+\t\t\t\t\t";
+        } else {
+            // line 39
+            echo "\t\t\t\t\t<a href=\"";
+            echo $this->env->getExtension('routing')->getPath("sil12_vitrine_auth");
+            echo "\" class=\"btn btn-default\" role=\"button\">
+\t\t\t\t\t\tSe connecter <span class=\"glyphicon glyphicon-log-out\"></span>
+\t\t\t\t\t</a>
+\t\t\t\t\t";
+        }
+        // line 43
+        echo "\t\t\t\t\t
+\t\t\t\t</div>
+\t\t\t</div>
+\t\t\t<div class=\"hero-lead\">
+\t\t\t\t<a href=\"";
+        // line 47
+        echo $this->env->getExtension('routing')->getPath("sil12_vitrine_accueil");
+        echo "\"><img src=\"";
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/sil12vitrine/img/"), "html", null, true);
+        echo "logo.png\" height=\"45px\">
+\t\t\t\t<h2>HATme.com</h2></a>
+\t\t\t\t<p class=\"lead\">
+\t\t\t\t\tBienvenue sur le site qui vend plein de chapeaux 
+\t\t\t\t</p>
+\t\t\t</div>
 \t\t</div>
 \t</div>
-</nav>
+</div>
+
 ";
     }
 
@@ -128,6 +125,6 @@ class __TwigTemplate_9f37f61bf0c0bac7ef28820062b803bb951f488060351895d5c1deafa36
 
     public function getDebugInfo()
     {
-        return array (  112 => 51,  104 => 46,  101 => 45,  98 => 44,  90 => 39,  87 => 38,  79 => 33,  75 => 31,  73 => 30,  65 => 25,  62 => 24,  53 => 18,  50 => 17,  48 => 16,  42 => 13,  38 => 12,  28 => 5,  24 => 4,  19 => 1,);
+        return array (  100 => 47,  94 => 43,  86 => 39,  78 => 35,  76 => 34,  68 => 29,  65 => 28,  56 => 22,  53 => 21,  51 => 20,  42 => 14,  39 => 13,  31 => 8,  28 => 7,  26 => 6,  19 => 1,);
     }
 }

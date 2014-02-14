@@ -12,9 +12,16 @@ use Doctrine\ORM\EntityRepository;
  */
 class ProductRepository extends EntityRepository
 {
-	public function findAllOrderedByName() {
+	/*public function findAllOrderedByName() {
 		return $this->getEntityManager()
 					->createQuery('SELECT p FROM sil12VitrineBundle:Product p ORDER BY p.name ASC')
+					->getResult();
+	}*/
+
+	public function lastAdd($max) {
+		return $this->getEntityManager()
+					->createQuery('SELECT p FROM sil12VitrineBundle:Product p ORDER BY p.id DESC')
+					->setMaxResults($max)
 					->getResult();
 	}
 }

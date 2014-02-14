@@ -1,5 +1,6 @@
 sil12\VitrineBundle\Entity\OrderLine:
   type: entity
+  repositoryClass: sil12\VitrineBundle\Entity\OrderLineRepository
   fields:
     id:
       id: true

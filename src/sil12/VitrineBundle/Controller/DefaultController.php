@@ -8,11 +8,22 @@ class DefaultController extends Controller
 {
     public function indexAction($name)
     {
-        return $this->render('sil12VitrineBundle:Default:index.html.twig', array('name' => $name));
+        $mostBought = $this->getDoctrine()
+            ->getRepository('sil12VitrineBundle:OrderLine')
+            ->mostBought(3);
+
+        $lastAdd = $this->getDoctrine()
+            ->getRepository('sil12VitrineBundle:Product')
+            ->lastAdd(3);
+
+        return $this->render('sil12VitrineBundle:Default:index.html.twig', 
+            array('name' => $name, 'mostBought' => $mostBought, 'lastAdd' => $lastAdd)
+        );
     }
 
     public function mentionsAction()
     {
+        
         return $this->render('sil12VitrineBundle:Default:mentions.html.twig');
     }
 
@@ -45,8 +56,13 @@ class DefaultController extends Controller
         $chapeaux = $em->getRepository('sil12VitrineBundle:Product')
                         ->find($id);
 
+        $repository = $this->getDoctrine()
+            ->getRepository('sil12VitrineBundle:OrderLine');
+
+        //$boughtWith = $repository->findBoughtWith($id,3);
+        $boughtWith =  null;
         return $this->render('sil12VitrineBundle:Default:chapeau.html.twig',
-            array('chapeau' => $chapeaux, 'qte' => $nb)
+            array('chapeau' => $chapeaux, 'qte' => $nb, 'boughtWith' => $boughtWith)
         );
     }
 

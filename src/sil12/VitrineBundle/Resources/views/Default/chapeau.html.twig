@@ -25,9 +25,23 @@
 								<a onclick="{% set qte = qte + 1 %}" type="button" class="btn btn-default btn-xs">+</a>
 					<a href="{{ path('sil12_vitrine_contenuPanier', { 'id': chapeau.id, 'type': 'add'}) }}" type="button" class="btn btn-primary btn-lg btn-block" {% if chapeau.stock <= 0 %}disabled{% endif %}>Ajouter au panier</a>
 				</div>
+
+				
+
+				
+
+
+
+
+
 			</div>
 		</div>
 	</div>
+	taille : {{boughtWith | length}}
+	{% for  product in boughtWith %}
+		id :{{ product.id }}
+	{% endfor %}
+	
 </div>
 
 

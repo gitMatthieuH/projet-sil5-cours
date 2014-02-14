@@ -1,5 +1,6 @@
 sil12\VitrineBundle\Entity\Orderhat:
   type: entity
+  repositoryClass: sil12\VitrineBundle\Entity\OrderhatRepository
   fields:
     id:
       id: true

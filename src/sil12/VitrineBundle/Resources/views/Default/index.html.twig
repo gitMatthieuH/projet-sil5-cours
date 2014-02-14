@@ -1,7 +1,84 @@
 {% extends "sil12VitrineBundle::layout.html.twig" %}
 
 {% block content %}
-<div class="col-md-6 col-md-offset-3">
-	Bienvenue sur mon site qui vend plein de chapeaux {{ name }} !
+<div class="col-md-6 col-md-offset-3 home">
+	{{ name }} 
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title">Produits phares</h3>
+		</div>
+		<div class="panel-body">
+			<div class="row">
+  			{% for ol in mostBought %}
+				<div class="col-sm-6 col-md-4">
+					<div class="thumbnail">
+			    		<img src="{{ asset('bundles/sil12vitrine/images/') }}{{ ol.0.product.id }}.jpg" width="100px">
+			    		<div class="caption">
+							<p class="title_block">
+								<a href="{{ path('sil12_vitrine_chapeau', { 'id': ol.0.product.id }) }}" title="Description">{{ ol.0.product.name }}
+								</a>
+							</p>
+							<div class="product_desc">
+								<a href="{{ path('sil12_vitrine_chapeau', { 'id': ol.0.product.id }) }}" title="Description">{{ ol.0.product.description }}</a>
+							</div>
+							<div>
+								<a class="lnk_more" href="{{ path('sil12_vitrine_chapeau', { 'id': ol.0.product.id }) }}" title="Plus d'infos">
+									Plus d'infos
+								</a>
+								<p class="price_container">
+									<span class="price">{{ ol.0.product.price }} €</span>
+								</p>						
+								<a class="add_to_cart_button" href="{{ path('sil12_vitrine_contenuPanier', { 'id': ol.0.product.id, 'type': 'add'}) }}" title="Ajouter au panier">
+									Ajouter au panier
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+			</div>
+		</div>
+	</div>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title">Nouveaux produits</h3>
+		</div>
+		<div class="panel-body">
+			<div class="row">
+  			{% for product in lastAdd %}
+				<div class="col-sm-6 col-md-4">
+					<div class="thumbnail">
+						<span class="new">Nouveau</span>
+						<a href="{{ path('sil12_vitrine_chapeau', { 'id': product.id }) }}" title="Description" class="product_image">
+				    		<img src="{{ asset('bundles/sil12vitrine/images/') }}{{ product.id }}.jpg" width="100px">
+				    		
+				    	</a>
+
+			    		<div class="caption">
+							<p class="title_block">
+								<a href="{{ path('sil12_vitrine_chapeau', { 'id': product.id }) }}" title="Description">{{ product.name }}
+								</a>
+							</p>
+							<div class="product_desc">
+								<a href="{{ path('sil12_vitrine_chapeau', { 'id': product.id }) }}" title="Description">{{ product.description }}</a>
+							</div>
+							<div>
+								<a class="lnk_more" href="{{ path('sil12_vitrine_chapeau', { 'id': product.id }) }}" title="Plus d'infos">
+									Plus d'infos
+								</a>
+								<p class="price_container">
+									<span class="price">{{ product.price }} €</span>
+								</p>						
+								<a class="add_to_cart_button"  href="{{ path('sil12_vitrine_contenuPanier', { 'id': product.id, 'type': 'add'}) }}" title="Ajouter au panier">
+									Ajouter au panier
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+			</div>
+		</div>
+	</div>
 </div>
 {% endblock %}

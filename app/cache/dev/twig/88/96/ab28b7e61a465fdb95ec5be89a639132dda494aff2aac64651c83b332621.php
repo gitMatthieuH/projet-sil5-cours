@@ -42,38 +42,46 @@ class __TwigTemplate_8896ab28b7e61a465fdb95ec5be89a639132dda494aff2aac64651c83b3
         // line 9
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/sil12vitrine/css/shapeover.css"), "html", null, true);
         echo "\" rel=\"stylesheet\" type=\"text/css\" />
-        <script src=\"";
+        <link href=\"";
         // line 10
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/sil12vitrine/css/main.css"), "html", null, true);
+        echo "\" rel=\"stylesheet\" type=\"text/css\" />
+        <script src=\"";
+        // line 11
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/sil12vitrine/js/snap.svg-min.js"), "html", null, true);
         echo "\"></script>
 </head>
     <body>
         ";
-        // line 13
-        $this->env->loadTemplate("sil12VitrineBundle:Default:header.html.twig")->display($context);
         // line 14
+        $this->env->loadTemplate("sil12VitrineBundle:Default:header.html.twig")->display($context);
+        // line 15
         echo "        <div class=\"row\">
             ";
-        // line 15
+        // line 16
         $this->displayBlock('content', $context, $blocks);
-        // line 17
+        // line 18
         echo "        </div>
-       
         ";
+        // line 19
+        $this->env->loadTemplate("sil12VitrineBundle:Default:footer.html.twig")->display($context);
         // line 20
+        echo "       
+        ";
+        // line 22
         echo "
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src=\"";
-        // line 22
+        // line 24
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/sil12vitrine/lib/jquery-1.10.2.min.js"), "html", null, true);
         echo "\"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src=\"";
-        // line 24
+        // line 26
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/sil12vitrine/lib/bootstrap/bootstrap.min.js"), "html", null, true);
         echo "\"></script>
         <script src=\"";
-        // line 25
+        // line 27
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/sil12vitrine/js/hovers.js"), "html", null, true);
         echo "\"></script>
         <script>
@@ -111,7 +119,7 @@ class __TwigTemplate_8896ab28b7e61a465fdb95ec5be89a639132dda494aff2aac64651c83b3
     // line 5
     public function block_title($context, array $blocks = array())
     {
-        echo "Welcome!";
+        echo "HATme.com";
     }
 
     // line 6
@@ -119,10 +127,10 @@ class __TwigTemplate_8896ab28b7e61a465fdb95ec5be89a639132dda494aff2aac64651c83b3
     {
     }
 
-    // line 15
+    // line 16
     public function block_content($context, array $blocks = array())
     {
-        // line 16
+        // line 17
         echo "            ";
     }
 
@@ -138,6 +146,6 @@ class __TwigTemplate_8896ab28b7e61a465fdb95ec5be89a639132dda494aff2aac64651c83b3
 
     public function getDebugInfo()
     {
-        return array (  126 => 16,  123 => 15,  118 => 6,  112 => 5,  77 => 25,  73 => 24,  68 => 22,  64 => 20,  60 => 17,  58 => 15,  55 => 14,  53 => 13,  47 => 10,  43 => 9,  39 => 8,  34 => 7,  32 => 6,  22 => 1,  48 => 16,  40 => 11,  31 => 4,  28 => 5,);
+        return array (  134 => 17,  131 => 16,  126 => 6,  120 => 5,  85 => 27,  81 => 26,  76 => 24,  72 => 22,  69 => 20,  67 => 19,  64 => 18,  62 => 16,  59 => 15,  57 => 14,  51 => 11,  47 => 10,  43 => 9,  39 => 8,  34 => 7,  32 => 6,  28 => 5,  22 => 1,);
     }
 }

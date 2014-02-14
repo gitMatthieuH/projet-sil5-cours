@@ -2,11 +2,12 @@
 <html class="demo-1 no-js">
     <head>
     	<meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}HATme.com{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
         <link href="{{ asset('bundles/sil12vitrine/lib/bootstrap/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('bundles/sil12vitrine/css/shapeover.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('bundles/sil12vitrine/css/main.css') }}" rel="stylesheet" type="text/css" />
         <script src="{{ asset('bundles/sil12vitrine/js/snap.svg-min.js') }}"></script>
 </head>
     <body>
@@ -15,6 +16,7 @@
             {% block content %}
             {% endblock %}
         </div>
+        {% include "sil12VitrineBundle:Default:footer.html.twig" %}
        
         {#% include 'footer.html.twig' %#}
 
