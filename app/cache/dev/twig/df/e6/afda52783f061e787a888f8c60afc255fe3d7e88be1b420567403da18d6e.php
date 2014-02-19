@@ -33,8 +33,12 @@ class __TwigTemplate_dfe6afda52783f061e787a888f8c60afc255fe3d7e88be1b420567403da
     ";
         // line 5
         $this->displayBlock('body', $context, $blocks);
+        // line 46
+        echo "</div>
+";
     }
 
+    // line 5
     public function block_body($context, array $blocks = array())
     {
         // line 6
@@ -124,6 +128,6 @@ class __TwigTemplate_dfe6afda52783f061e787a888f8c60afc255fe3d7e88be1b420567403da
 
     public function getDebugInfo()
     {
-        return array (  106 => 40,  102 => 38,  90 => 32,  84 => 29,  77 => 25,  71 => 24,  65 => 23,  62 => 22,  58 => 21,  41 => 6,  35 => 5,  32 => 4,  29 => 3,);
+        return array (  110 => 40,  106 => 38,  94 => 32,  88 => 29,  81 => 25,  75 => 24,  69 => 23,  66 => 22,  62 => 21,  45 => 6,  42 => 5,  37 => 46,  35 => 5,  32 => 4,  29 => 3,);
     }
 }

@@ -5,6 +5,14 @@
   src: local('Lobster'), url(../font/lobster.woff) format('woff');
 }
 
+body {
+	background-color: #fcf9f9;
+}
+
+.btn[type=submit] {
+	width:100%;
+}
+
 .home .thumbnail {
 	height: 250px;
 	display: block;
@@ -148,4 +156,8 @@ small a{
 
 #footer {
 	background-color: #374953;
+}
+
+.shadow {
+	box-shadow: 0px 1px 5px 1px rgba(0, 0, 0, 0.15);
 }

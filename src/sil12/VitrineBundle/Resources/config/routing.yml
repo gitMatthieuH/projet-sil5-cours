@@ -23,12 +23,26 @@ sil12_vitrine_chapeau:
 
 
 sil12_vitrine_contenuPanier:
-    pattern: /panier/{id}/{type}/{nb}
-    defaults: { _controller: sil12VitrineBundle:Panier:contenuPanier, id: null, type: null, nb: 1 }
+    pattern: /panier
+    defaults: { _controller: sil12VitrineBundle:Panier:contenuPanier}
+
+sil12_vitrine_addProduct:
+    pattern: /panier/add/{id}/{qte}
+    defaults: { _controller: sil12VitrineBundle:Panier:addProduct, id: null, qte: 1 }
+
+sil12_vitrine_deleteProduct:
+    pattern: /panier/del/{id}/{qte}
+    defaults: { _controller: sil12VitrineBundle:Panier:deleteProduct, id: null, qte: 1 }
+
+sil12_vitrine_removeProduct:
+    pattern: /panier/{id}
+    defaults: { _controller: sil12VitrineBundle:Panier:removeProduct, id: null }
 
 sil12_vitrine_validationPanier:
-    pattern: /validationPanier
+    pattern: /Panier/validate
     defaults: { _controller: sil12VitrineBundle:Panier:validationPanier }
+
+
 
 sil12_vitrine_backoffice:
     pattern: /backoffice

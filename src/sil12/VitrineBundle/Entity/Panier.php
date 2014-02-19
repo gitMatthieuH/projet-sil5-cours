@@ -20,6 +20,13 @@ class Panier {
 			$this->contenu[$articleId] = $qte;
 		}
 	}
+	public function setContenu ($articleId, $qte = 1) {
+		if (array_key_exists($articleId,$this->contenu)) { 
+			$this->contenu[$articleId] += $qte;
+		} else {
+			$this->contenu[$articleId] = $qte;
+		}
+	}
 	public function removeArticle ($articleId, $qte = 1) {
 		if (array_key_exists($articleId,$this->contenu)) {
 			$this->contenu[$articleId] -= $qte;

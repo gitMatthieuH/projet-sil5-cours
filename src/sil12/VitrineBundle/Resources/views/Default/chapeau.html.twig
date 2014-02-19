@@ -12,7 +12,7 @@
 					{% if chapeau.stock <= 0 %}
 						<div class="alert alert-danger">Cet article n'est plus en stock !</div>
 					{% endif %}
-					<a href="#" class="thumbnail"><img src="{{ asset('bundles/sil12vitrine/images/') }}{{ chapeau.id }}.jpg" width="650px"></a>
+					<a href="#" class="thumbnail"><img src="{{ asset('bundles/sil12vitrine/images/') }}{{ chapeau.id }}.png" width="650px"></a>
 					<div class="caption">
 						<h3>{{ chapeau.name }}</h3>
 						<p>{{ chapeau.description }}</p>
@@ -20,20 +20,9 @@
 					</div>
 				</div>
 				<div class="col-md-4">
-					<a onclick="{% set qte = qte - 1 %}" type="button" class="btn btn-default btn-xs">-</a>
-								{{ qte }}
-								<a onclick="{% set qte = qte + 1 %}" type="button" class="btn btn-default btn-xs">+</a>
-					<a href="{{ path('sil12_vitrine_contenuPanier', { 'id': chapeau.id, 'type': 'add'}) }}" type="button" class="btn btn-primary btn-lg btn-block" {% if chapeau.stock <= 0 %}disabled{% endif %}>Ajouter au panier</a>
+					<a href="{{ path('sil12_vitrine_addProduct', { 'id': chapeau.id, 'qte': 1}) }}" type="button" class="btn btn-primary btn-lg btn-block" {% if chapeau.stock <= 0 %}disabled{% endif %}>Ajouter au panier</a>
+
 				</div>
-
-				
-
-				
-
-
-
-
-
 			</div>
 		</div>
 	</div>

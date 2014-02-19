@@ -58,9 +58,27 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
 
         }
 
-        // sil12_vitrine_contenuPanier
-        if (0 === strpos($pathinfo, '/panier') && preg_match('#^/panier(?:/(?P<id>[^/]++)(?:/(?P<type>[^/]++)(?:/(?P<nb>[^/]++))?)?)?$#s', $pathinfo, $matches)) {
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'sil12_vitrine_contenuPanier')), array (  '_controller' => 'sil12\\VitrineBundle\\Controller\\PanierController::contenuPanierAction',  'id' => NULL,  'type' => NULL,  'nb' => 1,));
+        if (0 === strpos($pathinfo, '/panier')) {
+            // sil12_vitrine_contenuPanier
+            if ($pathinfo === '/panier') {
+                return array (  '_controller' => 'sil12\\VitrineBundle\\Controller\\PanierController::contenuPanierAction',  '_route' => 'sil12_vitrine_contenuPanier',);
+            }
+
+            // sil12_vitrine_addProduct
+            if (preg_match('#^/panier(?:/(?P<id>[^/]++)(?:/(?P<qte>[^/]++))?)?$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'sil12_vitrine_addProduct')), array (  '_controller' => 'sil12\\VitrineBundle\\Controller\\PanierController::addProductAction',  'id' => NULL,  'qte' => 1,));
+            }
+
+            // sil12_vitrine_deleteProduct
+            if (preg_match('#^/panier(?:/(?P<id>[^/]++)(?:/(?P<qte>[^/]++))?)?$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'sil12_vitrine_deleteProduct')), array (  '_controller' => 'sil12\\VitrineBundle\\Controller\\PanierController::deleteProductAction',  'id' => NULL,  'qte' => 1,));
+            }
+
+            // sil12_vitrine_removeProduct
+            if (preg_match('#^/panier(?:/(?P<id>[^/]++))?$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'sil12_vitrine_removeProduct')), array (  '_controller' => 'sil12\\VitrineBundle\\Controller\\PanierController::removeProductAction',  'id' => NULL,));
+            }
+
         }
 
         // sil12_vitrine_validationPanier

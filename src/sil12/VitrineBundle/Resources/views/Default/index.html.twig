@@ -12,7 +12,7 @@
   			{% for ol in mostBought %}
 				<div class="col-sm-6 col-md-4">
 					<div class="thumbnail">
-			    		<img src="{{ asset('bundles/sil12vitrine/images/') }}{{ ol.0.product.id }}.jpg" width="100px">
+			    		<img src="{{ asset('bundles/sil12vitrine/images/') }}{{ ol.0.product.id }}.png" width="100px">
 			    		<div class="caption">
 							<p class="title_block">
 								<a href="{{ path('sil12_vitrine_chapeau', { 'id': ol.0.product.id }) }}" title="Description">{{ ol.0.product.name }}
@@ -50,7 +50,7 @@
 					<div class="thumbnail">
 						<span class="new">Nouveau</span>
 						<a href="{{ path('sil12_vitrine_chapeau', { 'id': product.id }) }}" title="Description" class="product_image">
-				    		<img src="{{ asset('bundles/sil12vitrine/images/') }}{{ product.id }}.jpg" width="100px">
+				    		<img src="{{ asset('bundles/sil12vitrine/images/') }}{{ product.id }}.png" width="100px">
 				    		
 				    	</a>
 

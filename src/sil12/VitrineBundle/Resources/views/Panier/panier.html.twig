@@ -1,6 +1,7 @@
 {% extends "sil12VitrineBundle::layout.html.twig" %}
 
 {% block content %}
+
 <div class="col-md-6 col-md-offset-3">
 	
 	<div class="panel panel-default">
@@ -8,6 +9,7 @@
 			<h3 class="panel-title">Panier</h3>
 		</div>
 		<div class="panel-body">
+			{% if panier | length < 1 %}Votre panier est vide{% else %}
 			<table class="table table-striped">
 				<thead>
 			        <tr>
@@ -21,15 +23,15 @@
 			    <tbody>
 			    	{% for elem in panier %}
 						<tr>
-							<td><img src="{{ asset('bundles/sil12vitrine/images/') }}{{ elem.product.id }}.jpg" width="250px"></td>
+							<td><img src="{{ asset('bundles/sil12vitrine/images/') }}{{ elem.product.id }}.png" width="250px"></td>
 							<td>{{ elem.product.name }}</td>
 							<td>{{ elem.product.description }}</td>
 							<td>{{ elem.product.price }}</td>
-							<td  style="text-align:center">
-								<a href="{{ path('sil12_vitrine_contenuPanier', { 'id': elem.product.id, 'type': 'del' }) }}" type="button" class="btn btn-default btn-xs">-</a>
+							<td style="text-align:center">
+								<a href="{{ path('sil12_vitrine_deleteProduct', { 'id': elem.product.id, 'qte': 1 }) }}" type="button" class="btn btn-default btn-xs">-</a>
 								{{ elem.qte }}
-								<a href="{{ path('sil12_vitrine_contenuPanier', { 'id': elem.product.id, 'type': 'add' }) }}" type="button" class="btn btn-default btn-xs">+</a>
-								<a href="{{ path('sil12_vitrine_contenuPanier', { 'id': elem.product.id, 'type': 'rem' }) }}">
+								<a href="{{ path('sil12_vitrine_addProduct', { 'id': elem.product.id, 'qte': 1 }) }}" type="button" class="btn btn-default btn-xs">+</a>
+								<a href="{{ path('sil12_vitrine_removeProduct', { 'id': elem.product.id }) }}">
 									<span class="glyphicon glyphicon-trash"></span>
 								</a>
 							</td>
@@ -37,7 +39,11 @@
 					{% endfor %}
 			   </tbody>
 			</table>
-			<a href="{{ path('sil12_vitrine_validationPanier')}}" type="button" class="btn btn-primary btn-lg pull-right" {% if panier | length < 1 %}disabled{% endif %}>Commander</a>
+			<div class="pull-right">
+				<b>Total : </b>{{total}} €
+			</div><br>
+			<a href="{{ path('sil12_vitrine_validationPanier')}}" type="button" class="btn btn-primary btn-lg pull-right">Commander</a>
+			{% endif %}
 		</div>
 	</div>
 </div>

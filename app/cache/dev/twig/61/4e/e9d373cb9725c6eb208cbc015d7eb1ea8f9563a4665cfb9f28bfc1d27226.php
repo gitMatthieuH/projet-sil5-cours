@@ -47,7 +47,7 @@ class __TwigTemplate_614ee9d373cb9725c6eb208cbc015d7eb1ea8f9563a4665cfb9f28bfc1d
         echo "\t\t\t\t\t<a href=\"#\" class=\"thumbnail\"><img src=\"";
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/sil12vitrine/images/"), "html", null, true);
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["chapeau"]) ? $context["chapeau"] : $this->getContext($context, "chapeau")), "id"), "html", null, true);
-        echo ".jpg\" width=\"650px\"></a>
+        echo ".png\" width=\"650px\"></a>
 \t\t\t\t\t<div class=\"caption\">
 \t\t\t\t\t\t<h3>";
         // line 17
@@ -64,49 +64,29 @@ class __TwigTemplate_614ee9d373cb9725c6eb208cbc015d7eb1ea8f9563a4665cfb9f28bfc1d
 \t\t\t\t\t</div>
 \t\t\t\t</div>
 \t\t\t\t<div class=\"col-md-4\">
-\t\t\t\t\t<a onclick=\"";
-        // line 23
-        $context["qte"] = ((isset($context["qte"]) ? $context["qte"] : $this->getContext($context, "qte")) - 1);
-        echo "\" type=\"button\" class=\"btn btn-default btn-xs\">-</a>
-\t\t\t\t\t\t\t\t";
-        // line 24
-        echo twig_escape_filter($this->env, (isset($context["qte"]) ? $context["qte"] : $this->getContext($context, "qte")), "html", null, true);
-        echo "
-\t\t\t\t\t\t\t\t<a onclick=\"";
-        // line 25
-        $context["qte"] = ((isset($context["qte"]) ? $context["qte"] : $this->getContext($context, "qte")) + 1);
-        echo "\" type=\"button\" class=\"btn btn-default btn-xs\">+</a>
 \t\t\t\t\t<a href=\"";
-        // line 26
-        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("sil12_vitrine_contenuPanier", array("id" => $this->getAttribute((isset($context["chapeau"]) ? $context["chapeau"] : $this->getContext($context, "chapeau")), "id"), "type" => "add")), "html", null, true);
+        // line 23
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("sil12_vitrine_addProduct", array("id" => $this->getAttribute((isset($context["chapeau"]) ? $context["chapeau"] : $this->getContext($context, "chapeau")), "id"), "qte" => 1)), "html", null, true);
         echo "\" type=\"button\" class=\"btn btn-primary btn-lg btn-block\" ";
         if (($this->getAttribute((isset($context["chapeau"]) ? $context["chapeau"] : $this->getContext($context, "chapeau")), "stock") <= 0)) {
             echo "disabled";
         }
         echo ">Ajouter au panier</a>
+
 \t\t\t\t</div>
-
-\t\t\t\t
-
-\t\t\t\t
-
-
-
-
-
 \t\t\t</div>
 \t\t</div>
 \t</div>
 \ttaille : ";
-        // line 40
+        // line 29
         echo twig_escape_filter($this->env, twig_length_filter($this->env, (isset($context["boughtWith"]) ? $context["boughtWith"] : $this->getContext($context, "boughtWith"))), "html", null, true);
         echo "
 \t";
-        // line 41
+        // line 30
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable((isset($context["boughtWith"]) ? $context["boughtWith"] : $this->getContext($context, "boughtWith")));
         foreach ($context['_seq'] as $context["_key"] => $context[" product"]) {
-            // line 42
+            // line 31
             echo "\t\tid :";
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context[" product"]) ? $context[" product"] : $this->getContext($context, " product")), "id"), "html", null, true);
             echo "
@@ -115,7 +95,7 @@ class __TwigTemplate_614ee9d373cb9725c6eb208cbc015d7eb1ea8f9563a4665cfb9f28bfc1d
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context[' product'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 44
+        // line 33
         echo "\t
 </div>
 
@@ -144,6 +124,6 @@ class __TwigTemplate_614ee9d373cb9725c6eb208cbc015d7eb1ea8f9563a4665cfb9f28bfc1d
 
     public function getDebugInfo()
     {
-        return array (  119 => 44,  110 => 42,  106 => 41,  102 => 40,  81 => 26,  77 => 25,  73 => 24,  69 => 23,  62 => 19,  58 => 18,  54 => 17,  47 => 15,  43 => 13,  41 => 12,  31 => 4,  28 => 3,);
+        return array (  99 => 33,  90 => 31,  86 => 30,  82 => 29,  69 => 23,  62 => 19,  58 => 18,  54 => 17,  47 => 15,  43 => 13,  41 => 12,  31 => 4,  28 => 3,);
     }
 }

@@ -29,7 +29,7 @@ class __TwigTemplate_9f37f61bf0c0bac7ef28820062b803bb951f488060351895d5c1deafa36
 \t\t\t\t\t\t<a href=\"";
             // line 8
             echo $this->env->getExtension('routing')->getPath("sil12_vitrine_backoffice");
-            echo "\">
+            echo "\"  class=\"btn btn-default\" role=\"button\">
 \t\t\t\t\t\t\tBack Office
 \t\t\t\t\t\t</a>
 \t\t\t\t\t</small>
@@ -125,6 +125,6 @@ class __TwigTemplate_9f37f61bf0c0bac7ef28820062b803bb951f488060351895d5c1deafa36
 
     public function getDebugInfo()
     {
-        return array (  100 => 47,  94 => 43,  86 => 39,  78 => 35,  76 => 34,  68 => 29,  65 => 28,  56 => 22,  53 => 21,  51 => 20,  42 => 14,  39 => 13,  31 => 8,  28 => 7,  26 => 6,  19 => 1,);
+        return array (  100 => 47,  94 => 43,  86 => 39,  78 => 35,  65 => 28,  53 => 21,  42 => 14,  26 => 6,  19 => 1,  134 => 17,  131 => 16,  126 => 6,  120 => 5,  76 => 34,  69 => 20,  67 => 19,  62 => 16,  57 => 14,  51 => 20,  47 => 10,  43 => 9,  39 => 13,  34 => 7,  32 => 6,  22 => 1,  105 => 41,  101 => 39,  89 => 33,  85 => 27,  81 => 26,  77 => 30,  72 => 22,  68 => 29,  64 => 18,  59 => 15,  56 => 22,  52 => 23,  31 => 8,  28 => 7,);
     }
 }

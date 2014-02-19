@@ -3,6 +3,7 @@
 namespace sil12\VitrineBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use sil12\VitrineBundle\Entity\Panier;
 
 class DefaultController extends Controller
 {
@@ -23,7 +24,6 @@ class DefaultController extends Controller
 
     public function mentionsAction()
     {
-        
         return $this->render('sil12VitrineBundle:Default:mentions.html.twig');
     }
 
@@ -61,8 +61,11 @@ class DefaultController extends Controller
 
         //$boughtWith = $repository->findBoughtWith($id,3);
         $boughtWith =  null;
+
+        $panier = new Panier();
+
         return $this->render('sil12VitrineBundle:Default:chapeau.html.twig',
-            array('chapeau' => $chapeaux, 'qte' => $nb, 'boughtWith' => $boughtWith)
+            array('chapeau' => $chapeaux, 'boughtWith' => $boughtWith )
         );
     }
 

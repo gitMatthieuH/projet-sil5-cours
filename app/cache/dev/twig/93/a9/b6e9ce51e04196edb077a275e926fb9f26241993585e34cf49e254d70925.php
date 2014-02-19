@@ -51,7 +51,7 @@ class __TwigTemplate_93a9b6e9ce51e04196edb077a275e926fb9f26241993585e34cf49e254d
             // line 15
             echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/sil12vitrine/images/"), "html", null, true);
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getAttribute((isset($context["ol"]) ? $context["ol"] : $this->getContext($context, "ol")), 0), "product"), "id"), "html", null, true);
-            echo ".jpg\" width=\"100px\">
+            echo ".png\" width=\"100px\">
 \t\t\t    \t\t<div class=\"caption\">
 \t\t\t\t\t\t\t<p class=\"title_block\">
 \t\t\t\t\t\t\t\t<a href=\"";
@@ -125,7 +125,7 @@ class __TwigTemplate_93a9b6e9ce51e04196edb077a275e926fb9f26241993585e34cf49e254d
             // line 53
             echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/sil12vitrine/images/"), "html", null, true);
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["product"]) ? $context["product"] : $this->getContext($context, "product")), "id"), "html", null, true);
-            echo ".jpg\" width=\"100px\">
+            echo ".png\" width=\"100px\">
 \t\t\t\t    \t\t
 \t\t\t\t    \t</a>
 

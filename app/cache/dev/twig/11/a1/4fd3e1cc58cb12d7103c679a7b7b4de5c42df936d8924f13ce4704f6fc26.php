@@ -43,13 +43,13 @@ class __TwigTemplate_11a14fd3e1cc58cb12d7103c679a7b7b4de5c42df936d8924f13ce4704f
             // line 9
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("sil12_vitrine_chapeau", array("id" => $this->getAttribute((isset($context["product"]) ? $context["product"] : $this->getContext($context, "product")), "id"))), "html", null, true);
             echo "\" data-path-hover=\"m 180,34.57627 -180,0 L 0,0 180,0 z\">
-\t\t\t    \t<figure>
+\t\t\t    \t<figure class=\"shadow\"  style=\"background: #8297a3\">
 \t\t\t    \t\t<img src=\"";
             // line 11
             echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/sil12vitrine/images/"), "html", null, true);
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["product"]) ? $context["product"] : $this->getContext($context, "product")), "id"), "html", null, true);
-            echo ".jpg\" width=\"250px\">
-\t\t\t    \t\t<svg viewBox=\"0 0 180 320\" preserveAspectRatio=\"none\"><path d=\"M 180,160 0,218 0,0 180,0 z\"/></svg>
+            echo ".png\" width=\"250px\">
+\t\t\t    \t\t<svg viewBox=\"0 0 180 320\" preserveAspectRatio=\"none\"><path d=\"M180,160C180,160,0,218,0,218C0,218,0,0,0,0C0,0,180,0,180,0C180,0,180,160,180,160\"></path><desc>Created with Snap</desc><defs></defs></svg>
 \t\t\t\t\t\t<figcaption>
 \t\t\t\t\t\t\t<h2>";
             // line 14
@@ -62,7 +62,7 @@ class __TwigTemplate_11a14fd3e1cc58cb12d7103c679a7b7b4de5c42df936d8924f13ce4704f
 \t\t\t\t\t\t\t<p><b>Prix : </b>";
             // line 16
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["product"]) ? $context["product"] : $this->getContext($context, "product")), "price"), "html", null, true);
-            echo "</p>
+            echo " €</p>
 \t\t\t\t\t\t\t<button href=\"\" type=\"button\" class=\"btn btn-primary btn-lg btn-block\">Détails</button>
 \t\t\t\t\t\t</figcaption>
 \t\t\t\t\t</figure>
