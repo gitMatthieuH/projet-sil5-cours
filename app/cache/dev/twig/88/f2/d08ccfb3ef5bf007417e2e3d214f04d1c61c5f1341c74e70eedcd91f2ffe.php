@@ -7,16 +7,16 @@ class __TwigTemplate_88f2d08ccfb3ef5bf007417e2e3d214f04d1c61c5f1341c74e70eedcd91
     {
         parent::__construct($env);
 
-        $this->parent = $this->env->loadTemplate("::base.html.twig");
+        $this->parent = $this->env->loadTemplate("sil12VitrineBundle:BackOffice:layout.html.twig");
 
         $this->blocks = array(
-            'body' => array($this, 'block_body'),
+            'content' => array($this, 'block_content'),
         );
     }
 
     protected function doGetParent(array $context)
     {
-        return "::base.html.twig";
+        return "sil12VitrineBundle:BackOffice:layout.html.twig";
     }
 
     protected function doDisplay(array $context, array $blocks = array())
@@ -24,31 +24,38 @@ class __TwigTemplate_88f2d08ccfb3ef5bf007417e2e3d214f04d1c61c5f1341c74e70eedcd91
         $this->parent->display($context, array_merge($this->blocks, $blocks));
     }
 
-    // line 3
-    public function block_body($context, array $blocks = array())
+    // line 4
+    public function block_content($context, array $blocks = array())
     {
-        // line 4
-        echo "<h1>Product edit</h1>
-
-    ";
-        // line 6
+        // line 5
+        echo "<div class=\"col-md-6 col-md-offset-3\">
+\t<div class=\"panel panel-default\">
+\t    <div class=\"panel-heading\">
+\t        <h3 class=\"panel-title\">Edition du produit</h3>
+\t    </div>
+\t    <div class=\"panel-body\">
+\t\t    ";
+        // line 11
         echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["edit_form"]) ? $context["edit_form"] : $this->getContext($context, "edit_form")), 'form');
         echo "
 
-        <ul class=\"record_actions\">
-    <li>
-        <a href=\"";
-        // line 10
+\t        <ul class=\"record_actions\">
+\t\t\t    <li>
+\t\t\t        <a href=\"";
+        // line 15
         echo $this->env->getExtension('routing')->getPath("product");
         echo "\">
-            Back to the list
-        </a>
-    </li>
-    <li>";
-        // line 14
+\t\t\t            Retour à la\tliste
+\t\t\t        </a>
+\t\t\t    </li>
+\t\t\t    <li>";
+        // line 19
         echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["delete_form"]) ? $context["delete_form"] : $this->getContext($context, "delete_form")), 'form');
         echo "</li>
-</ul>
+\t\t\t</ul>
+\t    </div>
+\t</div>  
+</div>
 ";
     }
 
@@ -64,6 +71,6 @@ class __TwigTemplate_88f2d08ccfb3ef5bf007417e2e3d214f04d1c61c5f1341c74e70eedcd91
 
     public function getDebugInfo()
     {
-        return array (  49 => 14,  42 => 10,  35 => 6,  31 => 4,  28 => 3,);
+        return array (  53 => 19,  46 => 15,  39 => 11,  31 => 5,  28 => 4,);
     }
 }

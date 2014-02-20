@@ -2,7 +2,7 @@
 <html class="demo-1 no-js">
     <head>
     	<meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}Back Office !{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
         <link href="{{ asset('bundles/sil12vitrine/lib/bootstrap/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
@@ -14,7 +14,7 @@
             <div class="col-md-6 col-md-offset-3">
                 <div class="navbar-header">
                     <img src="{{ asset('bundles/sil12vitrine/images/') }}logo.png" height="45px"/ style="float:left;">
-                    <a class="navbar-brand" href="{{ path('sil12_vitrine_accueil') }}"> 
+                    <a class="navbar-brand" href="{{ path('sil12_vitrine_backoffice') }}"> 
                         HATme Back Office
                     </a>
                 </div>
@@ -40,8 +40,6 @@
             {% block content %}
             {% endblock %}
         </div>
-       
-        {#% include 'footer.html.twig' %#}
 
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="{{ asset('bundles/sil12vitrine/lib/jquery-1.10.2.min.js') }}"></script>

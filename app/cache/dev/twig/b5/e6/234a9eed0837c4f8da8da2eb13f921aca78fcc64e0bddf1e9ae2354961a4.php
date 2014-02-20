@@ -28,7 +28,16 @@ class __TwigTemplate_b5e6234a9eed0837c4f8da8da2eb13f921aca78fcc64e0bddf1e9ae2354
     public function block_content($context, array $blocks = array())
     {
         // line 4
-        echo "
+        echo "<div class=\"col-md-6 col-md-offset-3\">
+\t<div class=\"panel panel-default\">
+        <div class=\"panel-heading\">
+            <h3 class=\"panel-title\">Back Office</h3>
+        </div>
+        <div class=\"panel-body\">
+            Bienvenue sur le Back Office !
+        </div>
+    </div>
+</div>
 ";
     }
 

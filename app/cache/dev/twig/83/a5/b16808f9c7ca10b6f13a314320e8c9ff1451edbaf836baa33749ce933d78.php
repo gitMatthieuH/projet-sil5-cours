@@ -57,7 +57,7 @@ class __TwigTemplate_83a5b16808f9c7ca10b6f13a314320e8c9ff1451edbaf836baa33749ce9
         echo "logo.png\" height=\"45px\"/ style=\"float:left;\">
                     <a class=\"navbar-brand\" href=\"";
         // line 17
-        echo $this->env->getExtension('routing')->getPath("sil12_vitrine_accueil");
+        echo $this->env->getExtension('routing')->getPath("sil12_vitrine_backoffice");
         echo "\"> 
                         HATme Back Office
                     </a>
@@ -98,18 +98,15 @@ class __TwigTemplate_83a5b16808f9c7ca10b6f13a314320e8c9ff1451edbaf836baa33749ce9
         $this->displayBlock('content', $context, $blocks);
         // line 42
         echo "        </div>
-       
-        ";
-        // line 45
-        echo "
+
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src=\"";
-        // line 47
+        // line 45
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/sil12vitrine/lib/jquery-1.10.2.min.js"), "html", null, true);
         echo "\"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src=\"";
-        // line 49
+        // line 47
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/sil12vitrine/lib/bootstrap/bootstrap.min.js"), "html", null, true);
         echo "\"></script>
     </body>
@@ -119,7 +116,7 @@ class __TwigTemplate_83a5b16808f9c7ca10b6f13a314320e8c9ff1451edbaf836baa33749ce9
     // line 5
     public function block_title($context, array $blocks = array())
     {
-        echo "Welcome!";
+        echo "Back Office !";
     }
 
     // line 6
@@ -146,6 +143,6 @@ class __TwigTemplate_83a5b16808f9c7ca10b6f13a314320e8c9ff1451edbaf836baa33749ce9
 
     public function getDebugInfo()
     {
-        return array (  134 => 41,  131 => 40,  126 => 6,  120 => 5,  113 => 49,  108 => 47,  104 => 45,  100 => 42,  98 => 40,  85 => 30,  78 => 26,  74 => 25,  70 => 24,  60 => 17,  56 => 16,  47 => 10,  43 => 9,  39 => 8,  34 => 7,  32 => 6,  22 => 1,  31 => 4,  28 => 5,);
+        return array (  131 => 41,  128 => 40,  123 => 6,  117 => 5,  110 => 47,  105 => 45,  100 => 42,  98 => 40,  85 => 30,  78 => 26,  74 => 25,  70 => 24,  60 => 17,  56 => 16,  47 => 10,  43 => 9,  39 => 8,  34 => 7,  32 => 6,  22 => 1,  31 => 4,  28 => 5,);
     }
 }

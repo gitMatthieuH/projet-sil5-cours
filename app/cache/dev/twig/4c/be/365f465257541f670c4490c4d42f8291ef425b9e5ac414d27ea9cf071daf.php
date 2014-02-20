@@ -7,16 +7,16 @@ class __TwigTemplate_4cbe365f465257541f670c4490c4d42f8291ef425b9e5ac414d27ea9cf0
     {
         parent::__construct($env);
 
-        $this->parent = $this->env->loadTemplate("::base.html.twig");
+        $this->parent = $this->env->loadTemplate("sil12VitrineBundle:BackOffice:layout.html.twig");
 
         $this->blocks = array(
-            'body' => array($this, 'block_body'),
+            'content' => array($this, 'block_content'),
         );
     }
 
     protected function doGetParent(array $context)
     {
-        return "::base.html.twig";
+        return "sil12VitrineBundle:BackOffice:layout.html.twig";
     }
 
     protected function doDisplay(array $context, array $blocks = array())
@@ -25,59 +25,65 @@ class __TwigTemplate_4cbe365f465257541f670c4490c4d42f8291ef425b9e5ac414d27ea9cf0
     }
 
     // line 3
-    public function block_body($context, array $blocks = array())
+    public function block_content($context, array $blocks = array())
     {
         // line 4
-        echo "<h1>Orderhat</h1>
-
-    <table class=\"record_properties\">
-        <tbody>
-            <tr>
-                <th>Référence</th>
-                <td>";
-        // line 10
+        echo "<div class=\"col-md-6 col-md-offset-3\">
+    <div class=\"panel panel-default\">
+        <div class=\"panel-heading\">
+            <h3 class=\"panel-title\">Voir une commande</h3>
+        </div>
+        <div class=\"panel-body\">
+            <table class=\"record_properties\">
+                <tbody>
+                    <tr>
+                        <th>Référence</th>
+                        <td>";
+        // line 14
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["entity"]) ? $context["entity"] : $this->getContext($context, "entity")), "id"), "html", null, true);
         echo "</td>
-            </tr>
-            <tr>
-                <th>Order_date</th>
-                <td>";
-        // line 14
+                    </tr>
+                    <tr>
+                        <th>Order_date</th>
+                        <td>";
+        // line 18
         echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute((isset($context["entity"]) ? $context["entity"] : $this->getContext($context, "entity")), "orderdate"), "Y-m-d H:i:s"), "html", null, true);
         echo "</td>
-            </tr>
-            <tr>
-                <th>Validated</th>
-                <td>";
-        // line 18
+                    </tr>
+                    <tr>
+                        <th>Validé</th>
+                        <td>";
+        // line 22
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["entity"]) ? $context["entity"] : $this->getContext($context, "entity")), "validated"), "html", null, true);
         echo "</td>
-            </tr>
-        </tbody>
-    </table>
+                    </tr>
+                </tbody>
+            </table>
 
-        <ul class=\"record_actions\">
-    <li>
-        <a href=\"";
-        // line 25
+            <ul class=\"record_actions\">
+                <li>
+                    <a href=\"";
+        // line 29
         echo $this->env->getExtension('routing')->getPath("orderhat");
         echo "\">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href=\"";
-        // line 30
+                        Retour à la liste
+                    </a>
+                </li>
+                <li>
+                    <a href=\"";
+        // line 34
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("orderhat_edit", array("id" => $this->getAttribute((isset($context["entity"]) ? $context["entity"] : $this->getContext($context, "entity")), "id"))), "html", null, true);
         echo "\">
-            Edit
-        </a>
-    </li>
-    <li>";
-        // line 34
+                        Editer
+                    </a>
+                </li>
+                <li>";
+        // line 38
         echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["delete_form"]) ? $context["delete_form"] : $this->getContext($context, "delete_form")), 'form');
         echo "</li>
-</ul>
+            </ul>
+    </div>  
+</div>
 ";
     }
 
@@ -93,6 +99,6 @@ class __TwigTemplate_4cbe365f465257541f670c4490c4d42f8291ef425b9e5ac414d27ea9cf0
 
     public function getDebugInfo()
     {
-        return array (  78 => 34,  71 => 30,  63 => 25,  53 => 18,  46 => 14,  39 => 10,  31 => 4,  28 => 3,);
+        return array (  82 => 38,  75 => 34,  67 => 29,  57 => 22,  50 => 18,  43 => 14,  31 => 4,  28 => 3,);
     }
 }

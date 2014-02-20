@@ -52,7 +52,7 @@ class __TwigTemplate_dfe6afda52783f061e787a888f8c60afc255fe3d7e88be1b420567403da
                         <tr>
                             <th>Référence</th>
                             <th>Date de la commande</th>
-                            <th>Validated</th>
+                            <th>Validé</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -86,13 +86,13 @@ class __TwigTemplate_dfe6afda52783f061e787a888f8c60afc255fe3d7e88be1b420567403da
                                         <a href=\"";
             // line 30
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("orderhat_show", array("id" => $this->getAttribute((isset($context["entity"]) ? $context["entity"] : $this->getContext($context, "entity")), "id"))), "html", null, true);
-            echo "\">show</a>
+            echo "\">Voir</a>
                                     </li>
                                     <li>
                                         <a href=\"";
             // line 33
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("orderhat_edit", array("id" => $this->getAttribute((isset($context["entity"]) ? $context["entity"] : $this->getContext($context, "entity")), "id"))), "html", null, true);
-            echo "\">edit</a>
+            echo "\">Editer</a>
                                     </li>
                                 </ul>
                                 </td>
@@ -109,7 +109,7 @@ class __TwigTemplate_dfe6afda52783f061e787a888f8c60afc255fe3d7e88be1b420567403da
         // line 41
         echo $this->env->getExtension('routing')->getPath("orderhat_new");
         echo "\">
-                    Create a new entry
+                    Ajouter une commande
                 </a>
             </div>
         </div>

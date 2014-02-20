@@ -68,16 +68,23 @@ class __TwigTemplate_9f37f61bf0c0bac7ef28820062b803bb951f488060351895d5c1deafa36
         echo $this->env->getExtension('routing')->getPath("sil12_vitrine_contenuPanier");
         echo "\">
 \t\t\t\t\t\t\t<span class=\"glyphicon glyphicon-shopping-cart\"></span>
-\t\t\t\t\t\t\tPanier  ( ";
-        // line 31
-        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "user"), "name"), "html", null, true);
-        echo " )
-\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\tPanier 
+\t\t\t\t\t\t\t";
+        // line 32
+        if ($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : null), "user", array(), "any", false, true), "name", array(), "any", true, true)) {
+            // line 33
+            echo "\t\t\t\t\t\t\t( ";
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "user"), "name"), "html", null, true);
+            echo " )
+\t\t\t\t\t\t\t";
+        }
+        // line 35
+        echo "\t\t\t\t\t\t</a>
 \t\t\t\t\t</small>
 \t\t\t\t\t";
-        // line 34
+        // line 37
         if ($this->env->getExtension('security')->isGranted("ROLE_USER")) {
-            // line 35
+            // line 38
             echo "\t\t\t\t\t<a href=\"";
             echo $this->env->getExtension('routing')->getPath("logout");
             echo "\" class=\"btn btn-default\" role=\"button\">
@@ -85,7 +92,7 @@ class __TwigTemplate_9f37f61bf0c0bac7ef28820062b803bb951f488060351895d5c1deafa36
 \t\t\t\t\t</a>
 \t\t\t\t\t";
         } else {
-            // line 39
+            // line 42
             echo "\t\t\t\t\t<a href=\"";
             echo $this->env->getExtension('routing')->getPath("sil12_vitrine_auth");
             echo "\" class=\"btn btn-default\" role=\"button\">
@@ -93,27 +100,25 @@ class __TwigTemplate_9f37f61bf0c0bac7ef28820062b803bb951f488060351895d5c1deafa36
 \t\t\t\t\t</a>
 \t\t\t\t\t";
         }
-        // line 43
+        // line 46
         echo "\t\t\t\t\t
 \t\t\t\t</div>
 \t\t\t</div>
 \t\t\t<div class=\"hero-lead\">
 \t\t\t\t<a href=\"";
-        // line 47
+        // line 50
         echo $this->env->getExtension('routing')->getPath("sil12_vitrine_accueil");
         echo "\"><img src=\"";
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/sil12vitrine/img/"), "html", null, true);
         echo "logo.png\" height=\"45px\">
 \t\t\t\t<h2>HATme.com</h2></a>
 \t\t\t\t<p class=\"lead\">
-\t\t\t\t\tBienvenue sur le site qui vend plein de chapeaux 
+\t\t\t\t\tIn hats we trust since men lose their hair
 \t\t\t\t</p>
 \t\t\t</div>
 \t\t</div>
 \t</div>
-</div>
-
-";
+</div>";
     }
 
     public function getTemplateName()
@@ -128,6 +133,6 @@ class __TwigTemplate_9f37f61bf0c0bac7ef28820062b803bb951f488060351895d5c1deafa36
 
     public function getDebugInfo()
     {
-        return array (  103 => 47,  97 => 43,  89 => 39,  81 => 35,  79 => 34,  73 => 31,  68 => 29,  65 => 28,  56 => 22,  53 => 21,  51 => 20,  42 => 14,  39 => 13,  31 => 8,  28 => 7,  26 => 6,  19 => 1,);
+        return array (  110 => 50,  104 => 46,  96 => 42,  88 => 38,  86 => 37,  82 => 35,  76 => 33,  74 => 32,  68 => 29,  65 => 28,  56 => 22,  53 => 21,  51 => 20,  42 => 14,  39 => 13,  31 => 8,  28 => 7,  26 => 6,  19 => 1,);
     }
 }

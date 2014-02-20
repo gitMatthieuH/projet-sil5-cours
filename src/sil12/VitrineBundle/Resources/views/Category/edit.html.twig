@@ -1,16 +1,25 @@
-{% extends '::base.html.twig' %}
+{% extends "sil12VitrineBundle:BackOffice:layout.html.twig" %}
 
-{% block body -%}
-    <h1>Category edit</h1>
+{% block  content %}
+<div class="col-md-6 col-md-offset-3">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Liste des catégories</h3>
+        </div>
+        <div class="panel-body">
+            <h1>Edition de catégorie</h1>
 
-    {{ form(edit_form) }}
+    		{{ form(edit_form) }}
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('category') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+	        <ul class="record_actions">
+			    <li>
+			        <a href="{{ path('category') }}">
+			            Retour à liste
+			        </a>
+			    </li>
+				    <li>{{ form(delete_form) }}</li>
+			</ul>
+        </div>
+    </div>  
+</div>
 {% endblock %}

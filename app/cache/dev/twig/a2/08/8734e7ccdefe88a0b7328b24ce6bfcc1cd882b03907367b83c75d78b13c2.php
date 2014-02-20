@@ -38,7 +38,7 @@ class __TwigTemplate_a2088734e7ccdefe88a0b7328b24ce6bfcc1cd882b03907367b83c75d78
                 <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Name</th>
+                        <th>Nom</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -66,13 +66,13 @@ class __TwigTemplate_a2088734e7ccdefe88a0b7328b24ce6bfcc1cd882b03907367b83c75d78
                                 <a href=\"";
             // line 26
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("category_show", array("id" => $this->getAttribute((isset($context["entity"]) ? $context["entity"] : $this->getContext($context, "entity")), "id"))), "html", null, true);
-            echo "\">show</a>
+            echo "\">Voir</a>
                             </li>
                             <li>
                                 <a href=\"";
             // line 29
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("category_edit", array("id" => $this->getAttribute((isset($context["entity"]) ? $context["entity"] : $this->getContext($context, "entity")), "id"))), "html", null, true);
-            echo "\">edit</a>
+            echo "\">Editer</a>
                             </li>
                         </ul>
                         </td>
@@ -86,19 +86,19 @@ class __TwigTemplate_a2088734e7ccdefe88a0b7328b24ce6bfcc1cd882b03907367b83c75d78
         echo "                </tbody>
             </table>
 
-                <ul>
+            <ul>
                 <li>
                     <a href=\"";
         // line 40
         echo $this->env->getExtension('routing')->getPath("category_new");
         echo "\">
-                        Create a new entry
+                        Ajouter une catégorie
                     </a>
                 </li>
             </ul>
         </div>
     </div>  
-
+</div>
 ";
     }
 

@@ -11,7 +11,7 @@
                 <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Name</th>
+                        <th>Nom</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -23,10 +23,10 @@
                         <td>
                         <ul>
                             <li>
-                                <a href="{{ path('category_show', { 'id': entity.id }) }}">show</a>
+                                <a href="{{ path('category_show', { 'id': entity.id }) }}">Voir</a>
                             </li>
                             <li>
-                                <a href="{{ path('category_edit', { 'id': entity.id }) }}">edit</a>
+                                <a href="{{ path('category_edit', { 'id': entity.id }) }}">Editer</a>
                             </li>
                         </ul>
                         </td>
@@ -35,14 +35,14 @@
                 </tbody>
             </table>
 
-                <ul>
+            <ul>
                 <li>
                     <a href="{{ path('category_new') }}">
-                        Create a new entry
+                        Ajouter une catégorie
                     </a>
                 </li>
             </ul>
         </div>
     </div>  
-
+</div>
 {% endblock %}

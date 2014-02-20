@@ -14,7 +14,7 @@
                         <tr>
                             <th>Référence</th>
                             <th>Date de la commande</th>
-                            <th>Validated</th>
+                            <th>Validé</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -27,10 +27,10 @@
                                 <td>
                                 <ul>
                                     <li>
-                                        <a href="{{ path('orderhat_show', { 'id': entity.id }) }}">show</a>
+                                        <a href="{{ path('orderhat_show', { 'id': entity.id }) }}">Voir</a>
                                     </li>
                                     <li>
-                                        <a href="{{ path('orderhat_edit', { 'id': entity.id }) }}">edit</a>
+                                        <a href="{{ path('orderhat_edit', { 'id': entity.id }) }}">Editer</a>
                                     </li>
                                 </ul>
                                 </td>
@@ -39,7 +39,7 @@
                     </tbody>
                 </table>
                 <a href="{{ path('orderhat_new') }}">
-                    Create a new entry
+                    Ajouter une commande
                 </a>
             </div>
         </div>

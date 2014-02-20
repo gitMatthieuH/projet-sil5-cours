@@ -34,90 +34,91 @@ class __TwigTemplate_108d4e3b9944eef9888c23eb2b0c962d7c523820bd4467a9810576f89db
             <h3 class=\"panel-title\">Liste des produits</h3>
         </div>
         <div class=\"panel-body\">
-                <table class=\"records_list\">
-                    <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Name</th>
-                            <th>Price</th>
-                            <th>Description</th>
-                            <th>Label</th>
-                            <th>Stock</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    ";
+            <table class=\"records_list\">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nom</th>
+                        <th>Prix</th>
+                        <th>Description</th>
+                        <th>Label</th>
+                        <th>Stock</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                ";
         // line 23
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable((isset($context["entities"]) ? $context["entities"] : $this->getContext($context, "entities")));
         foreach ($context['_seq'] as $context["_key"] => $context["entity"]) {
             // line 24
-            echo "                        <tr>
-                            <td><a href=\"";
+            echo "                    <tr>
+                        <td><a href=\"";
             // line 25
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("product_show", array("id" => $this->getAttribute((isset($context["entity"]) ? $context["entity"] : $this->getContext($context, "entity")), "id"))), "html", null, true);
             echo "\">";
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["entity"]) ? $context["entity"] : $this->getContext($context, "entity")), "id"), "html", null, true);
             echo "</a></td>
-                            <td>";
+                        <td>";
             // line 26
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["entity"]) ? $context["entity"] : $this->getContext($context, "entity")), "name"), "html", null, true);
             echo "</td>
-                            <td>";
+                        <td>";
             // line 27
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["entity"]) ? $context["entity"] : $this->getContext($context, "entity")), "price"), "html", null, true);
             echo "</td>
-                            <td>";
+                        <td>";
             // line 28
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["entity"]) ? $context["entity"] : $this->getContext($context, "entity")), "description"), "html", null, true);
             echo "</td>
-                            <td>";
+                        <td>";
             // line 29
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["entity"]) ? $context["entity"] : $this->getContext($context, "entity")), "label"), "html", null, true);
             echo "</td>
-                            <td>";
+                        <td>";
             // line 30
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["entity"]) ? $context["entity"] : $this->getContext($context, "entity")), "stock"), "html", null, true);
             echo "</td>
-                            <td>
-                            <ul>
-                                <li>
-                                    <a href=\"";
+                        <td>
+                        <ul>
+                            <li>
+                                <a href=\"";
             // line 34
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("product_show", array("id" => $this->getAttribute((isset($context["entity"]) ? $context["entity"] : $this->getContext($context, "entity")), "id"))), "html", null, true);
-            echo "\">show</a>
-                                </li>
-                                <li>
-                                    <a href=\"";
+            echo "\">Voir</a>
+                            </li>
+                            <li>
+                                <a href=\"";
             // line 37
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("product_edit", array("id" => $this->getAttribute((isset($context["entity"]) ? $context["entity"] : $this->getContext($context, "entity")), "id"))), "html", null, true);
-            echo "\">edit</a>
-                                </li>
-                            </ul>
-                            </td>
-                        </tr>
-                    ";
+            echo "\">Editer</a>
+                            </li>
+                        </ul>
+                        </td>
+                    </tr>
+                ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['entity'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
         // line 43
-        echo "                    </tbody>
-                </table>
+        echo "                </tbody>
+            </table>
 
-                    <ul>
-                    <li>
-                        <a href=\"";
+            <ul>
+                <li>
+                    <a href=\"";
         // line 48
         echo $this->env->getExtension('routing')->getPath("product_new");
         echo "\">
-                            Create a new entry
-                        </a>
-                    </li>
+                        Ajouter un produit
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>  
-
+</div>
 ";
     }
 

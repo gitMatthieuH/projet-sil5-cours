@@ -1,36 +1,42 @@
-{% extends '::base.html.twig' %}
+{% extends "sil12VitrineBundle:BackOffice:layout.html.twig" %}
 
-{% block body -%}
-    <h1>Orderhat</h1>
+{% block content %}
+<div class="col-md-6 col-md-offset-3">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Voir une commande</h3>
+        </div>
+        <div class="panel-body">
+            <table class="record_properties">
+                <tbody>
+                    <tr>
+                        <th>Référence</th>
+                        <td>{{ entity.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Order_date</th>
+                        <td>{{ entity.orderdate|date('Y-m-d H:i:s') }}</td>
+                    </tr>
+                    <tr>
+                        <th>Validé</th>
+                        <td>{{ entity.validated }}</td>
+                    </tr>
+                </tbody>
+            </table>
 
-    <table class="record_properties">
-        <tbody>
-            <tr>
-                <th>Référence</th>
-                <td>{{ entity.id }}</td>
-            </tr>
-            <tr>
-                <th>Order_date</th>
-                <td>{{ entity.orderdate|date('Y-m-d H:i:s') }}</td>
-            </tr>
-            <tr>
-                <th>Validated</th>
-                <td>{{ entity.validated }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('orderhat') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('orderhat_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+            <ul class="record_actions">
+                <li>
+                    <a href="{{ path('orderhat') }}">
+                        Retour à la liste
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path('orderhat_edit', { 'id': entity.id }) }}">
+                        Editer
+                    </a>
+                </li>
+                <li>{{ form(delete_form) }}</li>
+            </ul>
+    </div>  
+</div>
 {% endblock %}

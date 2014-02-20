@@ -7,16 +7,16 @@ class __TwigTemplate_bd96a2fcf2946635d920d780e9970ef108bcf8f7bddc4cbec30268b2907
     {
         parent::__construct($env);
 
-        $this->parent = $this->env->loadTemplate("::base.html.twig");
+        $this->parent = $this->env->loadTemplate("sil12VitrineBundle:BackOffice:layout.html.twig");
 
         $this->blocks = array(
-            'body' => array($this, 'block_body'),
+            'content' => array($this, 'block_content'),
         );
     }
 
     protected function doGetParent(array $context)
     {
-        return "::base.html.twig";
+        return "sil12VitrineBundle:BackOffice:layout.html.twig";
     }
 
     protected function doDisplay(array $context, array $blocks = array())
@@ -25,30 +25,36 @@ class __TwigTemplate_bd96a2fcf2946635d920d780e9970ef108bcf8f7bddc4cbec30268b2907
     }
 
     // line 3
-    public function block_body($context, array $blocks = array())
+    public function block_content($context, array $blocks = array())
     {
         // line 4
-        echo "<h1>Orderhat edit</h1>
-
-    ";
-        // line 6
+        echo "<div class=\"col-md-6 col-md-offset-3\">
+\t<div class=\"panel panel-default\">
+\t    <div class=\"panel-heading\">
+\t        <h3 class=\"panel-title\">Edition d'une commande</h3>
+\t    </div>
+\t    <div class=\"panel-body\">
+\t\t    ";
+        // line 10
         echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["edit_form"]) ? $context["edit_form"] : $this->getContext($context, "edit_form")), 'form');
         echo "
 
-        <ul class=\"record_actions\">
-    <li>
-        <a href=\"";
-        // line 10
+\t\t    <ul class=\"record_actions\">
+\t\t\t    <li>
+\t\t\t        <a href=\"";
+        // line 14
         echo $this->env->getExtension('routing')->getPath("orderhat");
         echo "\">
-            Back to the list
-        </a>
-    </li>
-    <li>";
-        // line 14
+\t\t\t            Retour à la liste
+\t\t\t        </a>
+\t\t\t    </li>
+\t\t\t    <li>";
+        // line 18
         echo         $this->env->getExtension('form')->renderer->renderBlock((isset($context["delete_form"]) ? $context["delete_form"] : $this->getContext($context, "delete_form")), 'form');
         echo "</li>
-</ul>
+\t\t\t</ul>
+\t</div>  
+</div>
 ";
     }
 
@@ -64,6 +70,6 @@ class __TwigTemplate_bd96a2fcf2946635d920d780e9970ef108bcf8f7bddc4cbec30268b2907
 
     public function getDebugInfo()
     {
-        return array (  49 => 14,  42 => 10,  35 => 6,  31 => 4,  28 => 3,);
+        return array (  53 => 18,  46 => 14,  39 => 10,  31 => 4,  28 => 3,);
     }
 }
