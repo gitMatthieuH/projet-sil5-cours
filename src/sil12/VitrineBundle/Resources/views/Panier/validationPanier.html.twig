@@ -4,7 +4,7 @@
 <div class="col-md-6 col-md-offset-3">
 	<div class="panel panel-default">
 		<div class="panel-heading">
-			<h3 class="panel-title">Récapitulatif de votre commande (ref#{{orderHat.id}}) d'un total de {{totalPrice}} € :</h3>
+			<h3 class="panel-title">Récapitulatif de votre commande (ref #{{orderHat.id}}) d'un total de {{totalPrice}} € :</h3>
 		</div>
 		<div class="panel-body">
 			<table class="table table-striped">
@@ -20,10 +20,10 @@
 			    <tbody>
 			    	{% for elem in panier %}
 						<tr>
-							<td><img src="{{ asset('bundles/sil12vitrine/images/') }}{{ elem.product.id }}.jpg" width="250px"></td>
+							<td><img src="{{ asset('bundles/sil12vitrine/images/') }}{{ elem.product.id }}.png" width="250px"></td>
 							<td>{{ elem.product.name }}</td>
 							<td>{{ elem.product.description }}</td>
-							<td>{{ elem.product.price }}</td>
+							<td>{{ elem.product.price }} €</td>
 							<td>{{ elem.qte }}</td>
 						</tr>
 					{% endfor %}

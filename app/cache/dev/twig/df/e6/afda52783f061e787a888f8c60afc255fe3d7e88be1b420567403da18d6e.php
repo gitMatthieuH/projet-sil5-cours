@@ -7,7 +7,7 @@ class __TwigTemplate_dfe6afda52783f061e787a888f8c60afc255fe3d7e88be1b420567403da
     {
         parent::__construct($env);
 
-        $this->parent = $this->env->loadTemplate("sil12VitrineBundle::layout.html.twig");
+        $this->parent = $this->env->loadTemplate("sil12VitrineBundle:BackOffice:layout.html.twig");
 
         $this->blocks = array(
             'content' => array($this, 'block_content'),
@@ -17,7 +17,7 @@ class __TwigTemplate_dfe6afda52783f061e787a888f8c60afc255fe3d7e88be1b420567403da
 
     protected function doGetParent(array $context)
     {
-        return "sil12VitrineBundle::layout.html.twig";
+        return "sil12VitrineBundle:BackOffice:layout.html.twig";
     }
 
     protected function doDisplay(array $context, array $blocks = array())
@@ -25,23 +25,23 @@ class __TwigTemplate_dfe6afda52783f061e787a888f8c60afc255fe3d7e88be1b420567403da
         $this->parent->display($context, array_merge($this->blocks, $blocks));
     }
 
-    // line 3
+    // line 4
     public function block_content($context, array $blocks = array())
     {
-        // line 4
+        // line 5
         echo "<div class=\"col-md-6 col-md-offset-3\">
     ";
-        // line 5
+        // line 6
         $this->displayBlock('body', $context, $blocks);
-        // line 46
+        // line 47
         echo "</div>
 ";
     }
 
-    // line 5
+    // line 6
     public function block_body($context, array $blocks = array())
     {
-        // line 6
+        // line 7
         echo "        <div class=\"panel panel-default\">
             <div class=\"panel-heading\">
                 <h3 class=\"panel-title\">Mes commandes</h3>
@@ -58,39 +58,39 @@ class __TwigTemplate_dfe6afda52783f061e787a888f8c60afc255fe3d7e88be1b420567403da
                     </thead>
                     <tbody>
                         ";
-        // line 21
+        // line 22
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable((isset($context["entities"]) ? $context["entities"] : $this->getContext($context, "entities")));
         foreach ($context['_seq'] as $context["_key"] => $context["entity"]) {
-            // line 22
+            // line 23
             echo "                            <tr>
                                 <td><a href=\"";
-            // line 23
+            // line 24
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("orderhat_show", array("id" => $this->getAttribute((isset($context["entity"]) ? $context["entity"] : $this->getContext($context, "entity")), "id"))), "html", null, true);
             echo "\">";
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["entity"]) ? $context["entity"] : $this->getContext($context, "entity")), "id"), "html", null, true);
             echo "</a></td>
                                 <td>";
-            // line 24
+            // line 25
             if ($this->getAttribute((isset($context["entity"]) ? $context["entity"] : $this->getContext($context, "entity")), "orderdate")) {
                 echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute((isset($context["entity"]) ? $context["entity"] : $this->getContext($context, "entity")), "orderdate"), "Y-m-d H:i:s"), "html", null, true);
             }
             echo "</td>
                                 <td>";
-            // line 25
+            // line 26
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["entity"]) ? $context["entity"] : $this->getContext($context, "entity")), "validated"), "html", null, true);
             echo "</td>
                                 <td>
                                 <ul>
                                     <li>
                                         <a href=\"";
-            // line 29
+            // line 30
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("orderhat_show", array("id" => $this->getAttribute((isset($context["entity"]) ? $context["entity"] : $this->getContext($context, "entity")), "id"))), "html", null, true);
             echo "\">show</a>
                                     </li>
                                     <li>
                                         <a href=\"";
-            // line 32
+            // line 33
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("orderhat_edit", array("id" => $this->getAttribute((isset($context["entity"]) ? $context["entity"] : $this->getContext($context, "entity")), "id"))), "html", null, true);
             echo "\">edit</a>
                                     </li>
@@ -102,11 +102,11 @@ class __TwigTemplate_dfe6afda52783f061e787a888f8c60afc255fe3d7e88be1b420567403da
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['entity'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 38
+        // line 39
         echo "                    </tbody>
                 </table>
                 <a href=\"";
-        // line 40
+        // line 41
         echo $this->env->getExtension('routing')->getPath("orderhat_new");
         echo "\">
                     Create a new entry
@@ -128,6 +128,6 @@ class __TwigTemplate_dfe6afda52783f061e787a888f8c60afc255fe3d7e88be1b420567403da
 
     public function getDebugInfo()
     {
-        return array (  110 => 40,  106 => 38,  94 => 32,  88 => 29,  81 => 25,  75 => 24,  69 => 23,  66 => 22,  62 => 21,  45 => 6,  42 => 5,  37 => 46,  35 => 5,  32 => 4,  29 => 3,);
+        return array (  110 => 41,  106 => 39,  94 => 33,  88 => 30,  81 => 26,  75 => 25,  69 => 24,  66 => 23,  62 => 22,  45 => 7,  42 => 6,  37 => 47,  35 => 6,  32 => 5,  29 => 4,);
     }
 }

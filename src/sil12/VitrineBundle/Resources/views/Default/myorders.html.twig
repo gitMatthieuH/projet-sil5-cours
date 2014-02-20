@@ -1,0 +1,48 @@
+
+{% extends "sil12VitrineBundle::layout.html.twig" %}
+
+{% block content %}
+<div class="col-md-6 col-md-offset-3">
+    {% block body %}
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Mes commandes</h3>
+            </div>
+            <div class="panel-body">
+                <table class="records_list">
+                    <thead>
+                        <tr>
+                            <th>Référence</th>
+                            <th>Date de la commande</th>
+                            <th>Validated</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for entity in entities %}
+                            <tr>
+                                <td><a href="{{ path('orderhat_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                                <td>{% if entity.orderdate %}{{ entity.orderdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                                <td>{{ entity.validated }}</td>
+                                <td>
+                                <ul>
+                                    <li>
+                                        <a href="{{ path('orderhat_show', { 'id': entity.id }) }}">show</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ path('orderhat_edit', { 'id': entity.id }) }}">edit</a>
+                                    </li>
+                                </ul>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <a href="{{ path('orderhat_new') }}">
+                    Create a new entry
+                </a>
+            </div>
+        </div>
+    {% endblock %}
+</div>
+{% endblock %}

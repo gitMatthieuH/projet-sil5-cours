@@ -22,11 +22,8 @@ class OrderhatController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $session = $this->getRequest()->getSession();
-
-        $client = $this->getUser();
-
-        $entities = $em->getRepository('sil12VitrineBundle:Orderhat')->findByClient($client);
+        
+        $entities = $em->getRepository('sil12VitrineBundle:Orderhat')->findAll();
 
         return $this->render('sil12VitrineBundle:Orderhat:index.html.twig', array(
             'entities' => $entities,

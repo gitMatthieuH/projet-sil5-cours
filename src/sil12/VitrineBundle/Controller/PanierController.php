@@ -75,9 +75,6 @@ class PanierController extends Controller
         return $this->redirect($this->generateUrl('sil12_vitrine_contenuPanier'));
     }
 
-    
-
-
     public function validationPanierAction() {
         $session = $this->getRequest()->getSession();
         $client = $session->get(SecurityContext::LAST_USERNAME);
@@ -90,28 +87,13 @@ class PanierController extends Controller
         $em = $this->getDoctrine()->getManager();
         $em->persist($orderHat);
 
-
-        $type = null;
-        $id = null;
-
-
         $panier = $session->get('panier', new Panier());
-
-        if ($type == "add") {
-            $panier->addArticle($id,$nb);    
-        } else if ($type == "del") {
-            $panier->removeArticle($id,$nb);
-        }
-
-        $session->set('panier', $panier);
-
         $data = $panier->getContenu();
         
 
         $dataToSend = array();
         $totalPrice = 0;
         foreach ($data as $key => $product) {
-
             $chapeau = $em->getRepository('sil12VitrineBundle:Product')
                         ->find($key);
             $dataToSend[$key] = array('qte' => $product, 'product' => $chapeau);
@@ -122,13 +104,12 @@ class PanierController extends Controller
             $orderLine->setPrice($chapeau->getPrice());
             $totalPrice += $chapeau->getPrice() * $product;
             $orderLine->setQuantity($product);
-            $em->persist($orderLine);
-            
+            $em->persist($orderLine);  
         }
 
         $panier->viderPanier();
         $em->flush();
-
+        
         return $this->render('sil12VitrineBundle:Panier:validationPanier.html.twig',
             array('panier' => $dataToSend, 'orderHat' => $orderHat, 'totalPrice' => $totalPrice)
         );

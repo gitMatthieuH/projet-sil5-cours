@@ -252,8 +252,8 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         }
 
         // sil12_vitrine_accueil
-        if (0 === strpos($pathinfo, '/accueil') && preg_match('#^/accueil(?:/(?P<name>[^/]++))?$#s', $pathinfo, $matches)) {
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'sil12_vitrine_accueil')), array (  '_controller' => 'sil12\\VitrineBundle\\Controller\\DefaultController::indexAction',  'name' => 'visiteur',));
+        if ($pathinfo === '/accueil') {
+            return array (  '_controller' => 'sil12\\VitrineBundle\\Controller\\DefaultController::indexAction',  '_route' => 'sil12_vitrine_accueil',);
         }
 
         // sil12_vitrine_mentions
@@ -280,6 +280,15 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'sil12_vitrine_chapeau')), array (  '_controller' => 'sil12\\VitrineBundle\\Controller\\DefaultController::chapeauAction',  'nb' => 1,));
             }
 
+        }
+
+        // sil12_vitrine_myorders
+        if (rtrim($pathinfo, '/') === '') {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'sil12_vitrine_myorders');
+            }
+
+            return array (  '_controller' => 'sil12\\VitrineBundle\\Controller\\DefaultController::myOrdersAction',  '_route' => 'sil12_vitrine_myorders',);
         }
 
         if (0 === strpos($pathinfo, '/panier')) {
@@ -506,6 +515,15 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 }
 
                 return array (  '_controller' => 'sil12\\VitrineBundle\\Controller\\OrderhatController::indexAction',  '_route' => 'orderhat',);
+            }
+
+            // orderhat_all
+            if (rtrim($pathinfo, '/') === '/orderhat') {
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($pathinfo.'/', 'orderhat_all');
+                }
+
+                return array (  '_controller' => 'sil12\\VitrineBundle\\Controller\\OrderhatController::indexAction',  'type' => 'all',  '_route' => 'orderhat_all',);
             }
 
             // orderhat_show

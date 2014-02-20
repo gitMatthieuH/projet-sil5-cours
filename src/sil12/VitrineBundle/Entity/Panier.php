@@ -6,7 +6,7 @@ use sil12\VitrineBundle\Entity\Product;
 
 class Panier {
 	private $contenu;
-	//Tableau - contenu[i] = quantite d'article d’id=i dans le panier)
+
 	public function __construct() {
 		$this->contenu = array();
 	}

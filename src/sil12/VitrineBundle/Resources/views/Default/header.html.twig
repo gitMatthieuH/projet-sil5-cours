@@ -19,7 +19,7 @@
 				<div class="pull-right">
 					{% if is_granted('ROLE_USER') %}
 					<small>
-						<a href="{{ path('orderhat') }}">
+						<a href="{{ path('sil12_vitrine_myorders') }}">
 							<span class="glyphicon glyphicon-list"></span>
 							Mes commandes
 						</a>
@@ -28,7 +28,7 @@
 					<small>
 						<a href="{{ path('sil12_vitrine_contenuPanier') }}">
 							<span class="glyphicon glyphicon-shopping-cart"></span>
-							Panier
+							Panier  ( {{ app.user.name }} )
 						</a>
 					</small>
 					{% if (is_granted('ROLE_USER')) %}

@@ -1,6 +1,6 @@
 sil12_vitrine_accueil:
-    pattern:  /accueil/{name}
-    defaults: { _controller: sil12VitrineBundle:Default:index, name: visiteur }
+    pattern:  /accueil
+    defaults: { _controller: sil12VitrineBundle:Default:index }
 
 sil12_vitrine_mentions:
     pattern: /mentions
@@ -20,7 +20,9 @@ sil12_vitrine_chapeau:
 
 
 
-
+sil12_vitrine_myorders:
+    pattern:  /
+    defaults: { _controller: "sil12VitrineBundle:Default:myOrders" }
 
 sil12_vitrine_contenuPanier:
     pattern: /panier

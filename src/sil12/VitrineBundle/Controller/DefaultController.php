@@ -7,7 +7,7 @@ use sil12\VitrineBundle\Entity\Panier;
 
 class DefaultController extends Controller
 {
-    public function indexAction($name)
+    public function indexAction()
     {
         $mostBought = $this->getDoctrine()
             ->getRepository('sil12VitrineBundle:OrderLine')
@@ -18,7 +18,7 @@ class DefaultController extends Controller
             ->lastAdd(3);
 
         return $this->render('sil12VitrineBundle:Default:index.html.twig', 
-            array('name' => $name, 'mostBought' => $mostBought, 'lastAdd' => $lastAdd)
+            array('mostBought' => $mostBought, 'lastAdd' => $lastAdd)
         );
     }
 
@@ -109,6 +109,20 @@ class DefaultController extends Controller
         }
 
         // faire quelque chose... Par exemple envoyer l'objet $product à un template
+    }
+
+    public function myOrdersAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $session = $this->getRequest()->getSession();
+
+        $client = $this->getUser();
+
+        $entities = $em->getRepository('sil12VitrineBundle:Orderhat')->findByClient($client);
+
+        return $this->render('sil12VitrineBundle:Default:myorders.html.twig', array(
+            'entities' => $entities,
+        ));
     }
 
 }

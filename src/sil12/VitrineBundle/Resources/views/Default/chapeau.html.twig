@@ -8,18 +8,20 @@
 		</div>
 		<div class="panel-body">
 			<div class="row">
+				<div style="text-align:center;"><h3 style="font-family:'Lobster';font-size:4rem;">{{ chapeau.name }}</h3></div>
 				<div class="col-md-8">
 					{% if chapeau.stock <= 0 %}
 						<div class="alert alert-danger">Cet article n'est plus en stock !</div>
 					{% endif %}
 					<a href="#" class="thumbnail"><img src="{{ asset('bundles/sil12vitrine/images/') }}{{ chapeau.id }}.png" width="650px"></a>
-					<div class="caption">
-						<h3>{{ chapeau.name }}</h3>
-						<p>{{ chapeau.description }}</p>
-						<p><b>Prix : </b>{{ chapeau.price }}€</p>
-					</div>
+					
 				</div>
 				<div class="col-md-4">
+					<div class="caption">
+						
+						<p>{{ chapeau.description }}</p>
+						<p><b>Prix : </b>{{ chapeau.price }} €</p>
+					</div>
 					<a href="{{ path('sil12_vitrine_addProduct', { 'id': chapeau.id, 'qte': 1}) }}" type="button" class="btn btn-primary btn-lg btn-block" {% if chapeau.stock <= 0 %}disabled{% endif %}>Ajouter au panier</a>
 
 				</div>

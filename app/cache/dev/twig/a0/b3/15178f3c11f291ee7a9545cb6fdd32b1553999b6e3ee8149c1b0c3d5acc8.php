@@ -76,7 +76,7 @@ class __TwigTemplate_a0b315178f3c11f291ee7a9545cb6fdd32b1553999b6e3ee8149c1b0c3d
 \t\t\t\t\t\t\t<td>";
                 // line 29
                 echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["elem"]) ? $context["elem"] : $this->getContext($context, "elem")), "product"), "price"), "html", null, true);
-                echo "</td>
+                echo " €</td>
 \t\t\t\t\t\t\t<td style=\"text-align:center\">
 \t\t\t\t\t\t\t\t<a href=\"";
                 // line 31

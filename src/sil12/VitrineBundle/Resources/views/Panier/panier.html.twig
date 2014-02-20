@@ -26,7 +26,7 @@
 							<td><img src="{{ asset('bundles/sil12vitrine/images/') }}{{ elem.product.id }}.png" width="250px"></td>
 							<td>{{ elem.product.name }}</td>
 							<td>{{ elem.product.description }}</td>
-							<td>{{ elem.product.price }}</td>
+							<td>{{ elem.product.price }} €</td>
 							<td style="text-align:center">
 								<a href="{{ path('sil12_vitrine_deleteProduct', { 'id': elem.product.id, 'qte': 1 }) }}" type="button" class="btn btn-default btn-xs">-</a>
 								{{ elem.qte }}

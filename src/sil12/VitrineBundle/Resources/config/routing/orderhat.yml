@@ -2,6 +2,10 @@ orderhat:
     pattern:  /
     defaults: { _controller: "sil12VitrineBundle:Orderhat:index" }
 
+orderhat_all:
+    pattern:  /
+    defaults: { _controller: "sil12VitrineBundle:Orderhat:index", type: "all"  }
+
 orderhat_show:
     pattern:  /{id}/show
     defaults: { _controller: "sil12VitrineBundle:Orderhat:show" }

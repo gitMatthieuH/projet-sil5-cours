@@ -31,7 +31,7 @@ class __TwigTemplate_1628ff6f7c7156bd0e927b2699aac5baaddd2eb393a77c5b2bffc121938
         echo "<div class=\"col-md-6 col-md-offset-3\">
 \t<div class=\"panel panel-default\">
 \t\t<div class=\"panel-heading\">
-\t\t\t<h3 class=\"panel-title\">Récapitulatif de votre commande (ref#";
+\t\t\t<h3 class=\"panel-title\">Récapitulatif de votre commande (ref #";
         // line 7
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["orderHat"]) ? $context["orderHat"] : $this->getContext($context, "orderHat")), "id"), "html", null, true);
         echo ") d'un total de ";
@@ -61,7 +61,7 @@ class __TwigTemplate_1628ff6f7c7156bd0e927b2699aac5baaddd2eb393a77c5b2bffc121938
             // line 23
             echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/sil12vitrine/images/"), "html", null, true);
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["elem"]) ? $context["elem"] : $this->getContext($context, "elem")), "product"), "id"), "html", null, true);
-            echo ".jpg\" width=\"250px\"></td>
+            echo ".png\" width=\"250px\"></td>
 \t\t\t\t\t\t\t<td>";
             // line 24
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["elem"]) ? $context["elem"] : $this->getContext($context, "elem")), "product"), "name"), "html", null, true);
@@ -73,7 +73,7 @@ class __TwigTemplate_1628ff6f7c7156bd0e927b2699aac5baaddd2eb393a77c5b2bffc121938
 \t\t\t\t\t\t\t<td>";
             // line 26
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["elem"]) ? $context["elem"] : $this->getContext($context, "elem")), "product"), "price"), "html", null, true);
-            echo "</td>
+            echo " €</td>
 \t\t\t\t\t\t\t<td>";
             // line 27
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["elem"]) ? $context["elem"] : $this->getContext($context, "elem")), "qte"), "html", null, true);

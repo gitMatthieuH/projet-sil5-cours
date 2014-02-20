@@ -2,7 +2,6 @@
 
 {% block content %}
 <div class="col-md-6 col-md-offset-3 home">
-	{{ name }} 
 	<div class="panel panel-default">
 		<div class="panel-heading">
 			<h3 class="panel-title">Produits phares</h3>
@@ -12,7 +11,9 @@
   			{% for ol in mostBought %}
 				<div class="col-sm-6 col-md-4">
 					<div class="thumbnail">
-			    		<img src="{{ asset('bundles/sil12vitrine/images/') }}{{ ol.0.product.id }}.png" width="100px">
+						<a href="{{ path('sil12_vitrine_chapeau', { 'id': ol.0.product.id }) }}" title="Description">
+			    			<img src="{{ asset('bundles/sil12vitrine/images/') }}{{ ol.0.product.id }}.png" width="100px">
+			    		</a>
 			    		<div class="caption">
 							<p class="title_block">
 								<a href="{{ path('sil12_vitrine_chapeau', { 'id': ol.0.product.id }) }}" title="Description">{{ ol.0.product.name }}
@@ -28,7 +29,7 @@
 								<p class="price_container">
 									<span class="price">{{ ol.0.product.price }} €</span>
 								</p>						
-								<a class="add_to_cart_button" href="{{ path('sil12_vitrine_contenuPanier', { 'id': ol.0.product.id, 'type': 'add'}) }}" title="Ajouter au panier">
+								<a class="add_to_cart_button" href="{{ path('sil12_vitrine_addProduct', { 'id': ol.0.product.id, 'qte': 1}) }}" title="Ajouter au panier">
 									Ajouter au panier
 								</a>
 							</div>
@@ -69,7 +70,7 @@
 								<p class="price_container">
 									<span class="price">{{ product.price }} €</span>
 								</p>						
-								<a class="add_to_cart_button"  href="{{ path('sil12_vitrine_contenuPanier', { 'id': product.id, 'type': 'add'}) }}" title="Ajouter au panier">
+								<a class="add_to_cart_button"  href="{{ path('sil12_vitrine_addProduct', { 'id': product.id, 'qte': 1}) }}" title="Ajouter au panier">
 									Ajouter au panier
 								</a>
 							</div>
