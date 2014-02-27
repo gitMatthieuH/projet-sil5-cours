@@ -76,14 +76,14 @@ class __TwigTemplate_a0b315178f3c11f291ee7a9545cb6fdd32b1553999b6e3ee8149c1b0c3d
 \t\t\t\t\t\t\t
 \t\t\t\t\t\t\t";
                 // line 30
-                if ((twig_length_filter($this->env, (isset($context["proms"]) ? $context["proms"] : $this->getContext($context, "proms"))) > 0)) {
+                if ((twig_length_filter($this->env, $this->getAttribute((isset($context["elem"]) ? $context["elem"] : $this->getContext($context, "elem")), "proms")) > 0)) {
                     // line 31
                     echo "\t\t\t\t\t\t\t\t";
                     $context["price"] = $this->getAttribute($this->getAttribute((isset($context["elem"]) ? $context["elem"] : $this->getContext($context, "elem")), "product"), "price");
                     // line 32
                     echo "\t\t\t\t\t\t\t\t";
                     $context['_parent'] = (array) $context;
-                    $context['_seq'] = twig_ensure_traversable((isset($context["proms"]) ? $context["proms"] : $this->getContext($context, "proms")));
+                    $context['_seq'] = twig_ensure_traversable($this->getAttribute((isset($context["elem"]) ? $context["elem"] : $this->getContext($context, "elem")), "proms"));
                     foreach ($context['_seq'] as $context["_key"] => $context["prom"]) {
                         // line 33
                         echo "\t\t\t\t\t\t\t\t\t";

@@ -296,13 +296,17 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        // sil12_vitrine_myorders
-        if (rtrim($pathinfo, '/') === '') {
-            if (substr($pathinfo, -1) !== '/') {
-                return $this->redirect($pathinfo.'/', 'sil12_vitrine_myorders');
+        if (0 === strpos($pathinfo, '/myorders')) {
+            // sil12_vitrine_myorders_show
+            if (0 === strpos($pathinfo, '/myorders_show') && preg_match('#^/myorders_show/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'sil12_vitrine_myorders_show')), array (  '_controller' => 'sil12\\VitrineBundle\\Controller\\DefaultController::myOrdersShowAction',));
             }
 
-            return array (  '_controller' => 'sil12\\VitrineBundle\\Controller\\DefaultController::myOrdersAction',  '_route' => 'sil12_vitrine_myorders',);
+            // sil12_vitrine_myorders
+            if ($pathinfo === '/myorders') {
+                return array (  '_controller' => 'sil12\\VitrineBundle\\Controller\\DefaultController::myOrdersAction',  '_route' => 'sil12_vitrine_myorders',);
+            }
+
         }
 
         // sil12_vitrine_shareProduct
@@ -338,7 +342,7 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             }
 
             // sil12_vitrine_validationPanier
-            if ($pathinfo === '/panier/validate') {
+            if ($pathinfo === '/paniervalidate') {
                 return array (  '_controller' => 'sil12\\VitrineBundle\\Controller\\PanierController::validationPanierAction',  '_route' => 'sil12_vitrine_validationPanier',);
             }
 

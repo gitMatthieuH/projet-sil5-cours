@@ -89,7 +89,6 @@ class PanierController extends Controller
     }
 
     public function validationPanierAction() {
-        var_dump('validationPanierAction');die;
         $session = $this->getRequest()->getSession();
         $client = $session->get(SecurityContext::LAST_USERNAME);
 
@@ -97,6 +96,7 @@ class PanierController extends Controller
         $orderHat->setClient($client);
         $orderHat->setOrderDate(new \DateTime());
         $orderHat->setValidated(true);
+
 
         $em = $this->getDoctrine()->getManager();
         $em->persist($orderHat);
@@ -106,18 +106,43 @@ class PanierController extends Controller
         
 
         $dataToSend = array();
+        $proms = array();
+        $total = 0;
         $totalPrice = 0;
         foreach ($data as $key => $product) {
             $chapeau = $em->getRepository('sil12VitrineBundle:Product')
                         ->find($key);
-            $dataToSend[$key] = array('qte' => $product, 'product' => $chapeau);
+
+            $proms = null;
+            $proms = $chapeau->getPromotions();
+
+            $dataToSend[$key] = array('qte' => $product, 'product' => $chapeau, 'proms' => $proms);
+
+            $stock = $chapeau->getStock();
+            if ($stock < $product) {
+                $error = "Un des articles est en rupture de stock !";
+                return $this->render('sil12VitrineBundle:Panier:validationPanier.html.twig',
+                    array('panier' => $dataToSend, 'orderHat' => $orderHat, 'totalPrice' => $totalPrice, 'error' => $error)
+                );
+            }
+
+            $chapeau->setStock($stock -= $product);
+
+            if (sizeof($proms) > 0) {
+                $price = $chapeau->getPrice();
+                foreach ($proms as $key => $prom) {
+                    $price -= $chapeau->getPrice() / $prom->getReduction();
+                }
+                $total += $price * $product;
+            } else {
+                $total += $chapeau->getPrice() * $product;
+            }
 
             $orderLine = new OrderLine();
             $orderLine->setOrderhat($orderHat);
             $orderLine->setProduct($chapeau);
-            $proms = $chapeau->getPromotions();
+
             if (sizeof($proms) > 0) {
-                var_dump("reduc");die;
                 $price = $chapeau->getPrice();
                 foreach ($proms as $key => $prom) {
                     $price -= $chapeau->getPrice() / $prom->getReduction();
@@ -134,6 +159,13 @@ class PanierController extends Controller
 
         $panier->viderPanier();
         $em->flush();
+
+        $message = \Swift_Message::newInstance()
+           ->setSubject('HATme.com -  Récapitulatif de votre commande')
+           ->setFrom('contact@e-coms.fr')
+           ->setTo($this->getUser()->getMail())
+           ->setBody($this->renderView('sil12VitrineBundle:Email:validationPanier.txt.twig', array('panier' => $dataToSend, 'orderHat' => $orderHat, 'totalPrice' => $totalPrice)),'text/html');
+        $this->get('mailer')->send($message);
         
 
         return $this->render('sil12VitrineBundle:Panier:validationPanier.html.twig',

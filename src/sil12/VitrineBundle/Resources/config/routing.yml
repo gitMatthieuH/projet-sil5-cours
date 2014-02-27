@@ -25,8 +25,12 @@ sil12_vitrine_chapeau:
 
 
 
+sil12_vitrine_myorders_show:
+    pattern:  /myorders_show/{id}
+    defaults: { _controller: "sil12VitrineBundle:Default:myOrdersShow" }
+
 sil12_vitrine_myorders:
-    pattern:  /
+    pattern:  /myorders
     defaults: { _controller: "sil12VitrineBundle:Default:myOrders" }
 
 sil12_vitrine_shareProduct:
@@ -53,7 +57,7 @@ sil12_vitrine_removeProduct:
     defaults: { _controller: sil12VitrineBundle:Panier:removeProduct, id: null }
 
 sil12_vitrine_validationPanier:
-    pattern: /panier/validate
+    pattern: /paniervalidate
     defaults: { _controller: sil12VitrineBundle:Panier:validationPanier }
 
 

@@ -1,0 +1,36 @@
+{% extends "sil12VitrineBundle::layout.html.twig" %}
+
+{% block content %}
+<div class="col-md-6 col-md-offset-3">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title">Commande #{{order.id}}</h3>
+		</div>
+		<div class="panel-body">
+			<table class="table table-striped">
+				<thead>
+			        <tr>
+			        	<th>Photo</th>
+			        	<th>Nom</th>
+			        	<th>Description</th>
+			        	<th>Prix</th>
+			        	<th>Quantité</th>
+			        </tr>
+			    </thead>
+			    <tbody>
+			    	{% for elem in OrderLines %}
+						<tr>
+							<td><img src="{{ asset('bundles/sil12vitrine/images/') }}{{ elem.product.id }}.png" width="250px"></td>
+							<td>{{ elem.product.name }}</td>
+							<td>{{ elem.product.description }}</td>
+							<td>{{ elem.product.price }} €</td>
+							<td>{{ elem.quantity }}</td>
+						</tr>
+					{% endfor %}
+					
+			   </tbody>
+			</table>
+		</div>
+	</div>
+</div>
+{% endblock %}

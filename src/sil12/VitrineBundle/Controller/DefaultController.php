@@ -172,6 +172,22 @@ class DefaultController extends Controller
         ));
     }
 
+    public function myOrdersShowAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $order = $em->getRepository('sil12VitrineBundle:Orderhat')->find($id);
+        $OrderLines = $em->getRepository('sil12VitrineBundle:OrderLine')
+                            ->findBy(
+                                array('orderhat' => $id)
+                            );
+
+        return $this->render('sil12VitrineBundle:Default:myorders_show.html.twig', array(
+            'order' => $order,
+            'OrderLines' => $OrderLines,
+        ));
+    }
+
     public function shareProductAction(Request $request) {
         $email = $request->request->get('email');
         $idP = $request->request->get('id');
@@ -180,6 +196,12 @@ class DefaultController extends Controller
 
         $chapeaux = $em->getRepository('sil12VitrineBundle:Product')
                         ->find($idP);
+
+        if (!$chapeaux) {
+            throw $this->createNotFoundException('Unable to find Product entity.');
+        }
+
+        $proms = $chapeaux->getPromotions();
 
         $boughtWith =  null;
 
@@ -196,7 +218,7 @@ class DefaultController extends Controller
         }
 
         return $this->render('sil12VitrineBundle:Default:chapeau.html.twig',
-            array('chapeau' => $chapeaux, 'boughtWith' => $boughtWith )
+            array('chapeau' => $chapeaux, 'boughtWith' => $boughtWith, 'proms' => $proms )
         );
     }
 

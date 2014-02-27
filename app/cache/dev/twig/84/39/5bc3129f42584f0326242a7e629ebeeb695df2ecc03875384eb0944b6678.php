@@ -65,7 +65,7 @@ class __TwigTemplate_84395bc3129f42584f0326242a7e629ebeeb695df2ecc03875384eb0944
             echo "                            <tr>
                                 <td><a href=\"";
             // line 23
-            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("orderhat_show", array("id" => $this->getAttribute((isset($context["entity"]) ? $context["entity"] : $this->getContext($context, "entity")), "id"))), "html", null, true);
+            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("sil12_vitrine_myorders_show", array("id" => $this->getAttribute((isset($context["entity"]) ? $context["entity"] : $this->getContext($context, "entity")), "id"))), "html", null, true);
             echo "\">";
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["entity"]) ? $context["entity"] : $this->getContext($context, "entity")), "id"), "html", null, true);
             echo "</a></td>
@@ -78,9 +78,9 @@ class __TwigTemplate_84395bc3129f42584f0326242a7e629ebeeb695df2ecc03875384eb0944
                                 <td>";
             // line 25
             if (($this->getAttribute((isset($context["entity"]) ? $context["entity"] : $this->getContext($context, "entity")), "validated") == 1)) {
-                echo " Validé ";
+                echo " Validée ";
             } else {
-                echo " Non validé ";
+                echo " Non validée ";
             }
             echo "</td>
                             </tr>

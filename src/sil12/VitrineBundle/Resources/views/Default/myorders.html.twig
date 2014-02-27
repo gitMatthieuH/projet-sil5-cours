@@ -20,9 +20,9 @@
                     <tbody>
                         {% for entity in entities %}
                             <tr>
-                                <td><a href="{{ path('orderhat_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                                <td><a href="{{ path('sil12_vitrine_myorders_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                                 <td>{% if entity.orderdate %}{{ entity.orderdate|date('Y-m-d H:i:s') }}{% endif %}</td>
-                                <td>{% if entity.validated == 1%} Validé {% else %} Non validé {% endif %}</td>
+                                <td>{% if entity.validated == 1%} Validée {% else %} Non validée {% endif %}</td>
                             </tr>
                         {% endfor %}
                     </tbody>
