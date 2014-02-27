@@ -24,4 +24,4 @@ security:
 
     access_control:
         - { path: ^/backoffice, roles: ROLE_ADMIN }
-        - { path: ^/orderhat/, roles: ROLE_USER }
+        - { path: ^/panier/validate, roles: ROLE_USER }

@@ -19,18 +19,31 @@ class PanierController extends Controller
         $data = $panier->getContenu();
 
         $dataToSend = array();
+        $proms = array();
         $total = 0;
         foreach ($data as $key => $product) {
 
         	$chapeau = $em->getRepository('sil12VitrineBundle:Product')
                         ->find($key);
-        	$dataToSend[$key] = array('qte' => $product, 'product' => $chapeau);
+            $proms = null;
+            $proms = $chapeau->getPromotions();
 
-            $total += $chapeau->getPrice() * $product;
+        	$dataToSend[$key] = array('qte' => $product, 'product' => $chapeau, 'proms' => $proms);
+
+            if (sizeof($proms) > 0) {
+                $price = $chapeau->getPrice();
+                foreach ($proms as $key => $prom) {
+                    $price -= $chapeau->getPrice() / $prom->getReduction();
+                }
+                $total += $price * $product;
+            } else {
+                $total += $chapeau->getPrice() * $product;
+            }
+            
         }
 
         return $this->render('sil12VitrineBundle:Panier:panier.html.twig',
-            array('panier' => $dataToSend, 'total' => $total)
+            array('panier' => $dataToSend, 'total' => $total, 'proms' => $proms)
         );
     }
 
@@ -76,6 +89,7 @@ class PanierController extends Controller
     }
 
     public function validationPanierAction() {
+        var_dump('validationPanierAction');die;
         $session = $this->getRequest()->getSession();
         $client = $session->get(SecurityContext::LAST_USERNAME);
 
@@ -101,15 +115,27 @@ class PanierController extends Controller
             $orderLine = new OrderLine();
             $orderLine->setOrderhat($orderHat);
             $orderLine->setProduct($chapeau);
-            $orderLine->setPrice($chapeau->getPrice());
-            $totalPrice += $chapeau->getPrice() * $product;
+            $proms = $chapeau->getPromotions();
+            if (sizeof($proms) > 0) {
+                var_dump("reduc");die;
+                $price = $chapeau->getPrice();
+                foreach ($proms as $key => $prom) {
+                    $price -= $chapeau->getPrice() / $prom->getReduction();
+                }
+                $orderLine->setPrice($price);
+            } else {
+                $orderLine->setPrice($chapeau->getPrice());
+            }
+            $totalPrice += $orderLine->getPrice() * $product;
             $orderLine->setQuantity($product);
             $em->persist($orderLine);  
+
         }
 
         $panier->viderPanier();
         $em->flush();
         
+
         return $this->render('sil12VitrineBundle:Panier:validationPanier.html.twig',
             array('panier' => $dataToSend, 'orderHat' => $orderHat, 'totalPrice' => $totalPrice)
         );

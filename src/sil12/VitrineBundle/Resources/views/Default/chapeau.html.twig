@@ -3,9 +3,7 @@
 {% block content %}
 <div class="col-md-6 col-md-offset-3">
 	<div class="panel panel-default">
-		<div class="panel-heading">
-			<h3 class="panel-title">Panier</h3>
-		</div>
+
 		<div class="panel-body">
 			<div class="row">
 				<div style="text-align:center;"><h3 style="font-family:'Lobster';font-size:4rem;">{{ chapeau.name }}</h3></div>
@@ -19,31 +17,36 @@
 				<div class="col-md-4">
 					<div class="caption">
 						
-						<p>{{ chapeau.description }}</p>
-						<p><b>Prix : </b>{{ chapeau.price }} €</p>
+						<p><b>Description : </b>{{ chapeau.description }}</p>
+						{% if proms | length > 0 %}
+							{% set price = chapeau.price %}
+							{% for prom in proms %}
+								<b>{{prom.name}} -{{prom.reduction}}% !</b>
+								{% set price = price - (price / prom.reduction) %}
+							{% endfor %}
+							<p><b>Prix : </b><s>{{ chapeau.price }}€</s>    <span class="new-price"><b>{{price}}€</b></span></p>
+						{% else %}
+							<p><b>Prix : </b>{{ chapeau.price }} €</p>
+						{% endif %}
 					</div>
+					<form role="form" action="{{ path('sil12_vitrine_shareProduct')}}" method="POST">
+						<div class="form-group">
+							<input type="hidden" name="id" value="{{ chapeau.id }}">
+							<input type="text" class="form-control" id="email" name="email" placeholder="Adresse mail">
+							<input type="submit" class="btn btn-primary btn-lg btn-block" value="Partager la fiche produit">
+						</div>
+					</form>
 					<a href="{{ path('sil12_vitrine_addProduct', { 'id': chapeau.id, 'qte': 1}) }}" type="button" class="btn btn-primary btn-lg btn-block" {% if chapeau.stock <= 0 %}disabled{% endif %}>Ajouter au panier</a>
 
 				</div>
 			</div>
 		</div>
 	</div>
-	taille : {{boughtWith | length}}
 	{% for  product in boughtWith %}
 		id :{{ product.id }}
 	{% endfor %}
 	
 </div>
-
-
-
-
-
-
-
-
-
-
 
 {% endblock %}
 

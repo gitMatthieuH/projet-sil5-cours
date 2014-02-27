@@ -33,3 +33,15 @@ sil12\VitrineBundle\Entity\Product:
       joinColumns:
         category_id:
           referencedColumnName: id
+  manyToMany:
+    promotions:
+      targetEntity: Promotion
+      inversedBy: products
+      joinTable:
+        name: products_promotions
+        joinColumns:
+          product_id:
+            referencedColumnName: id
+        inverseJoinColumns:
+          promotion_id:
+            referencedColumnName: id

@@ -3,6 +3,7 @@
 namespace sil12\VitrineBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 use sil12\VitrineBundle\Entity\Panier;
 
 class DefaultController extends Controller
@@ -13,12 +14,26 @@ class DefaultController extends Controller
             ->getRepository('sil12VitrineBundle:OrderLine')
             ->mostBought(3);
 
+        //var_dump($mostBought);die;
+
+        $mostBoughtHats = array();
+        foreach ($mostBought as $key => $ol) {
+            $proms = $ol[0]->getProduct()->getPromotions();       
+            $mostBoughtHats[$key] = array('chapeau' => $ol[0]->getProduct(), 'proms' => $proms);
+        }
+
         $lastAdd = $this->getDoctrine()
             ->getRepository('sil12VitrineBundle:Product')
             ->lastAdd(3);
 
+        $lastAddHats = array();
+        foreach ($lastAdd as $key => $chapeau) {
+            $proms = $chapeau->getPromotions();       
+            $lastAddHats[$key] = array('chapeau' => $chapeau, 'proms' => $proms);
+        }
+
         return $this->render('sil12VitrineBundle:Default:index.html.twig', 
-            array('mostBought' => $mostBought, 'lastAdd' => $lastAdd)
+            array('mostBought' => $mostBoughtHats, 'lastAdd' => $lastAddHats)
         );
     }
 
@@ -45,9 +60,40 @@ class DefaultController extends Controller
         $products = $em->getRepository('sil12VitrineBundle:Product')
                         ->findByCategory($id);
 
+        $chapeaux = array();
+        foreach ($products as $key => $chapeau) {
+            $proms = $chapeau->getPromotions();       
+            $chapeaux[$key] = array('chapeau' => $chapeau, 'proms' => $proms);
+        }
+
         return $this->render('sil12VitrineBundle:Default:articlesParCategorie.html.twig',
-            array('products' => $products)
+            array('chapeaux' => $chapeaux, 'catId' => $id)
         );
+    }
+
+    public function filteredArticlesParCategorieAction(Request $request) {
+        $idCat = $request->request->get('catId');
+        $type = $request->request->get('type');
+
+
+        $em = $this->getDoctrine()->getManager();
+        $filteredHats = $em->getRepository('sil12VitrineBundle:Product')
+                           ->findBy(
+                                array('category' => $idCat),
+                                array($type => 'DESC')
+                           );
+            
+
+        $chapeaux = array();
+        foreach ($filteredHats as $key => $chapeau) {
+            $proms = $chapeau->getPromotions();       
+            $chapeaux[$key] = array('chapeau' => $chapeau, 'proms' => $proms);
+        }
+
+        return $this->render('sil12VitrineBundle:Default:articlesParCategorie.html.twig',
+            array('chapeaux' => $chapeaux, 'catId' => $idCat, 'type' => $type)
+        );
+        
     }
 
     public function chapeauAction($id,$nb)
@@ -56,18 +102,20 @@ class DefaultController extends Controller
         $chapeaux = $em->getRepository('sil12VitrineBundle:Product')
                         ->find($id);
 
-        $repository = $this->getDoctrine()
-            ->getRepository('sil12VitrineBundle:OrderLine');
+        if (!$chapeaux) {
+            throw $this->createNotFoundException('Unable to find Product entity.');
+        }
 
-        //$boughtWith = $repository->findBoughtWith($id,3);
+        $proms = $chapeaux->getPromotions();
+
         $boughtWith =  null;
 
-        $panier = new Panier();
-
         return $this->render('sil12VitrineBundle:Default:chapeau.html.twig',
-            array('chapeau' => $chapeaux, 'boughtWith' => $boughtWith )
+            array('chapeau' => $chapeaux, 'boughtWith' => $boughtWith, 'proms' => $proms)
         );
     }
+
+
 
     public function createAction()
     {
@@ -114,7 +162,6 @@ class DefaultController extends Controller
     public function myOrdersAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $session = $this->getRequest()->getSession();
 
         $client = $this->getUser();
 
@@ -123,6 +170,34 @@ class DefaultController extends Controller
         return $this->render('sil12VitrineBundle:Default:myorders.html.twig', array(
             'entities' => $entities,
         ));
+    }
+
+    public function shareProductAction(Request $request) {
+        $email = $request->request->get('email');
+        $idP = $request->request->get('id');
+
+        $em = $this->getDoctrine()->getManager();
+
+        $chapeaux = $em->getRepository('sil12VitrineBundle:Product')
+                        ->find($idP);
+
+        $boughtWith =  null;
+
+        if ($email !== "") {
+            $message = \Swift_Message::newInstance();
+            $IMGpath = $message->embed(\Swift_Image::fromPath('http://localhost/PHP/Cours/projet-sil5-cours/web/bundles/sil12vitrine/images/'.$idP.'.png'));
+            $message->setSubject('HATme.com - Un ami vous recommande un produit')
+                    ->setFrom('contact@hatme.com')
+                    ->setTo($email)
+                    ->setBody($this->renderView('sil12VitrineBundle:Email:share.txt.twig', array('chapeau' => $chapeaux, 'boughtWith' => $boughtWith, 'IMGpath' => $IMGpath)))
+                    ->setContentType('text/html')
+            ;
+            $this->get('mailer')->send($message);
+        }
+
+        return $this->render('sil12VitrineBundle:Default:chapeau.html.twig',
+            array('chapeau' => $chapeaux, 'boughtWith' => $boughtWith )
+        );
     }
 
 }

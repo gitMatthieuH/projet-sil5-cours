@@ -26,7 +26,16 @@
 							<td><img src="{{ asset('bundles/sil12vitrine/images/') }}{{ elem.product.id }}.png" width="250px"></td>
 							<td>{{ elem.product.name }}</td>
 							<td>{{ elem.product.description }}</td>
-							<td>{{ elem.product.price }} €</td>
+							
+							{% if proms | length > 0 %}
+								{% set price = elem.product.price %}
+								{% for prom in proms %}
+									{% set price = price - (price / prom.reduction) %}
+								{% endfor %}
+								<td>{{price}} €</td>
+							{% else %}
+								<td>{{ elem.product.price }} €</td>
+							{% endif %}
 							<td style="text-align:center">
 								<a href="{{ path('sil12_vitrine_deleteProduct', { 'id': elem.product.id, 'qte': 1 }) }}" type="button" class="btn btn-default btn-xs">-</a>
 								{{ elem.qte }}
@@ -42,7 +51,7 @@
 			<div class="pull-right">
 				<b>Total : </b>{{total}} €
 			</div><br>
-			<a href="{{ path('sil12_vitrine_validationPanier')}}" type="button" class="btn btn-primary btn-lg pull-right">Commander</a>
+			<a href="{{ path('sil12_vitrine_validationPanier') }}" type="button" class="btn btn-primary btn-lg pull-right">Commander</a>
 			{% endif %}
 		</div>
 	</div>

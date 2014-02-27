@@ -8,7 +8,7 @@
         <link href="{{ asset('bundles/sil12vitrine/lib/bootstrap/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('bundles/sil12vitrine/css/shapeover.css') }}" rel="stylesheet" type="text/css" />
         <script src="{{ asset('bundles/sil12vitrine/js/snap.svg-min.js') }}"></script>
-</head>
+    </head>
     <body>
         <nav class="navbar navbar-default row" role="navigation">
             <div class="col-md-6 col-md-offset-3">
@@ -24,6 +24,8 @@
                         <li><a href="{{ path('category') }}">Categories</a></li>
                         <li><a href="{{ path('product') }}">Produits</a></li>
                         <li><a href="{{ path('orderhat') }}">Commandes</a></li>
+                        <li><a href="{{ path('client') }}">Clients</a></li>
+                        <li><a href="{{ path('promotion') }}">Promotions</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li>
@@ -40,7 +42,7 @@
             {% block content %}
             {% endblock %}
         </div>
-
+        
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="{{ asset('bundles/sil12vitrine/lib/jquery-1.10.2.min.js') }}"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->

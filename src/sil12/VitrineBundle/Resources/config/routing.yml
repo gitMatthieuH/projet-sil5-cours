@@ -14,6 +14,11 @@ sil12_vitrine_articlesParCategorie:
     pattern: /category/{id}
     defaults: { _controller: sil12VitrineBundle:Default:articlesParCategorie }
 
+sil12_vitrine_filteredArticlesParCategorie:
+    pattern: /categoryFiltered
+    defaults: { _controller: sil12VitrineBundle:Default:filteredArticlesParCategorie }
+    requirements: { _method: post }
+
 sil12_vitrine_chapeau:
     pattern: /chapeau/{id}/{nb}
     defaults: { _controller: sil12VitrineBundle:Default:chapeau, nb: 1 }
@@ -23,6 +28,11 @@ sil12_vitrine_chapeau:
 sil12_vitrine_myorders:
     pattern:  /
     defaults: { _controller: "sil12VitrineBundle:Default:myOrders" }
+
+sil12_vitrine_shareProduct:
+    pattern: /share
+    defaults: { _controller: sil12VitrineBundle:Default:shareProduct }
+    requirements: { _method: post }
 
 sil12_vitrine_contenuPanier:
     pattern: /panier
@@ -36,12 +46,14 @@ sil12_vitrine_deleteProduct:
     pattern: /panier/del/{id}/{qte}
     defaults: { _controller: sil12VitrineBundle:Panier:deleteProduct, id: null, qte: 1 }
 
+
+
 sil12_vitrine_removeProduct:
     pattern: /panier/{id}
     defaults: { _controller: sil12VitrineBundle:Panier:removeProduct, id: null }
 
 sil12_vitrine_validationPanier:
-    pattern: /Panier/validate
+    pattern: /panier/validate
     defaults: { _controller: sil12VitrineBundle:Panier:validationPanier }
 
 
@@ -56,19 +68,19 @@ sil12_vitrine_backoffice:
 
 sil12VitrineBundle_product:
     resource: "@sil12VitrineBundle/Resources/config/routing/product.yml"
-    prefix:   /product
+    prefix:   /backoffice/product
 
 sil12VitrineBundle_category:
     resource: "@sil12VitrineBundle/Resources/config/routing/category.yml"
-    prefix:   /category
+    prefix:   /backoffice/category
 
 sil12VitrineBundle_client:
     resource: "@sil12VitrineBundle/Resources/config/routing/client.yml"
-    prefix:   /client
+    prefix:   /backoffice/client
 
 sil12VitrineBundle_orderhat:
     resource: "@sil12VitrineBundle/Resources/config/routing/orderhat.yml"
-    prefix:   /orderhat
+    prefix:   /backoffice/orderhat
 
 
 sil12_vitrine_auth:
@@ -80,3 +92,8 @@ auth_check:
 
 logout:
     pattern: /logout
+
+
+sil12VitrineBundle_promotion:
+        resource: "@sil12VitrineBundle/Resources/config/routing/promotion.yml"
+        prefix:   /promotion

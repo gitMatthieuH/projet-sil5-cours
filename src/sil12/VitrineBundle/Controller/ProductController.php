@@ -132,6 +132,54 @@ class ProductController extends Controller
         ));
     }
 
+    public function addPromAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('sil12VitrineBundle:Product')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Product entity.');
+        }
+
+        $proms = $em->getRepository('sil12VitrineBundle:Promotion')
+                        ->findAll();
+
+        $deleteForm = $this->createDeleteForm($id);
+
+        return $this->render('sil12VitrineBundle:Product:addprom.html.twig', array(
+            'entity'      => $entity,
+            'delete_form' => $deleteForm->createView(),
+            'proms'       => $proms,
+        ));
+    }
+
+    public function promaddedAction(Request $request)
+    {
+        $prod = $request->request->get('product');
+        $prom = $request->request->get('prom');
+
+        $em = $this->getDoctrine()->getManager();
+
+        $product = $em->getRepository('sil12VitrineBundle:Product')
+                        ->find($prod);
+        if (!$product) {
+            throw $this->createNotFoundException('Unable to find Product entity.');
+        }
+
+        $promotion = $em->getRepository('sil12VitrineBundle:Promotion')
+                        ->find($prom);
+        if (!$promotion) {
+            throw $this->createNotFoundException('Unable to find Promotion entity.');
+        }
+
+        $product->addPromotion($promotion);
+        $em->persist($product);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('product_show', array('id' => $product->getId())));
+    }
+
     /**
     * Creates a form to edit a Product entity.
     *

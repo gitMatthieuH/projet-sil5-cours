@@ -1,0 +1,30 @@
+promotion:
+    pattern:  /
+    defaults: { _controller: "sil12VitrineBundle:Promotion:index" }
+
+promotion_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "sil12VitrineBundle:Promotion:show" }
+
+promotion_new:
+    pattern:  /new
+    defaults: { _controller: "sil12VitrineBundle:Promotion:new" }
+
+promotion_create:
+    pattern:  /create
+    defaults: { _controller: "sil12VitrineBundle:Promotion:create" }
+    requirements: { _method: post }
+
+promotion_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "sil12VitrineBundle:Promotion:edit" }
+
+promotion_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "sil12VitrineBundle:Promotion:update" }
+    requirements: { _method: post|put }
+
+promotion_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "sil12VitrineBundle:Promotion:delete" }
+    requirements: { _method: post|delete }

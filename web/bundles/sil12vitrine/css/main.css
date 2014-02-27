@@ -142,6 +142,10 @@ body {
 
 }
 
+.hero-lead .lead {
+	font-family: 'PT Serif Caption', serif;
+}
+
 .color-white, h2, .lead, .feature-lead, .question-header, .btn-link-choose {
 	color: #fff;
 }
@@ -154,6 +158,12 @@ small {
 small a{
 	font-size: 15px;
 	color: #fff;
+}
+
+/** PRODUCTS */
+
+.new-price {
+	color: #d32626;
 }
 
 /** FOOTER **/

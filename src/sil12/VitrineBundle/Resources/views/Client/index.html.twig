@@ -1,9 +1,7 @@
 {% extends "sil12VitrineBundle:BackOffice:layout.html.twig" %}
 
-
 {% block content %}
-<div class="col-md-6 col-md-offset-3">
-    {% block content %}
+    <div class="col-md-6 col-md-offset-3">
 
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -14,7 +12,7 @@
                     <thead>
                         <tr>
                             <th>Id</th>
-                            <th>Name</th>
+                            <th>Nom</th>
                             <th>Mail</th>
                             <th>Actions</th>
                         </tr>
@@ -28,10 +26,10 @@
                             <td>
                             <ul>
                                 <li>
-                                    <a href="{{ path('client_show', { 'id': entity.id }) }}">show</a>
+                                    <a href="{{ path('client_show', { 'id': entity.id }) }}">Voir</a>
                                 </li>
                                 <li>
-                                    <a href="{{ path('client_edit', { 'id': entity.id }) }}">edit</a>
+                                    <a href="{{ path('client_edit', { 'id': entity.id }) }}">Editer</a>
                                 </li>
                             </ul>
                             </td>
@@ -43,12 +41,12 @@
                 <ul>
                     <li>
                         <a href="{{ path('client_new') }}">
-                            Create a new entry
+                            Ajouter un client
                         </a>
                     </li>
                 </ul>
             </div>
-        </div>  
-    {% endblock %}
-</div>
+        </div>
+
+    </div>
 {% endblock %}

@@ -46,42 +46,43 @@ class __TwigTemplate_8896ab28b7e61a465fdb95ec5be89a639132dda494aff2aac64651c83b3
         // line 10
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/sil12vitrine/css/main.css"), "html", null, true);
         echo "\" rel=\"stylesheet\" type=\"text/css\" />
+        <link href='http://fonts.googleapis.com/css?family=PT+Serif+Caption' rel='stylesheet' type='text/css'>
         <script src=\"";
-        // line 11
+        // line 12
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/sil12vitrine/js/snap.svg-min.js"), "html", null, true);
         echo "\"></script>
 </head>
     <body>
         ";
-        // line 14
-        $this->env->loadTemplate("sil12VitrineBundle:Default:header.html.twig")->display($context);
         // line 15
+        $this->env->loadTemplate("sil12VitrineBundle:Default:header.html.twig")->display($context);
+        // line 16
         echo "        <div class=\"row\">
             ";
-        // line 16
+        // line 17
         $this->displayBlock('content', $context, $blocks);
-        // line 18
+        // line 19
         echo "        </div>
         ";
-        // line 19
-        $this->env->loadTemplate("sil12VitrineBundle:Default:footer.html.twig")->display($context);
         // line 20
+        $this->env->loadTemplate("sil12VitrineBundle:Default:footer.html.twig")->display($context);
+        // line 21
         echo "       
         ";
-        // line 22
+        // line 23
         echo "
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src=\"";
-        // line 24
+        // line 25
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/sil12vitrine/lib/jquery-1.10.2.min.js"), "html", null, true);
         echo "\"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src=\"";
-        // line 26
+        // line 27
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/sil12vitrine/lib/bootstrap/bootstrap.min.js"), "html", null, true);
         echo "\"></script>
         <script src=\"";
-        // line 27
+        // line 28
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/sil12vitrine/js/hovers.js"), "html", null, true);
         echo "\"></script>
         <script>
@@ -110,6 +111,10 @@ class __TwigTemplate_8896ab28b7e61a465fdb95ec5be89a639132dda494aff2aac64651c83b3
 
                 init();
 
+                \$( \"#type\" ).on('change', function() {
+                  \$( \"#filter\" ).submit();
+                });
+
             })();
         </script>
     </body>
@@ -127,10 +132,10 @@ class __TwigTemplate_8896ab28b7e61a465fdb95ec5be89a639132dda494aff2aac64651c83b3
     {
     }
 
-    // line 16
+    // line 17
     public function block_content($context, array $blocks = array())
     {
-        // line 17
+        // line 18
         echo "            ";
     }
 
@@ -146,6 +151,6 @@ class __TwigTemplate_8896ab28b7e61a465fdb95ec5be89a639132dda494aff2aac64651c83b3
 
     public function getDebugInfo()
     {
-        return array (  134 => 17,  131 => 16,  126 => 6,  120 => 5,  76 => 24,  69 => 20,  67 => 19,  62 => 16,  57 => 14,  51 => 11,  47 => 10,  43 => 9,  39 => 8,  34 => 7,  32 => 6,  22 => 1,  105 => 41,  101 => 39,  89 => 33,  85 => 27,  81 => 26,  77 => 30,  72 => 22,  68 => 27,  64 => 18,  59 => 15,  56 => 24,  52 => 23,  31 => 4,  28 => 5,);
+        return array (  139 => 18,  136 => 17,  131 => 6,  125 => 5,  86 => 28,  82 => 27,  77 => 25,  73 => 23,  70 => 21,  68 => 20,  65 => 19,  63 => 17,  60 => 16,  52 => 12,  47 => 10,  43 => 9,  39 => 8,  34 => 7,  32 => 6,  22 => 1,  128 => 42,  118 => 37,  112 => 35,  104 => 33,  98 => 32,  96 => 31,  89 => 30,  84 => 29,  81 => 28,  79 => 27,  75 => 26,  71 => 25,  64 => 22,  58 => 15,  54 => 19,  40 => 8,  36 => 7,  31 => 4,  28 => 5,);
     }
 }

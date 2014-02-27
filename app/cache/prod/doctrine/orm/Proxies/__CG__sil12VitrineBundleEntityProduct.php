@@ -64,10 +64,10 @@ class Product extends \sil12\VitrineBundle\Entity\Product implements \Doctrine\O
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', 'id', 'name', 'price', 'description', 'label', 'stock', 'orderline', 'category');
+            return array('__isInitialized__', 'id', 'name', 'price', 'description', 'label', 'stock', 'orderline', 'category', 'promotions', 'groups');
         }
 
-        return array('__isInitialized__', 'id', 'name', 'price', 'description', 'label', 'stock', 'orderline', 'category');
+        return array('__isInitialized__', 'id', 'name', 'price', 'description', 'label', 'stock', 'orderline', 'category', 'promotions', 'groups');
     }
 
     /**
@@ -351,6 +351,72 @@ class Product extends \sil12\VitrineBundle\Entity\Product implements \Doctrine\O
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCategory', array());
 
         return parent::getCategory();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function addPromotion(\sil12\VitrineBundle\Entity\Promotion $promotions)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addPromotion', array($promotions));
+
+        return parent::addPromotion($promotions);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function removePromotion(\sil12\VitrineBundle\Entity\Promotion $promotions)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removePromotion', array($promotions));
+
+        return parent::removePromotion($promotions);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getPromotions()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPromotions', array());
+
+        return parent::getPromotions();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function addGroup(\sil12\VitrineBundle\Entity\Promotion $groups)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addGroup', array($groups));
+
+        return parent::addGroup($groups);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function removeGroup(\sil12\VitrineBundle\Entity\Promotion $groups)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeGroup', array($groups));
+
+        return parent::removeGroup($groups);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getGroups()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getGroups', array());
+
+        return parent::getGroups();
     }
 
 }

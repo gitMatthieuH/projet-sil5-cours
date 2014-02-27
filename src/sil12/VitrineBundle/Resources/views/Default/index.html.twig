@@ -8,28 +8,37 @@
 		</div>
 		<div class="panel-body">
 			<div class="row">
-  			{% for ol in mostBought %}
+  			{% for chapeau in mostBought %}
 				<div class="col-sm-6 col-md-4">
 					<div class="thumbnail">
-						<a href="{{ path('sil12_vitrine_chapeau', { 'id': ol.0.product.id }) }}" title="Description">
-			    			<img src="{{ asset('bundles/sil12vitrine/images/') }}{{ ol.0.product.id }}.png" width="100px">
+						<a href="{{ path('sil12_vitrine_chapeau', { 'id': chapeau.chapeau.id }) }}" title="Description">
+			    			<img src="{{ asset('bundles/sil12vitrine/images/') }}{{ chapeau.chapeau.id }}.png" width="100px">
 			    		</a>
 			    		<div class="caption">
 							<p class="title_block">
-								<a href="{{ path('sil12_vitrine_chapeau', { 'id': ol.0.product.id }) }}" title="Description">{{ ol.0.product.name }}
+								<a href="{{ path('sil12_vitrine_chapeau', { 'id': chapeau.chapeau.id }) }}" title="Description">{{ chapeau.chapeau.name }}
 								</a>
 							</p>
 							<div class="product_desc">
-								<a href="{{ path('sil12_vitrine_chapeau', { 'id': ol.0.product.id }) }}" title="Description">{{ ol.0.product.description }}</a>
+								<a href="{{ path('sil12_vitrine_chapeau', { 'id': chapeau.chapeau.id }) }}" title="Description">{{ chapeau.chapeau.description }}</a>
 							</div>
 							<div>
-								<a class="lnk_more" href="{{ path('sil12_vitrine_chapeau', { 'id': ol.0.product.id }) }}" title="Plus d'infos">
+								<a class="lnk_more" href="{{ path('sil12_vitrine_chapeau', { 'id': chapeau.chapeau.id }) }}" title="Plus d'infos">
 									Plus d'infos
 								</a>
 								<p class="price_container">
-									<span class="price">{{ ol.0.product.price }} €</span>
+									{% if chapeau.proms | length > 0 %}
+										{% set price = chapeau.chapeau.price %}
+										{% for prom in chapeau.proms %}
+											<div class="prom"><b>{{prom.name}} -{{prom.reduction}}% !</b></div>
+											{% set price = price - (price / prom.reduction) %}
+										{% endfor %}
+										<span class="price"><s>{{ chapeau.chapeau.price }}€</s>    <span class="new-price"><b>{{price}}€</b></span></span>
+									{% else %}
+										<span class="price">{{ chapeau.chapeau.price }} €</span>
+									{% endif %}
 								</p>						
-								<a class="add_to_cart_button" href="{{ path('sil12_vitrine_addProduct', { 'id': ol.0.product.id, 'qte': 1}) }}" title="Ajouter au panier">
+								<a class="add_to_cart_button" href="{{ path('sil12_vitrine_addProduct', { 'id': chapeau.chapeau.id, 'qte': 1}) }}" title="Ajouter au panier">
 									Ajouter au panier
 								</a>
 							</div>
@@ -50,27 +59,27 @@
 				<div class="col-sm-6 col-md-4">
 					<div class="thumbnail">
 						<span class="new">Nouveau</span>
-						<a href="{{ path('sil12_vitrine_chapeau', { 'id': product.id }) }}" title="Description" class="product_image">
-				    		<img src="{{ asset('bundles/sil12vitrine/images/') }}{{ product.id }}.png" width="100px">
+						<a href="{{ path('sil12_vitrine_chapeau', { 'id': product.chapeau.id }) }}" title="Description" class="product_image">
+				    		<img src="{{ asset('bundles/sil12vitrine/images/') }}{{ product.chapeau.id }}.png" width="100px">
 				    		
 				    	</a>
 
 			    		<div class="caption">
 							<p class="title_block">
-								<a href="{{ path('sil12_vitrine_chapeau', { 'id': product.id }) }}" title="Description">{{ product.name }}
+								<a href="{{ path('sil12_vitrine_chapeau', { 'id': product.chapeau.id }) }}" title="Description">{{ product.chapeau.name }}
 								</a>
 							</p>
 							<div class="product_desc">
-								<a href="{{ path('sil12_vitrine_chapeau', { 'id': product.id }) }}" title="Description">{{ product.description }}</a>
+								<a href="{{ path('sil12_vitrine_chapeau', { 'id': product.chapeau.id }) }}" title="Description">{{ product.chapeau.description }}</a>
 							</div>
 							<div>
-								<a class="lnk_more" href="{{ path('sil12_vitrine_chapeau', { 'id': product.id }) }}" title="Plus d'infos">
+								<a class="lnk_more" href="{{ path('sil12_vitrine_chapeau', { 'id': product.chapeau.id }) }}" title="Plus d'infos">
 									Plus d'infos
 								</a>
 								<p class="price_container">
-									<span class="price">{{ product.price }} €</span>
+									<span class="price">{{ product.chapeau.price }} €</span>
 								</p>						
-								<a class="add_to_cart_button"  href="{{ path('sil12_vitrine_addProduct', { 'id': product.id, 'qte': 1}) }}" title="Ajouter au panier">
+								<a class="add_to_cart_button"  href="{{ path('sil12_vitrine_addProduct', { 'id': product.chapeau.id, 'qte': 1}) }}" title="Ajouter au panier">
 									Ajouter au panier
 								</a>
 							</div>

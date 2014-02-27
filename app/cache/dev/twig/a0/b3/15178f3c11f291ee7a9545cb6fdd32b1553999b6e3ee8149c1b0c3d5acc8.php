@@ -73,25 +73,55 @@ class __TwigTemplate_a0b315178f3c11f291ee7a9545cb6fdd32b1553999b6e3ee8149c1b0c3d
                 // line 28
                 echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["elem"]) ? $context["elem"] : $this->getContext($context, "elem")), "product"), "description"), "html", null, true);
                 echo "</td>
-\t\t\t\t\t\t\t<td>";
-                // line 29
-                echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["elem"]) ? $context["elem"] : $this->getContext($context, "elem")), "product"), "price"), "html", null, true);
-                echo " €</td>
-\t\t\t\t\t\t\t<td style=\"text-align:center\">
+\t\t\t\t\t\t\t
+\t\t\t\t\t\t\t";
+                // line 30
+                if ((twig_length_filter($this->env, (isset($context["proms"]) ? $context["proms"] : $this->getContext($context, "proms"))) > 0)) {
+                    // line 31
+                    echo "\t\t\t\t\t\t\t\t";
+                    $context["price"] = $this->getAttribute($this->getAttribute((isset($context["elem"]) ? $context["elem"] : $this->getContext($context, "elem")), "product"), "price");
+                    // line 32
+                    echo "\t\t\t\t\t\t\t\t";
+                    $context['_parent'] = (array) $context;
+                    $context['_seq'] = twig_ensure_traversable((isset($context["proms"]) ? $context["proms"] : $this->getContext($context, "proms")));
+                    foreach ($context['_seq'] as $context["_key"] => $context["prom"]) {
+                        // line 33
+                        echo "\t\t\t\t\t\t\t\t\t";
+                        $context["price"] = ((isset($context["price"]) ? $context["price"] : $this->getContext($context, "price")) - ((isset($context["price"]) ? $context["price"] : $this->getContext($context, "price")) / $this->getAttribute((isset($context["prom"]) ? $context["prom"] : $this->getContext($context, "prom")), "reduction")));
+                        // line 34
+                        echo "\t\t\t\t\t\t\t\t";
+                    }
+                    $_parent = $context['_parent'];
+                    unset($context['_seq'], $context['_iterated'], $context['_key'], $context['prom'], $context['_parent'], $context['loop']);
+                    $context = array_intersect_key($context, $_parent) + $_parent;
+                    // line 35
+                    echo "\t\t\t\t\t\t\t\t<td>";
+                    echo twig_escape_filter($this->env, (isset($context["price"]) ? $context["price"] : $this->getContext($context, "price")), "html", null, true);
+                    echo " €</td>
+\t\t\t\t\t\t\t";
+                } else {
+                    // line 37
+                    echo "\t\t\t\t\t\t\t\t<td>";
+                    echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["elem"]) ? $context["elem"] : $this->getContext($context, "elem")), "product"), "price"), "html", null, true);
+                    echo " €</td>
+\t\t\t\t\t\t\t";
+                }
+                // line 39
+                echo "\t\t\t\t\t\t\t<td style=\"text-align:center\">
 \t\t\t\t\t\t\t\t<a href=\"";
-                // line 31
+                // line 40
                 echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("sil12_vitrine_deleteProduct", array("id" => $this->getAttribute($this->getAttribute((isset($context["elem"]) ? $context["elem"] : $this->getContext($context, "elem")), "product"), "id"), "qte" => 1)), "html", null, true);
                 echo "\" type=\"button\" class=\"btn btn-default btn-xs\">-</a>
 \t\t\t\t\t\t\t\t";
-                // line 32
+                // line 41
                 echo twig_escape_filter($this->env, $this->getAttribute((isset($context["elem"]) ? $context["elem"] : $this->getContext($context, "elem")), "qte"), "html", null, true);
                 echo "
 \t\t\t\t\t\t\t\t<a href=\"";
-                // line 33
+                // line 42
                 echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("sil12_vitrine_addProduct", array("id" => $this->getAttribute($this->getAttribute((isset($context["elem"]) ? $context["elem"] : $this->getContext($context, "elem")), "product"), "id"), "qte" => 1)), "html", null, true);
                 echo "\" type=\"button\" class=\"btn btn-default btn-xs\">+</a>
 \t\t\t\t\t\t\t\t<a href=\"";
-                // line 34
+                // line 43
                 echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("sil12_vitrine_removeProduct", array("id" => $this->getAttribute($this->getAttribute((isset($context["elem"]) ? $context["elem"] : $this->getContext($context, "elem")), "product"), "id"))), "html", null, true);
                 echo "\">
 \t\t\t\t\t\t\t\t\t<span class=\"glyphicon glyphicon-trash\"></span>
@@ -103,22 +133,22 @@ class __TwigTemplate_a0b315178f3c11f291ee7a9545cb6fdd32b1553999b6e3ee8149c1b0c3d
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['elem'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 40
+            // line 49
             echo "\t\t\t   </tbody>
 \t\t\t</table>
 \t\t\t<div class=\"pull-right\">
 \t\t\t\t<b>Total : </b>";
-            // line 43
+            // line 52
             echo twig_escape_filter($this->env, (isset($context["total"]) ? $context["total"] : $this->getContext($context, "total")), "html", null, true);
             echo " €
 \t\t\t</div><br>
 \t\t\t<a href=\"";
-            // line 45
+            // line 54
             echo $this->env->getExtension('routing')->getPath("sil12_vitrine_validationPanier");
             echo "\" type=\"button\" class=\"btn btn-primary btn-lg pull-right\">Commander</a>
 \t\t\t";
         }
-        // line 47
+        // line 56
         echo "\t\t</div>
 \t</div>
 </div>
@@ -137,6 +167,6 @@ class __TwigTemplate_a0b315178f3c11f291ee7a9545cb6fdd32b1553999b6e3ee8149c1b0c3d
 
     public function getDebugInfo()
     {
-        return array (  122 => 47,  117 => 45,  112 => 43,  107 => 40,  95 => 34,  91 => 33,  87 => 32,  83 => 31,  78 => 29,  74 => 28,  70 => 27,  65 => 26,  62 => 25,  58 => 24,  45 => 13,  41 => 12,  31 => 4,  28 => 3,);
+        return array (  152 => 56,  147 => 54,  142 => 52,  137 => 49,  125 => 43,  121 => 42,  117 => 41,  113 => 40,  110 => 39,  104 => 37,  98 => 35,  92 => 34,  89 => 33,  84 => 32,  81 => 31,  79 => 30,  74 => 28,  70 => 27,  65 => 26,  62 => 25,  58 => 24,  45 => 13,  41 => 12,  31 => 4,  28 => 3,);
     }
 }

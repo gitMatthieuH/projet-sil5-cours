@@ -8,6 +8,7 @@
         <link href="{{ asset('bundles/sil12vitrine/lib/bootstrap/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('bundles/sil12vitrine/css/shapeover.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('bundles/sil12vitrine/css/main.css') }}" rel="stylesheet" type="text/css" />
+        <link href='http://fonts.googleapis.com/css?family=PT+Serif+Caption' rel='stylesheet' type='text/css'>
         <script src="{{ asset('bundles/sil12vitrine/js/snap.svg-min.js') }}"></script>
 </head>
     <body>
@@ -50,6 +51,10 @@
                 }
 
                 init();
+
+                $( "#type" ).on('change', function() {
+                  $( "#filter" ).submit();
+                });
 
             })();
         </script>

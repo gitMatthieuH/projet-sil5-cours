@@ -237,4 +237,80 @@ class Product
     {
         return $this->category;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $promotions;
+
+
+    /**
+     * Add promotions
+     *
+     * @param \sil12\VitrineBundle\Entity\Promotion $promotions
+     * @return Product
+     */
+    public function addPromotion(\sil12\VitrineBundle\Entity\Promotion $promotions)
+    {
+        $this->promotions[] = $promotions;
+
+        return $this;
+    }
+
+    /**
+     * Remove promotions
+     *
+     * @param \sil12\VitrineBundle\Entity\Promotion $promotions
+     */
+    public function removePromotion(\sil12\VitrineBundle\Entity\Promotion $promotions)
+    {
+        $this->promotions->removeElement($promotions);
+    }
+
+    /**
+     * Get promotions
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPromotions()
+    {
+        return $this->promotions;
+    }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $groups;
+
+
+    /**
+     * Add groups
+     *
+     * @param \sil12\VitrineBundle\Entity\Promotion $groups
+     * @return Product
+     */
+    public function addGroup(\sil12\VitrineBundle\Entity\Promotion $groups)
+    {
+        $this->groups[] = $groups;
+
+        return $this;
+    }
+
+    /**
+     * Remove groups
+     *
+     * @param \sil12\VitrineBundle\Entity\Promotion $groups
+     */
+    public function removeGroup(\sil12\VitrineBundle\Entity\Promotion $groups)
+    {
+        $this->groups->removeElement($groups);
+    }
+
+    /**
+     * Get groups
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getGroups()
+    {
+        return $this->groups;
+    }
 }

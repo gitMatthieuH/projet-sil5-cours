@@ -189,7 +189,7 @@ class Client implements UserInterface, \Serializable
     }
 
 
-     public function getUsername() {
+    public function getUsername() {
         return $this->mail;
     }
 

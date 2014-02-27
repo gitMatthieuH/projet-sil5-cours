@@ -1,0 +1,42 @@
+sil12\VitrineBundle\Entity\Promotion:
+  type: entity
+  repositoryClass: sil12\VitrineBundle\Entity\PromotionRepository
+  fields:
+    id:
+      id: true
+      type: integer
+      nullable: false
+      generator:
+        strategy: AUTO
+    name:
+      type: string
+      length: 100
+    description:
+      type: string
+      length: 250
+    reduction:
+      type: integer
+    usageLimit:
+      type: integer
+      nullable: true
+    used:
+      type: integer
+    coupon:
+      type: boolean
+      nullable: true
+    start:
+      type: datetime
+      gedmo:
+        timestampable:
+          on: create
+    end:
+      type: datetime
+      nullable: true
+      gedmo:
+        timestampable:
+          on: update
+    manyToMany:
+      products:
+        targetEntity: Product
+        mappedBy: promotions
+

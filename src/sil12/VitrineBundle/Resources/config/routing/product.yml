@@ -19,6 +19,14 @@ product_edit:
     pattern:  /{id}/edit
     defaults: { _controller: "sil12VitrineBundle:Product:edit" }
 
+product_addprom:
+    pattern:  /{id}/product_addprom
+    defaults: { _controller: "sil12VitrineBundle:Product:addprom" }
+
+product_promadded:
+    pattern:  /product_promadded
+    defaults: { _controller: "sil12VitrineBundle:Product:promadded" }
+
 product_update:
     pattern:  /{id}/update
     defaults: { _controller: "sil12VitrineBundle:Product:update" }

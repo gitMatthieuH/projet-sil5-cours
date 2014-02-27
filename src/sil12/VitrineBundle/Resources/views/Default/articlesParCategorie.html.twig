@@ -1,23 +1,45 @@
 {% extends "sil12VitrineBundle::layout.html.twig" %}
 
 {% block content %}
-{{ products | length }}
-	<section id="grid" class="grid clearfix">		
-	
-		{% for product in products %}
+	<div class="col-md-6 col-md-offset-2">
+		<div class="form-group">
+		    <div class="col-sm-3">
+		    	<form role="form" id="filter" action="{{ path('sil12_vitrine_filteredArticlesParCategorie')}}" method="POST">
+		    		<input type="hidden" name="catId" value="{{ catId }}">
+		    		
+					<select id="type" name="type" class="form-control">
+						<option value="id" {% if type is defined %}{% if type == "id" %}selected{% endif %}{% else %}selected{% endif %}>Tout</option>
+						<option value="price" {% if type is defined %}{% if type == "price" %}selected{% endif %}{% endif %}>Tri par prix</option>
+						<option value="name" {% if type is defined %}{% if type == "name" %}selected{% endif %}{% endif %}>Tri par nom</option>
+					</select>
 
-		    	<a href="{{ path('sil12_vitrine_chapeau', { 'id': product.id }) }}" data-path-hover="m 180,34.57627 -180,0 L 0,0 180,0 z">
-			    	<figure class="shadow"  style="background: #8297a3">
-			    		<img src="{{ asset('bundles/sil12vitrine/images/') }}{{ product.id }}.png" width="250px">
-			    		<svg viewBox="0 0 180 320" preserveAspectRatio="none"><path d="M180,160C180,160,0,218,0,218C0,218,0,0,0,0C0,0,180,0,180,0C180,0,180,160,180,160"></path><desc>Created with Snap</desc><defs></defs></svg>
-						<figcaption>
-							<h2>{{ product.name | truncate(15) }}</h2>
-							<p>{{ product.description | truncate(30) }}</p>
-							<p><b>Prix : </b>{{ product.price }} €</p>
-							<button href="" type="button" class="btn btn-primary btn-lg btn-block">Détails</button>
-						</figcaption>
-					</figure>
-				</a>
+				</form>
+		    </div>
+	    </div>
+	</div>
+	<section id="grid" class="grid clearfix">		
+		{% for chapeau in chapeaux %}
+	    	<a href="{{ path('sil12_vitrine_chapeau', { 'id': chapeau.chapeau.id }) }}" data-path-hover="m 180,34.57627 -180,0 L 0,0 180,0 z">
+		    	<figure class="shadow"  style="background: #b3c3cc">
+		    		<img src="{{ asset('bundles/sil12vitrine/images/') }}{{ chapeau.chapeau.id }}.png" width="250px">
+		    		<svg viewBox="0 0 180 320" preserveAspectRatio="none"><path d="M180,160C180,160,0,218,0,218C0,218,0,0,0,0C0,0,180,0,180,0C180,0,180,160,180,160"></path><desc>Created with Snap</desc><defs></defs></svg>
+					<figcaption>
+						<h2>{{ chapeau.chapeau.name | truncate(30) }}</h2>
+						<p>{{ chapeau.chapeau.description | truncate(40) }}</p>
+						{% if chapeau.proms | length > 0 %}
+							{% set price = chapeau.chapeau.price %}
+							{% for prom in chapeau.proms %}
+								<div class="prom"><b>{{prom.name}} -{{prom.reduction}}% !</b></div>
+								{% set price = price - (price / prom.reduction) %}
+							{% endfor %}
+							<p><b>Prix : </b><s>{{ chapeau.chapeau.price }}€</s>    <span class="new-price"><b>{{price}}€</b></span></p>
+						{% else %}
+							<p><b>Prix : </b>{{ chapeau.chapeau.price }} €</p>
+						{% endif %}
+						<button href="" type="button" class="btn btn-primary btn-lg btn-block">Détails</button>
+					</figcaption>
+				</figure>
+			</a>
 		{% endfor %}
 	</section>
 {% endblock %}
