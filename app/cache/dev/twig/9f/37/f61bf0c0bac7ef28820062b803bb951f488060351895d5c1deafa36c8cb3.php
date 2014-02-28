@@ -71,28 +71,29 @@ class __TwigTemplate_9f37f61bf0c0bac7ef28820062b803bb951f488060351895d5c1deafa36
 \t\t\t\t\t\t\tPanier 
 \t\t\t\t\t\t\t";
         // line 32
-        if ($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : null), "user", array(), "any", false, true), "name", array(), "any", true, true)) {
-            // line 33
-            echo "\t\t\t\t\t\t\t( ";
-            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "user"), "name"), "html", null, true);
-            echo " )
-\t\t\t\t\t\t\t";
-        }
-        // line 35
-        echo "\t\t\t\t\t\t</a>
+        echo $this->env->getExtension('http_kernel')->renderFragment($this->env->getExtension('http_kernel')->controller("sil12VitrineBundle:Panier:showPanier"));
+        echo "
+\t\t\t\t\t\t</a>
 \t\t\t\t\t</small>
 \t\t\t\t\t";
-        // line 37
+        // line 35
         if ($this->env->getExtension('security')->isGranted("ROLE_USER")) {
-            // line 38
+            // line 36
             echo "\t\t\t\t\t<a href=\"";
             echo $this->env->getExtension('routing')->getPath("logout");
             echo "\" class=\"btn btn-default\" role=\"button\">
-\t\t\t\t\t\tSe déconnecter <span class=\"glyphicon glyphicon-log-out\"></span>
+\t\t\t\t\t\tSe déconnecter";
+            // line 37
+            if ($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : null), "user", array(), "any", false, true), "name", array(), "any", true, true)) {
+                echo " ( ";
+                echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "user"), "name"), "html", null, true);
+                echo " )";
+            }
+            echo " <span class=\"glyphicon glyphicon-log-out\"></span>
 \t\t\t\t\t</a>
 \t\t\t\t\t";
         } else {
-            // line 42
+            // line 40
             echo "\t\t\t\t\t<a href=\"";
             echo $this->env->getExtension('routing')->getPath("sil12_vitrine_auth");
             echo "\" class=\"btn btn-default\" role=\"button\">
@@ -100,13 +101,13 @@ class __TwigTemplate_9f37f61bf0c0bac7ef28820062b803bb951f488060351895d5c1deafa36
 \t\t\t\t\t</a>
 \t\t\t\t\t";
         }
-        // line 46
+        // line 44
         echo "\t\t\t\t\t
 \t\t\t\t</div>
 \t\t\t</div>
 \t\t\t<div class=\"hero-lead\">
 \t\t\t\t<a href=\"";
-        // line 50
+        // line 48
         echo $this->env->getExtension('routing')->getPath("sil12_vitrine_accueil");
         echo "\"><img src=\"";
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/sil12vitrine/img/"), "html", null, true);
@@ -133,6 +134,6 @@ class __TwigTemplate_9f37f61bf0c0bac7ef28820062b803bb951f488060351895d5c1deafa36
 
     public function getDebugInfo()
     {
-        return array (  110 => 50,  104 => 46,  96 => 42,  88 => 38,  86 => 37,  82 => 35,  76 => 33,  74 => 32,  68 => 29,  65 => 28,  56 => 22,  53 => 21,  51 => 20,  42 => 14,  39 => 13,  31 => 8,  28 => 7,  26 => 6,  19 => 1,);
+        return array (  111 => 48,  105 => 44,  97 => 40,  87 => 37,  82 => 36,  80 => 35,  74 => 32,  68 => 29,  65 => 28,  56 => 22,  53 => 21,  51 => 20,  42 => 14,  39 => 13,  31 => 8,  28 => 7,  26 => 6,  19 => 1,);
     }
 }

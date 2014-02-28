@@ -1,16 +1,24 @@
-{% extends '::base.html.twig' %}
+{% extends "sil12VitrineBundle:BackOffice:layout.html.twig" %}
 
-{% block body -%}
-    <h1>Promotion edit</h1>
 
-    {{ form(edit_form) }}
+{% block content %}
+<div class="col-md-6 col-md-offset-3">
+	<div class="panel panel-default">
+	    <div class="panel-heading">
+	        <h3 class="panel-title">Edition de la promotion</h3>
+	    </div>
+	    <div class="panel-body">
+		    {{ form(edit_form) }}
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('promotion') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+		    <ul class="record_actions">
+			    <li>
+			        <a href="{{ path('promotion') }}">
+			            Retour à la liste
+			        </a>
+			    </li>
+			    <li>{{ form(delete_form) }}</li>
+			</ul>
+	    </div>
+	</div> 
+</div>
 {% endblock %}

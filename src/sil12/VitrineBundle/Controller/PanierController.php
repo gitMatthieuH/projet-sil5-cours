@@ -47,6 +47,45 @@ class PanierController extends Controller
         );
     }
 
+    public function showPanierAction() {
+        $em = $this->getDoctrine()->getManager();
+        $session = $this->getRequest()->getSession();
+        $panier = $session->get('panier', new Panier());
+
+        $data = $panier->getContenu();
+
+        $dataToSend = array();
+        $proms = array();
+        $total = 0;
+        $nb=0;
+        foreach ($data as $key => $product) {
+            
+            $chapeau = $em->getRepository('sil12VitrineBundle:Product')
+                        ->find($key);
+            $proms = null;
+            $proms = $chapeau->getPromotions();
+
+            $nb += $product;
+
+            if (sizeof($proms) > 0) {
+                $price = $chapeau->getPrice();
+                foreach ($proms as $key => $prom) {
+                    $price -= $chapeau->getPrice() / $prom->getReduction();
+                }
+                $total += $price * $product;
+            } else {
+                $total += $chapeau->getPrice() * $product;
+            }
+            
+        }
+
+        return $this->render('sil12VitrineBundle:Panier:show_panier.html.twig',
+            array('total' => $total, 'nb' =>$nb)
+        );
+
+
+    }
+
     public function addProductAction($id,$qte) {
         $em = $this->getDoctrine()->getManager();
         $session = $this->getRequest()->getSession();
@@ -90,7 +129,7 @@ class PanierController extends Controller
 
     public function validationPanierAction() {
         $session = $this->getRequest()->getSession();
-        $client = $session->get(SecurityContext::LAST_USERNAME);
+        $client = $this->getUser();
 
         $orderHat = new OrderHat();
         $orderHat->setClient($client);

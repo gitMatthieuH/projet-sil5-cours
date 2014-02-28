@@ -29,14 +29,12 @@
 						<a href="{{ path('sil12_vitrine_contenuPanier') }}">
 							<span class="glyphicon glyphicon-shopping-cart"></span>
 							Panier 
-							{% if app.user.name is defined %}
-							( {{ app.user.name }} )
-							{% endif %}
+							{{ render(controller('sil12VitrineBundle:Panier:showPanier')) }}
 						</a>
 					</small>
 					{% if (is_granted('ROLE_USER')) %}
 					<a href="{{ path('logout') }}" class="btn btn-default" role="button">
-						Se déconnecter <span class="glyphicon glyphicon-log-out"></span>
+						Se déconnecter{% if app.user.name is defined %} ( {{ app.user.name }} ){% endif %} <span class="glyphicon glyphicon-log-out"></span>
 					</a>
 					{% else %}
 					<a href="{{ path('sil12_vitrine_auth') }}" class="btn btn-default" role="button">

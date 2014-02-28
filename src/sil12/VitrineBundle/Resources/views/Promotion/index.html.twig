@@ -1,57 +1,66 @@
-{% extends '::base.html.twig' %}
 
-{% block body -%}
-    <h1>Promotion list</h1>
+{% extends "sil12VitrineBundle:BackOffice:layout.html.twig" %}
 
-    <table class="records_list">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Reduction</th>
-                <th>Usagelimit</th>
-                <th>Used</th>
-                <th>Coupon</th>
-                <th>Start</th>
-                <th>End</th>
-                <th>Manytomany</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for entity in entities %}
-            <tr>
-                <td><a href="{{ path('promotion_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{{ entity.name }}</td>
-                <td>{{ entity.description }}</td>
-                <td>{{ entity.reduction }}</td>
-                <td>{{ entity.usageLimit }}</td>
-                <td>{{ entity.used }}</td>
-                <td>{{ entity.coupon }}</td>
-                <td>{% if entity.start %}{{ entity.start|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{% if entity.end %}{{ entity.end|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{{ entity.manyToMany }}</td>
-                <td>
+
+{% block content %}
+<div class="col-md-6 col-md-offset-3">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Liste des promotion</h3>
+        </div>
+        <div class="panel-body">
+            <table class="records_list">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Reduction</th>
+                        <th>Usagelimit</th>
+                        <th>Utilisé</th>
+                        <th>Coupon</th>
+                        <th>Début</th>
+                        <th>Fin</th>
+                        <th>Produit</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for entity in entities %}
+                    <tr>
+                        <td><a href="{{ path('promotion_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                        <td>{{ entity.name }}</td>
+                        <td>{{ entity.description }}</td>
+                        <td>{{ entity.reduction }}</td>
+                        <td>{{ entity.usageLimit }}</td>
+                        <td>{{ entity.used }}</td>
+                        <td>{{ entity.coupon }}</td>
+                        <td>{% if entity.start %}{{ entity.start|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        <td>{% if entity.end %}{{ entity.end|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        <td>{{ entity.manyToMany }}</td>
+                        <td>
+                        <ul>
+                            <li>
+                                <a href="{{ path('promotion_show', { 'id': entity.id }) }}">show</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('promotion_edit', { 'id': entity.id }) }}">edit</a>
+                            </li>
+                        </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
                 <ul>
-                    <li>
-                        <a href="{{ path('promotion_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('promotion_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-        <ul>
-        <li>
-            <a href="{{ path('promotion_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
-    {% endblock %}
+                <li>
+                    <a href="{{ path('promotion_new') }}">
+                        Ajouter une promotion
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div> 
+</div>
+{% endblock %}

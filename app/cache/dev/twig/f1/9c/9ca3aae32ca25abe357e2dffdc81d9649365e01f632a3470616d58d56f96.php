@@ -7,16 +7,16 @@ class __TwigTemplate_f19c9ca3aae32ca25abe357e2dffdc81d9649365e01f632a3470616d58d
     {
         parent::__construct($env);
 
-        $this->parent = $this->env->loadTemplate("::base.html.twig");
+        $this->parent = $this->env->loadTemplate("sil12VitrineBundle:BackOffice:layout.html.twig");
 
         $this->blocks = array(
-            'body' => array($this, 'block_body'),
+            'content' => array($this, 'block_content'),
         );
     }
 
     protected function doGetParent(array $context)
     {
-        return "::base.html.twig";
+        return "sil12VitrineBundle:BackOffice:layout.html.twig";
     }
 
     protected function doDisplay(array $context, array $blocks = array())
@@ -24,119 +24,126 @@ class __TwigTemplate_f19c9ca3aae32ca25abe357e2dffdc81d9649365e01f632a3470616d58d
         $this->parent->display($context, array_merge($this->blocks, $blocks));
     }
 
-    // line 3
-    public function block_body($context, array $blocks = array())
+    // line 5
+    public function block_content($context, array $blocks = array())
     {
-        // line 4
-        echo "<h1>Promotion list</h1>
-
-    <table class=\"records_list\">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Reduction</th>
-                <th>Usagelimit</th>
-                <th>Used</th>
-                <th>Coupon</th>
-                <th>Start</th>
-                <th>End</th>
-                <th>Manytomany</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        ";
-        // line 23
+        // line 6
+        echo "<div class=\"col-md-6 col-md-offset-3\">
+    <div class=\"panel panel-default\">
+        <div class=\"panel-heading\">
+            <h3 class=\"panel-title\">Liste des promotion</h3>
+        </div>
+        <div class=\"panel-body\">
+            <table class=\"records_list\">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Reduction</th>
+                        <th>Usagelimit</th>
+                        <th>Utilisé</th>
+                        <th>Coupon</th>
+                        <th>Début</th>
+                        <th>Fin</th>
+                        <th>Produit</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                ";
+        // line 29
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable((isset($context["entities"]) ? $context["entities"] : $this->getContext($context, "entities")));
         foreach ($context['_seq'] as $context["_key"] => $context["entity"]) {
-            // line 24
-            echo "            <tr>
-                <td><a href=\"";
-            // line 25
+            // line 30
+            echo "                    <tr>
+                        <td><a href=\"";
+            // line 31
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("promotion_show", array("id" => $this->getAttribute((isset($context["entity"]) ? $context["entity"] : $this->getContext($context, "entity")), "id"))), "html", null, true);
             echo "\">";
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["entity"]) ? $context["entity"] : $this->getContext($context, "entity")), "id"), "html", null, true);
             echo "</a></td>
-                <td>";
-            // line 26
+                        <td>";
+            // line 32
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["entity"]) ? $context["entity"] : $this->getContext($context, "entity")), "name"), "html", null, true);
             echo "</td>
-                <td>";
-            // line 27
+                        <td>";
+            // line 33
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["entity"]) ? $context["entity"] : $this->getContext($context, "entity")), "description"), "html", null, true);
             echo "</td>
-                <td>";
-            // line 28
+                        <td>";
+            // line 34
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["entity"]) ? $context["entity"] : $this->getContext($context, "entity")), "reduction"), "html", null, true);
             echo "</td>
-                <td>";
-            // line 29
+                        <td>";
+            // line 35
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["entity"]) ? $context["entity"] : $this->getContext($context, "entity")), "usageLimit"), "html", null, true);
             echo "</td>
-                <td>";
-            // line 30
+                        <td>";
+            // line 36
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["entity"]) ? $context["entity"] : $this->getContext($context, "entity")), "used"), "html", null, true);
             echo "</td>
-                <td>";
-            // line 31
+                        <td>";
+            // line 37
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["entity"]) ? $context["entity"] : $this->getContext($context, "entity")), "coupon"), "html", null, true);
             echo "</td>
-                <td>";
-            // line 32
+                        <td>";
+            // line 38
             if ($this->getAttribute((isset($context["entity"]) ? $context["entity"] : $this->getContext($context, "entity")), "start")) {
                 echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute((isset($context["entity"]) ? $context["entity"] : $this->getContext($context, "entity")), "start"), "Y-m-d H:i:s"), "html", null, true);
             }
             echo "</td>
-                <td>";
-            // line 33
+                        <td>";
+            // line 39
             if ($this->getAttribute((isset($context["entity"]) ? $context["entity"] : $this->getContext($context, "entity")), "end")) {
                 echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute((isset($context["entity"]) ? $context["entity"] : $this->getContext($context, "entity")), "end"), "Y-m-d H:i:s"), "html", null, true);
             }
             echo "</td>
-                <td>";
-            // line 34
+                        <td>";
+            // line 40
             echo twig_escape_filter($this->env, $this->getAttribute((isset($context["entity"]) ? $context["entity"] : $this->getContext($context, "entity")), "manyToMany"), "html", null, true);
             echo "</td>
-                <td>
-                <ul>
-                    <li>
-                        <a href=\"";
-            // line 38
+                        <td>
+                        <ul>
+                            <li>
+                                <a href=\"";
+            // line 44
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("promotion_show", array("id" => $this->getAttribute((isset($context["entity"]) ? $context["entity"] : $this->getContext($context, "entity")), "id"))), "html", null, true);
             echo "\">show</a>
-                    </li>
-                    <li>
-                        <a href=\"";
-            // line 41
+                            </li>
+                            <li>
+                                <a href=\"";
+            // line 47
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("promotion_edit", array("id" => $this->getAttribute((isset($context["entity"]) ? $context["entity"] : $this->getContext($context, "entity")), "id"))), "html", null, true);
             echo "\">edit</a>
-                    </li>
-                </ul>
-                </td>
-            </tr>
-        ";
+                            </li>
+                        </ul>
+                        </td>
+                    </tr>
+                ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['entity'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 47
-        echo "        </tbody>
-    </table>
+        // line 53
+        echo "                </tbody>
+            </table>
 
-        <ul>
-        <li>
-            <a href=\"";
-        // line 52
+                <ul>
+                <li>
+                    <a href=\"";
+        // line 58
         echo $this->env->getExtension('routing')->getPath("promotion_new");
         echo "\">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
-    ";
+                        Ajouter une promotion
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div> 
+</div>
+";
     }
 
     public function getTemplateName()
@@ -151,6 +158,6 @@ class __TwigTemplate_f19c9ca3aae32ca25abe357e2dffdc81d9649365e01f632a3470616d58d
 
     public function getDebugInfo()
     {
-        return array (  133 => 52,  126 => 47,  114 => 41,  108 => 38,  101 => 34,  95 => 33,  89 => 32,  85 => 31,  81 => 30,  77 => 29,  73 => 28,  69 => 27,  65 => 26,  59 => 25,  56 => 24,  52 => 23,  31 => 4,  28 => 3,);
+        return array (  137 => 58,  130 => 53,  118 => 47,  112 => 44,  105 => 40,  99 => 39,  93 => 38,  89 => 37,  85 => 36,  81 => 35,  77 => 34,  73 => 33,  69 => 32,  63 => 31,  60 => 30,  56 => 29,  31 => 6,  28 => 5,);
     }
 }
