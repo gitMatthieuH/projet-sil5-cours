@@ -1,14 +1,20 @@
 {% extends "sil12VitrineBundle::layout.html.twig" %}
 
 {% block content %}
-	<div class="col-md-6 col-md-offset-2">
+	<div class="col-md-6 col-md-offset-3">
+		<ol class="breadcrumb">
+		  <li><a href="{{ path('sil12_vitrine_accueil') }}">Accueil</a></li>
+		  <li><a href="{{ path('sil12_vitrine_catalogue') }}">Catalogue</a></li>
+		</ol>
+	</div>
+	<div class="grid">
 		<div class="form-group">
 		    <div class="col-sm-3">
 		    	<form role="form" id="filter" action="{{ path('sil12_vitrine_filteredArticlesParCategorie')}}" method="POST">
 		    		<input type="hidden" name="catId" value="{{ catId }}">
 		    		
 					<select id="type" name="type" class="form-control">
-						<option value="id" {% if type is defined %}{% if type == "id" %}selected{% endif %}{% else %}selected{% endif %}>Tout</option>
+						<option value="id" {% if type is defined %}{% if type == "id" %}selected{% endif %}{% else %}selected{% endif %}>Tri par date d'ajout</option>
 						<option value="price" {% if type is defined %}{% if type == "price" %}selected{% endif %}{% endif %}>Tri par prix</option>
 						<option value="name" {% if type is defined %}{% if type == "name" %}selected{% endif %}{% endif %}>Tri par nom</option>
 					</select>
@@ -32,7 +38,7 @@
 								<div class="prom"><b>{{prom.name}} -{{prom.reduction}}% !</b></div>
 								{% set price = price - (price / prom.reduction) %}
 							{% endfor %}
-							<p><b>Prix : </b><s>{{ chapeau.chapeau.price }}€</s>    <span class="new-price"><b>{{price}}€</b></span></p>
+							<p><b>Prix : </b><s>{{ chapeau.chapeau.price }}€</s>    <span class="new-price"><b>{{price | number_format(2)}}€</b></span></p>
 						{% else %}
 							<p><b>Prix : </b>{{ chapeau.chapeau.price }} €</p>
 						{% endif %}

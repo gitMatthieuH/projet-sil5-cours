@@ -9,14 +9,14 @@
             <h3 class="panel-title">Liste des promotion</h3>
         </div>
         <div class="panel-body">
-            <table class="records_list">
+            <table class="table records_list">
                 <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Name</th>
+                        <th>Nom</th>
                         <th>Description</th>
                         <th>Reduction</th>
-                        <th>Usagelimit</th>
+                        <th>Limite d'usages</th>
                         <th>Utilisé</th>
                         <th>Coupon</th>
                         <th>Début</th>
@@ -41,10 +41,10 @@
                         <td>
                         <ul>
                             <li>
-                                <a href="{{ path('promotion_show', { 'id': entity.id }) }}">show</a>
+                                <a href="{{ path('promotion_show', { 'id': entity.id }) }}">voir</a>
                             </li>
                             <li>
-                                <a href="{{ path('promotion_edit', { 'id': entity.id }) }}">edit</a>
+                                <a href="{{ path('promotion_edit', { 'id': entity.id }) }}">editer</a>
                             </li>
                         </ul>
                         </td>
@@ -53,7 +53,7 @@
                 </tbody>
             </table>
 
-                <ul>
+            <ul>
                 <li>
                     <a href="{{ path('promotion_new') }}">
                         Ajouter une promotion

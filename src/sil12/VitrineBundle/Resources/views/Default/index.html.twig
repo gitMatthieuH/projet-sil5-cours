@@ -33,7 +33,7 @@
 											<div class="prom"><b>{{prom.name}} -{{prom.reduction}}% !</b></div>
 											{% set price = price - (price / prom.reduction) %}
 										{% endfor %}
-										<span class="price"><s>{{ chapeau.chapeau.price }}€</s>    <span class="new-price"><b>{{price}}€</b></span></span>
+										<span class="price"><s>{{ chapeau.chapeau.price }}€</s>    <span class="new-price"><b>{{price | number_format(2)}}€</b></span></span>
 									{% else %}
 										<span class="price">{{ chapeau.chapeau.price }} €</span>
 									{% endif %}
@@ -77,7 +77,16 @@
 									Plus d'infos
 								</a>
 								<p class="price_container">
-									<span class="price">{{ product.chapeau.price }} €</span>
+									{% if product.proms | length > 0 %}
+										{% set price = product.chapeau.price %}
+										{% for prom in product.proms %}
+											<div class="prom"><b>{{prom.name}} -{{prom.reduction}}% !</b></div>
+											{% set price = price - (price / prom.reduction) %}
+										{% endfor %}
+										<span class="price"><s>{{ product.chapeau.price }}€</s>    <span class="new-price"><b>{{price | number_format(2)}}€</b></span></span>
+									{% else %}
+										<span class="price">{{ product.chapeau.price }} €</span>
+									{% endif %}
 								</p>						
 								<a class="add_to_cart_button"  href="{{ path('sil12_vitrine_addProduct', { 'id': product.chapeau.id, 'qte': 1}) }}" title="Ajouter au panier">
 									Ajouter au panier

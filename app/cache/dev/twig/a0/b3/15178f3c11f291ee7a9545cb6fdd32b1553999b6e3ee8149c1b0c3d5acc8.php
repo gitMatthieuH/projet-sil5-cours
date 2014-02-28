@@ -96,7 +96,7 @@ class __TwigTemplate_a0b315178f3c11f291ee7a9545cb6fdd32b1553999b6e3ee8149c1b0c3d
                     $context = array_intersect_key($context, $_parent) + $_parent;
                     // line 35
                     echo "\t\t\t\t\t\t\t\t<td>";
-                    echo twig_escape_filter($this->env, (isset($context["price"]) ? $context["price"] : $this->getContext($context, "price")), "html", null, true);
+                    echo twig_escape_filter($this->env, twig_number_format_filter($this->env, (isset($context["price"]) ? $context["price"] : $this->getContext($context, "price")), 2), "html", null, true);
                     echo " €</td>
 \t\t\t\t\t\t\t";
                 } else {

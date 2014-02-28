@@ -419,4 +419,15 @@ class Product extends \sil12\VitrineBundle\Entity\Product implements \Doctrine\O
         return parent::getGroups();
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    public function __toString()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__toString', array());
+
+        return parent::__toString();
+    }
+
 }

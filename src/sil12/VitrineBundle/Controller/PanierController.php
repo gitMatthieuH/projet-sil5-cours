@@ -43,7 +43,7 @@ class PanierController extends Controller
         }
 
         return $this->render('sil12VitrineBundle:Panier:panier.html.twig',
-            array('panier' => $dataToSend, 'total' => $total, 'proms' => $proms)
+            array('panier' => $dataToSend, 'total' => round($total, 2), 'proms' => $proms)
         );
     }
 
@@ -80,7 +80,7 @@ class PanierController extends Controller
         }
 
         return $this->render('sil12VitrineBundle:Panier:show_panier.html.twig',
-            array('total' => $total, 'nb' =>$nb)
+            array('total' => round($total, 2), 'nb' =>$nb)
         );
 
 
@@ -208,7 +208,7 @@ class PanierController extends Controller
         
 
         return $this->render('sil12VitrineBundle:Panier:validationPanier.html.twig',
-            array('panier' => $dataToSend, 'orderHat' => $orderHat, 'totalPrice' => $totalPrice)
+            array('panier' => $dataToSend, 'orderHat' => $orderHat, 'totalPrice' => round($totalPrice, 2))
         );
     }
 }

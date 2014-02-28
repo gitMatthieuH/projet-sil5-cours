@@ -19,7 +19,7 @@ class __TwigTemplate_449db7a3fed562056aff75acc6c6deaec20a6273fdca9766bf41945e3a2
         echo "( ";
         echo twig_escape_filter($this->env, (isset($context["nb"]) ? $context["nb"] : $this->getContext($context, "nb")), "html", null, true);
         echo " articles - total : ";
-        echo twig_escape_filter($this->env, (isset($context["total"]) ? $context["total"] : $this->getContext($context, "total")), "html", null, true);
+        echo twig_escape_filter($this->env, twig_number_format_filter($this->env, (isset($context["total"]) ? $context["total"] : $this->getContext($context, "total")), 2), "html", null, true);
         echo "€ )";
     }
 

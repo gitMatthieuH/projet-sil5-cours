@@ -60,6 +60,9 @@ class DefaultController extends Controller
         $products = $em->getRepository('sil12VitrineBundle:Product')
                         ->findByCategory($id);
 
+        $category = $em->getRepository('sil12VitrineBundle:Category')
+                        ->find($id);
+
         $chapeaux = array();
         foreach ($products as $key => $chapeau) {
             $proms = $chapeau->getPromotions();       
@@ -80,7 +83,7 @@ class DefaultController extends Controller
         $filteredHats = $em->getRepository('sil12VitrineBundle:Product')
                            ->findBy(
                                 array('category' => $idCat),
-                                array($type => 'DESC')
+                                array($type => 'ASC')
                            );
             
 
@@ -207,7 +210,7 @@ class DefaultController extends Controller
 
         if ($email !== "") {
             $message = \Swift_Message::newInstance();
-            $IMGpath = $message->embed(\Swift_Image::fromPath('http://localhost/PHP/Cours/projet-sil5-cours/web/bundles/sil12vitrine/images/'.$idP.'.png'));
+            $IMGpath = $message->embed(\Swift_Image::fromPath('bundles/sil12vitrine/images/'.$idP.'.png'));
             $message->setSubject('HATme.com - Un ami vous recommande un produit')
                     ->setFrom('contact@hatme.com')
                     ->setTo($email)

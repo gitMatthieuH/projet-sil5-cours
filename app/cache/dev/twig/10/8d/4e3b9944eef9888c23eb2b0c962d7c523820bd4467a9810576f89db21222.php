@@ -34,7 +34,7 @@ class __TwigTemplate_108d4e3b9944eef9888c23eb2b0c962d7c523820bd4467a9810576f89db
             <h3 class=\"panel-title\">Liste des produits</h3>
         </div>
         <div class=\"panel-body\">
-            <table class=\"records_list\">
+            <table class=\"table records_list\">
                 <thead>
                     <tr>
                         <th>Id</th>

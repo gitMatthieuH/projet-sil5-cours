@@ -162,7 +162,7 @@ class Client implements UserInterface, \Serializable
 
     public function __toString()
     {
-        return (string)$this->getId();
+        return (string)$this->getName();
     }
 
     /**

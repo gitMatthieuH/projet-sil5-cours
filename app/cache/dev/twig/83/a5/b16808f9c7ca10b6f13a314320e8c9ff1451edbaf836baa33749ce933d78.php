@@ -53,7 +53,7 @@ class __TwigTemplate_83a5b16808f9c7ca10b6f13a314320e8c9ff1451edbaf836baa33749ce9
                 <div class=\"navbar-header\">
                     <img src=\"";
         // line 16
-        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/sil12vitrine/images/"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/sil12vitrine/img/"), "html", null, true);
         echo "logo.png\" height=\"45px\"/ style=\"float:left;\">
                     <a class=\"navbar-brand\" href=\"";
         // line 17
@@ -151,6 +151,6 @@ class __TwigTemplate_83a5b16808f9c7ca10b6f13a314320e8c9ff1451edbaf836baa33749ce9
 
     public function getDebugInfo()
     {
-        return array (  139 => 43,  136 => 42,  131 => 6,  125 => 5,  118 => 49,  113 => 47,  108 => 44,  106 => 42,  93 => 32,  86 => 28,  82 => 27,  78 => 26,  74 => 25,  70 => 24,  60 => 17,  56 => 16,  47 => 10,  43 => 9,  39 => 8,  34 => 7,  32 => 6,  22 => 1,  31 => 4,  28 => 5,);
+        return array (  139 => 43,  136 => 42,  131 => 6,  125 => 5,  118 => 49,  113 => 47,  108 => 44,  106 => 42,  93 => 32,  86 => 28,  82 => 27,  78 => 26,  74 => 25,  70 => 24,  60 => 17,  56 => 16,  47 => 10,  43 => 9,  39 => 8,  34 => 7,  32 => 6,  28 => 5,  22 => 1,);
     }
 }

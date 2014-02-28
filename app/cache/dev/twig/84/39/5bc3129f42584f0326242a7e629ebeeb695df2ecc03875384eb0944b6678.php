@@ -47,7 +47,7 @@ class __TwigTemplate_84395bc3129f42584f0326242a7e629ebeeb695df2ecc03875384eb0944
                 <h3 class=\"panel-title\">Mes commandes</h3>
             </div>
             <div class=\"panel-body\">
-                <table class=\"records_list\">
+                <table class=\"table records_list\">
                     <thead>
                         <tr>
                             <th>Référence</th>

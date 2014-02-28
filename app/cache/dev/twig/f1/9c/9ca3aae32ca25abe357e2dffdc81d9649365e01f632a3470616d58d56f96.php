@@ -34,14 +34,14 @@ class __TwigTemplate_f19c9ca3aae32ca25abe357e2dffdc81d9649365e01f632a3470616d58d
             <h3 class=\"panel-title\">Liste des promotion</h3>
         </div>
         <div class=\"panel-body\">
-            <table class=\"records_list\">
+            <table class=\"table records_list\">
                 <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Name</th>
+                        <th>Nom</th>
                         <th>Description</th>
                         <th>Reduction</th>
-                        <th>Usagelimit</th>
+                        <th>Limite d'usages</th>
                         <th>Utilisé</th>
                         <th>Coupon</th>
                         <th>Début</th>
@@ -110,13 +110,13 @@ class __TwigTemplate_f19c9ca3aae32ca25abe357e2dffdc81d9649365e01f632a3470616d58d
                                 <a href=\"";
             // line 44
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("promotion_show", array("id" => $this->getAttribute((isset($context["entity"]) ? $context["entity"] : $this->getContext($context, "entity")), "id"))), "html", null, true);
-            echo "\">show</a>
+            echo "\">voir</a>
                             </li>
                             <li>
                                 <a href=\"";
             // line 47
             echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("promotion_edit", array("id" => $this->getAttribute((isset($context["entity"]) ? $context["entity"] : $this->getContext($context, "entity")), "id"))), "html", null, true);
-            echo "\">edit</a>
+            echo "\">editer</a>
                             </li>
                         </ul>
                         </td>
@@ -130,7 +130,7 @@ class __TwigTemplate_f19c9ca3aae32ca25abe357e2dffdc81d9649365e01f632a3470616d58d
         echo "                </tbody>
             </table>
 
-                <ul>
+            <ul>
                 <li>
                     <a href=\"";
         // line 58
